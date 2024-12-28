@@ -1,0 +1,128 @@
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .contact-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    color: var(--font-main);
+  }
+  
+  .contact-header p {
+    font-size: 1.1rem;
+    color: var(--font-third);
+  }
+  
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .contact-form {
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: var(--font-main);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--bg-main);
+    font-weight: 500;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+  }
+  
+  input.error, textarea.error {
+    border-color: #e74c3c;
+  }
+  
+  button {
+    width: 100%;
+    padding: 14px;
+    background: var(--bg-secondary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+  }
+  
+  button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .info-card {
+    background: var(--font-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: var(--bg-main);
+  }
+  
+  .info-card .icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  
+  .info-card h3 {
+    color: var(--bg-secondary);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+  
+  .info-card p {
+    color: var(--bg-main);
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .contact-info {
+      grid-template-columns: 1fr;
+    }
+  }

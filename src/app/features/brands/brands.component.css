@@ -1,0 +1,93 @@
+.brands-page {
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.brands-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.brands-header h1 {
+  font-size: 2.5rem;
+  color: var(--font-main);
+  margin-bottom: 10px;
+}
+
+.brands-header p {
+  color: var(--font-third);
+  font-size: 1.1rem;
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.brand-card {
+  background: var(--bg-main);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.brand-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brand-info {
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+.brand-info h3 {
+  margin: 0 0 10px;
+  color: var(--font-main);
+  font-size: 1.2rem;
+}
+
+.brand-info p {
+  margin: 0;
+  color: var(--bg-secondary);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .brands-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .brand-image {
+    height: 150px;
+  }
+}
+
+.view-all-brands {
+  padding: 10px;
+  text-align: center;
+  background-color: var(--font-secondary);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  color: var(--bg-main);
+}

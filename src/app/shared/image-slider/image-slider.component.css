@@ -1,0 +1,45 @@
+.image-slider {
+  width: 100%;
+}
+
+.main-image-container {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.thumbnails-container {
+  width: 100%;
+}
+
+.thumbnail-wrapper {
+  flex: 0 0 auto;
+  width: 80px;
+  height: 80px;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.thumbnail-wrapper:hover {
+  transform: translateY(-2px);
+}
+
+.thumbnail-wrapper.selected {
+  border-color: #2563eb;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

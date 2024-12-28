@@ -1,0 +1,95 @@
+<div class="signup-container">
+    <div class="signup-card">
+        <div class="signup-header">
+            <h1>Create Account</h1>
+            <p>Join us today! Please fill in your details</p>
+        </div>
+
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <div class="input-container">
+                    <input type="text" id="name" formControlName="name"
+                        [class.error]="signupForm.get('name')?.invalid && signupForm.get('name')?.touched"
+                        placeholder="Enter your full name">
+                    <span class="icon">👤</span>
+                </div>
+                <span class="error-message" *ngIf="getErrorMessage('name')">
+                    {{ getErrorMessage('name') }}
+                </span>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <div class="input-container">
+                    <input type="email" id="email" formControlName="email"
+                        [class.error]="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+                        placeholder="Enter your email">
+                    <span class="icon">✉️</span>
+                </div>
+                <span class="error-message" *ngIf="getErrorMessage('email')">
+                    {{ getErrorMessage('email') }}
+                </span>
+            </div>
+
+            <!-- Phone Field -->
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <div class="input-container">
+                    <input type="tel" id="phone" formControlName="phone"
+                        [class.error]="signupForm.get('phone')?.invalid && signupForm.get('phone')?.touched"
+                        placeholder="Enter your phone number">
+                    <span class="icon">📱</span>
+                </div>
+                <span class="error-message" *ngIf="getErrorMessage('phone')">
+                    {{ getErrorMessage('phone') }}
+                </span>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-container">
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                        [class.error]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                        placeholder="Create a password">
+                    <button type="button" class="toggle-password" (click)="togglePasswordVisibility('password')"
+                        [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+                        {{ showPassword ? '👁️' : '👁️‍🗨️' }}
+                    </button>
+                </div>
+                <span class="error-message" *ngIf="getErrorMessage('password')">
+                    {{ getErrorMessage('password') }}
+                </span>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+                <label for="rePassword">Confirm Password</label>
+                <div class="input-container">
+                    <input [type]="showRePassword ? 'text' : 'password'" id="rePassword" formControlName="rePassword"
+                        [class.error]="signupForm.get('rePassword')?.invalid && signupForm.get('rePassword')?.touched"
+                        placeholder="Confirm your password">
+                    <button type="button" class="toggle-password" (click)="togglePasswordVisibility('rePassword')"
+                        [attr.aria-label]="showRePassword ? 'Hide password' : 'Show password'">
+                        {{ showRePassword ? '👁️' : '👁️‍🗨️' }}
+                    </button>
+                </div>
+                <span class="error-message" *ngIf="getErrorMessage('rePassword')">
+                    {{ getErrorMessage('rePassword') }}
+                </span>
+            </div>
+
+            <button type="submit" class="submit-button" [disabled]="signupForm.invalid || isSubmitting">
+                <span *ngIf="!isSubmitting">Create Account</span>
+                <span *ngIf="isSubmitting" class="spinner"></span>
+            </button>
+        </form>
+
+        <div class="login-prompt">
+            <p>Already have an account? <a routerLink="/login" (click)="login($event)">Sign in</a></p>
+        </div>
+    </div>
+</div>

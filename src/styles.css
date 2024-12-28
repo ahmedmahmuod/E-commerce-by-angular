@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+/* Tailwind css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variabls */
+:root {
+  /* background */
+  --bg-main: #f6fcdf;
+  --bg-secondary: #31511e;
+  /* font */
+  --font-main: #859f3d;
+  --font-secondary: #1A1A19;
+  --font-third: #666;
+
+  /* others */
+  --border-bottom: 1px solid #8787875e;
+  --tooltip-color: #859f3d;
+}
+
+.ant-tooltip-inner {
+  color: white !important;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+/* Media Query [Responsive] */
+/* Mobile phones (smallest devices, up to 360px) */
+@media screen and (max-width: 360px) {
+  body {
+    font-size: 13px;
+  }
+}
+
+/* Mobile phones (361px to 480px) */
+@media screen and (min-width: 361px) and (max-width: 480px) {
+}
+
+/* Tablets (481px to 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+}
+
+/* Large tablets and small desktops (769px to 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+}
+
+/* Desktops (larger than 1024px) */
+@media screen and (min-width: 1025px) {
+}
+
+/* Large screens (4K and above, larger than 2560px) */
+@media screen and (min-width: 2560px) {
+}

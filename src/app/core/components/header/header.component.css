@@ -1,0 +1,56 @@
+nz-select {
+  width: 70px;
+  color: var(--font-color-secondary) !important;
+}
+::ng-deep .ant-select-arrow {
+  color: var(--font-color-secondary) !important;
+}
+
+header nav {
+  border-bottom: var(--border-bottom);
+}
+
+:host {
+  display: block;
+}
+
+.sign-in,
+.sign-up {
+  transition: 0.3s;
+}
+
+.sign-in:hover {
+  box-shadow: none;
+}
+
+.mobileNavMenu {
+  transition: all 1.3s ease;
+}
+
+.page-header-active {
+  background-color: var(--font-main);
+  padding: 3px 13px;
+  color: var(--bg-main);
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px -5px black;
+}
+
+.header-visible {
+  position: fixed;
+  top: 0; /* الهيدر سيبقى مثبتًا عند أعلى الصفحة */
+  z-index: 100; /* للتأكد من ظهوره فوق العناصر الأخرى */
+}
+
+/* Secondary Navbar */
+.secondary-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.secondary-navbar ul li {
+  padding: 5px 10px;
+  transition: color 0.3s, transform 0.3s;
+}
+.secondary-navbar ul li:hover {
+  transform: translateY(-2px);
+}

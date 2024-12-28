@@ -1,0 +1,47 @@
+<div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row gap-8">
+        <!-- Product Image Slider -->
+        <div class="md:w-1/2">
+            <app-image-slider [images]="product.images"></app-image-slider>
+        </div>
+
+        <!-- Product Info -->
+        <div class="md:w-1/2">
+            <h1 class="text-3xl font-bold mb-4">{{product.name}}</h1>
+
+            <!-- Rating -->
+            <div class="flex items-center mb-4">
+                <div class="flex text-yellow-400">
+                    <span *ngFor="let star of [1,2,3,4,5]">
+                        ⭐
+                    </span>
+                </div>
+                <span class="ml-2 text-gray-600">({{product.reviewCount}} reviews)</span>
+            </div>
+
+            <!-- Price -->
+            <div class="text-2xl font-bold text-blue-600 mb-4">
+                ${{product.price}}
+            </div>
+
+            <!-- Description -->
+            <p class="text-gray-700 mb-6">
+                {{product.description}}
+            </p>
+
+            <!-- Add to Cart -->
+            <app-add-to-cart-button></app-add-to-cart-button>
+
+            <!-- Additional Details -->
+            <div class="mt-8">
+                <h2 class="text-xl font-bold mb-4">Product Details</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div *ngFor="let detail of product.details" class="flex flex-col">
+                        <span class="font-semibold">{{detail.label}}</span>
+                        <span class="text-gray-600">{{detail.value}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
