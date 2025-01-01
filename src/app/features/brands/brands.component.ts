@@ -1,11 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrandsModel } from '../../core/models/brands/brands.model';
-import { BrandsService } from '../../core/services/brands/brands.service';
 import { ButtonModule } from 'primeng/button';
-import { ProductsBrandService } from '../../core/services/products/products-brand.service';
+import { ProductsService } from '../../core/services/products/products.service';
 import { Store } from '@ngrx/store';
 import * as BrandsActions from '../../stores/brands-store/brands.actions';
+import { selectBrands } from '../../stores/brands-store/brands.selectors';
 
 @Component({
   selector: 'app-brands',
@@ -19,21 +19,36 @@ export class BrandsComponent {
   productsCount = signal<number>(0);
 
   constructor(
-    private brandsService: BrandsService,
-    private productsBrandService: ProductsBrandService,
+    private productsBrandService: ProductsService,
     private store: Store
   ) {
-    this.brandsService.getAllBrands().subscribe((brands: BrandsModel[]) => {
-      const firstTenBrands = brands.slice(0, 4);
-      this.brands.set(firstTenBrands);
-    });
+
+    // Get brands from store
+    this.store.dispatch(BrandsActions.loadBrands());
+
+    effect(
+      () => {
+        this.store
+          .select(selectBrands)
+          .subscribe((brands) => this.brands.set(brands));
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   // Click on view all brands
   clickViewAllBrands() {
-    this.brandsService.getAllBrands().subscribe((brands: BrandsModel[]) => {
-      this.brands.set(brands);
-    });
+    // get all brands from store
+    this.store.dispatch(BrandsActions.loadBrands());
+
+    effect(
+      () => {
+        this.store
+          .select(selectBrands)
+          .subscribe((brands) => this.brands.set(brands));
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   // Click on brand to get products by brand
@@ -53,5 +68,4 @@ export class BrandsComponent {
       this.loading = false;
     }, 2000);
   }
-
 }

@@ -1,72 +1,192 @@
+/* Base Layout */
+.home-content {
+  max-width: 2450px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* Section Common Styles */
+.section {
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--font-primary, #333);
+}
+
+.section-description {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--font-secondary, #666);
+  margin-bottom: 3rem;
+}
+
 /* Brands Section */
 .brands-section {
-    padding: 60px 0;
-    background: var(--bg-main);
-    overflow: hidden;
-    margin-bottom: 50px;
+}
+
+.brands-container {
+  margin: 0 auto;
+}
+
+.brand-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  background: var(--font-secondary);
+  padding: 10px;
+}
+
+.brand-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.brand-item img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.brand-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.brand-item:hover .brand-overlay {
+  transform: translateY(0);
+}
+
+.brand-name {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* Swiper Styles */
+swiper-container {
+  padding: 15px 5px;
+}
+
+swiper-slide {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+swiper-slide:hover {
+  opacity: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .section-title {
+    font-size: 2rem;
   }
-  
-  .brands-container {
-    margin: 0 auto;
-    padding: 0 20px;
+
+  .section-description {
+    font-size: 1rem;
   }
-  
+}
+
+@media (max-width: 992px) {
   .brand-item {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background: var(--font-main);
-    padding: 15px;
-  }
-  
-  .brand-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-  }
-  
-  .brand-item img {
-    width: 100%;
-    height: 100px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-  }
-  
-  .brand-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
     padding: 8px;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
   }
-  
-  .brand-item:hover .brand-overlay {
-    transform: translateY(0);
-  }
-  
+
   .brand-name {
-    color: white;
-    font-size: 14px;
-    text-align: center;
-    display: block;
-    font-weight: 500;
+    font-size: 10px;
   }
-  
-  swiper-container {
-    padding: 20px 10px;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.75rem;
   }
-  
-  swiper-slide {
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
+
+  .brand-item img {
+    max-height: 100px;
   }
-  
-  swiper-slide:hover {
-    opacity: 1;
+
+  .brand-name {
+    font-size: 9px;
   }
-  
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .brand-item img {
+    max-height: 80px;
+  }
+
+  .brand-name {
+    font-size: 8px;
+  }
+}
+
+/* Flexbox container */
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Navigation Bar */
+.nav-bar {
+}
+
+.nav-bar ul {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-bar ul li {
+  cursor: pointer;
+  margin-left: 20px;
+  margin-top: 20px;
+  color: var(--font-main);
+  font-size: 13px;
+}
+.nav-bar ul li:hover {
+  text-decoration: underline;
+}
+
+/* Slider */
+.slider {
+  overflow: hidden;
+}
+
+/* إخفاء القائمة في الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .nav-bar {
+    display: none;
+  }
+  .slider {
+    width: 100%;
+  }
+}

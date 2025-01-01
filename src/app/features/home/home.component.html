@@ -1,20 +1,47 @@
-<div class="home-content flex flex-col justify-between min-h-screen">
-    <!-- Brands section -->
-    <section class="brands-section">
-        <h1>Brands</h1>
-        <div class="brands-container">
-            <swiper-container [autoplay]="{ delay: 3000, disableOnInteraction: false }" [loop]="true"
-                [slidesPerView]="5" [spaceBetween]="40" [speed]="3000" [grabCursor]="true" [freeMode]="false"
-                [allowTouchMove]="true">
-                <swiper-slide *ngFor="let brand of brands()">
-                    <div class="brand-item">
-                        <img class="rounded-full" [src]="brand.image" [alt]="brand.name" loading="lazy">
-                        <div class="brand-overlay">
-                            <span class="brand-name">{{ brand.name }}</span>
-                        </div>
-                    </div>
-                </swiper-slide>
-            </swiper-container>
-        </div>
-    </section>
+<div class="home-content">
+  <!-- Hero Section -->
+
+  <section class="section flex-container">
+    <!-- Nav -->
+    <div class="nav-bar">
+      <ul>
+        <li [routerLink]="['/products-category', category._id]" (click)="onCategory(category._id)" *ngFor="let category of categories()">{{ category.name }}</li>
+      </ul>
+    </div>
+
+    <!-- Slider -->
+    <div class="slider">
+      <app-hero-section></app-hero-section>
+    </div>
+  </section>
+
+  <!-- Brands section -->
+  <section class="section brands-section">
+    <div class="section-container">
+      <h2 class="section-title">Featured Brands</h2>
+      <div class="brands-container">
+        <swiper-container
+          [breakpoints]="breakpoints"
+          [speed]="1500"
+          [grabCursor]="true"
+          [freeMode]="false"
+          [allowTouchMove]="true"
+        >
+          <swiper-slide *ngFor="let brand of brands()">
+            <div class="brand-item">
+              <img
+                class="rounded-full"
+                [src]="brand.image"
+                [alt]="brand.name"
+                loading="lazy"
+              />
+              <div class="brand-overlay">
+                <span class="brand-name">{{ brand.name }}</span>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </div>
+    </div>
+  </section>
 </div>

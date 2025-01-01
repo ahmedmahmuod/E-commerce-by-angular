@@ -1,46 +1,51 @@
+import { ProductsService } from './../../../core/services/products/products.service';
+import { ImageSliderComponent } from './../../../shared/components/image-slider/image-slider.component';
+import { AddToCartComponent } from './../../../shared/components/buttons/add-to-cart/add-to-cart.component';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { AddToCartComponent } from "../../../shared/buttons/add-to-cart/add-to-cart.component";
-import { ImageSliderComponent } from "../../../shared/image-slider/image-slider.component";
-
-interface ProductDetail {
-  label: string;
-  value: string;
-}
-
-interface Product {
-  name: string;
-  price: number;
-  description: string;
-  images: string[];
-  reviewCount: number;
-  details: ProductDetail[];
-}
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../../../core/models/product/product.model';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
   imports: [CommonModule, ImageSliderComponent, AddToCartComponent],
   templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css'
+  styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent {
-  product: Product = {
-    name: 'Pro Max Smartwatch',
-    price: 999,
-    description: 'Advanced smartwatch with high-resolution display and water resistance. Features activity tracking, heart rate monitoring, and sleep tracking.',
-    images: [
-      'https://picsum.photos/600/400?random=1',
-      'https://picsum.photos/600/400?random=2',
-      'https://picsum.photos/600/400?random=3',
-      'https://picsum.photos/600/400?random=4'
-    ],
-    reviewCount: 128,
-    details: [
-      { label: 'Brand', value: 'TechPro' },
-      { label: 'Color', value: 'Black' },
-      { label: 'Water Resistance', value: 'Up to 50m' },
-      { label: 'Battery Life', value: '5 days' }
-    ]
-  };
+  private productsService = inject(ProductsService);
+  private route = inject(ActivatedRoute);
+
+  product: any = [];
+
+  constructor() {
+    this.route.paramMap.subscribe((params) => {
+      const productId = params.get('productId');
+
+      this.productsService.getProductById(productId!).subscribe((res) => {
+        console.log(res);
+        this.product = res;
+        console.log(this.product);
+      });
+    });
+  }
+
+  getFullStars(): number[] {
+    const fullStars = Math.floor(this.product.ratingsAverage);
+    return Array(fullStars).fill(0);
+  }
+
+  hasHalfStar(): boolean {
+    const fraction =
+      this.product.ratingsAverage - Math.floor(this.product.ratingsAverage);
+    return fraction >= 0.5;
+  }
+
+  getEmptyStars(): number[] {
+    const fullStars = Math.floor(this.product.ratingsAverage);
+    const totalStars = 5;
+    const emptyStars = totalStars - fullStars - (this.hasHalfStar() ? 1 : 0);
+    return Array(emptyStars).fill(0);
+  }
 }

@@ -1,0 +1,13 @@
+<nz-carousel nzAutoPlay [nzEffect]="'fade'" [nzAutoPlaySpeed]="3000">
+  <div *ngFor="let slide of heroSlides" nz-carousel-content>
+    <div class="hero-slide">
+      <img [src]="slide.image" [alt]="slide.title" class="hero-image" />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">{{ slide.title }}</h1>
+        <p class="hero-description">{{ slide.description }}</p>
+        <button routerLink="/products" class="hero-button">Explore Now</button>
+      </div>
+    </div>
+  </div>
+</nz-carousel>

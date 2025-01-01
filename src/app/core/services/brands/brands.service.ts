@@ -5,13 +5,15 @@ import { map, Observable } from 'rxjs';
 import { BrandsModel } from '../../models/brands/brands.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BrandsService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   // Get all brands
   getAllBrands(): Observable<BrandsModel[]> {
-    return this.http.get<BrandsModel[]>(environment.baseApi + 'brands?limit=100').pipe(map((res: any) => res.data));
+    return this.http
+      .get<BrandsModel[]>(environment.baseApi + 'brands?limit=100')
+      .pipe(map((res: any) => res.data));
   }
 }

@@ -1,4 +1,8 @@
-import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideZoneChangeDetection,
+  importProvidersFrom,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
@@ -18,11 +22,15 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
-// Import the reducers 
+// Import the reducers
 import { brandsReducer } from './stores/brands-store/brands.reducer';
 
-// Import the effects 
+// Import the effects
 import { BrandsEffects } from './stores/brands-store/brands.effects';
+import { categoriesReducer } from './stores/categories-store/categories.reducer';
+import { CategoriesEffects } from './stores/categories-store/categories.effects';
+import { productsCategoryReducer } from './stores/products/products-category-store/products-category.reducer';
+import { ProductsCategoryEffects } from './stores/products/products-category-store/products-category.effects';
 
 registerLocaleData(en);
 export function HttpLoaderFactory(http: HttpClient) {
@@ -31,18 +39,19 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    
     provideStore({
       brands: brandsReducer,
+      categories: categoriesReducer,
+      productsCategory: productsCategoryReducer,
     }),
-    provideEffects([BrandsEffects]),
+    provideEffects([BrandsEffects, CategoriesEffects, ProductsCategoryEffects]),
     provideStoreDevtools({ maxAge: 25 }),
 
-    importProvidersFrom(BrowserAnimationsModule), 
+    importProvidersFrom(BrowserAnimationsModule),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
-    
+
     provideHttpClient(),
     ...TranslateModule.forRoot({
       loader: {
@@ -50,6 +59,10 @@ export const appConfig: ApplicationConfig = {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-    }).providers!, provideNzI18n(en_US), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(),
+    }).providers!,
+    provideNzI18n(en_US),
+    importProvidersFrom(FormsModule),
+    provideAnimationsAsync(),
+    provideHttpClient(),
   ],
 };

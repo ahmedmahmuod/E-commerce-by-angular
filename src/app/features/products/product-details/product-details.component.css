@@ -26,3 +26,16 @@ button:hover {
     padding: 1rem;
   }
 }
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.blinking {
+  animation: blink 1.5s infinite;
+}

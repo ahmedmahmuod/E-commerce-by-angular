@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ViewProductComponent } from "../../shared/buttons/view-product/view-product.component";
+import { ViewProductComponent } from './../../shared/components/buttons/view-product/view-product.component';
 
 interface CartItem {
   id: string;

@@ -1,0 +1,36 @@
+<div class="product-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <div class="top-card-product">
+          <div class="discount-badge" *ngIf="product.priceAfterDiscount">
+            -{{ ((product.price - product.priceAfterDiscount) / product.price * 100).toFixed(0) }}%
+          </div>
+          <div class="image-container">
+            <img [src]="product.imageCover" [alt]="product.title" class="product-image" />
+            <div class="icon-buttons">
+              <button class="icon-btn wishlist-btn">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+              <button [routerLink]="['/products-category', categoryId, 'product', product.id]" class="icon-btn view-btn">
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+            <button class="add-to-cart-btn">
+              Add To Cart
+            </button>
+          </div>
+      </div>
+      <div class="bottom-card-product">
+          <h3 class="product-title">{{ product.title }}</h3>
+          <div class="product-price">
+            <span class="discounted-price">${{ product.priceAfterDiscount }}</span>
+            <span class="original-price">${{ product.price }}</span>
+          </div>
+          <div class="product-rating text-lg">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="rating-count">({{ product.ratingsAverage }})</span>
+          </div>
+      </div>
+    </div>
+  </div>

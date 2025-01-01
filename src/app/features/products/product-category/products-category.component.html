@@ -1,0 +1,19 @@
+<div class="product-page-category relative">
+  
+  <ng-container *ngIf="(productsCategory$ | async)?.length !== 0; else noProducts">
+    <nz-page-header nzBackIcon nzTitle="Category" [nzSubtitle]="(productsCategory$ | async)?.[0]?.category?.name"></nz-page-header>
+    <h1 class="text-font-main text-7xl text-center mb-10 relative">
+      <span class="relative">
+          {{(productsCategory$ | async)?.[0]?.category?.name}}
+          <span class="title-underline"></span>
+      </span>
+    </h1>
+    <app-product-card [products]="productsCategory$ | async"/>
+  </ng-container>
+  <ng-template #noProducts>
+    <nz-page-header nzBackIcon nzTitle="Category"></nz-page-header>
+    <p class="text-font-main text-7xl text-center mt-5">No products found.</p>
+  </ng-template>
+</div>
+
+<app-spinner *ngIf="isLoading$|async"></app-spinner>

@@ -1,0 +1,9 @@
+.title-underline {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 12px;
+  width: 146px;
+  background-color: var(--font-main);
+}

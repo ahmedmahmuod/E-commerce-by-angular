@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AddToCartComponent } from "../../shared/buttons/add-to-cart/add-to-cart.component";
-import { ViewProductComponent } from "../../shared/buttons/view-product/view-product.component";
+import { ViewProductComponent } from './../../shared/components/buttons/view-product/view-product.component';
+import { AddToCartComponent } from './../../shared/components/buttons/add-to-cart/add-to-cart.component';
 
 @Component({
   selector: 'app-wishlist',
