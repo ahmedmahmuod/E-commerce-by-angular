@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import * as ProductsCategoryAction from '../../../stores/products/products-category-store/products-category.action';
 import { selectProductCategory, selectProductCategoryLaoding } from '../../../stores/products/products-category-store/products-category.selector';
 import { Observable, take } from 'rxjs';
+import { HomeHeaderPageComponent } from "../../../shared/components/home-header/home-header-page.component";
 
 @Component({
   selector: 'app-products-category',
@@ -17,7 +18,8 @@ import { Observable, take } from 'rxjs';
     CommonModule,
     NzPageHeaderModule,
     SpinnerComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    HomeHeaderPageComponent
 ],
   templateUrl: './products-category.component.html',
   styleUrl: './products-category.component.css',

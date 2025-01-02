@@ -35,22 +35,29 @@ body {
   }
 }
 
-/* Mobile phones (361px to 480px) */
-@media screen and (min-width: 361px) and (max-width: 480px) {
+@media (max-width: 530px) {
+  .content-body {
+    margin-top: 150px;
+  }
 }
 
-/* Tablets (481px to 768px) */
-@media screen and (min-width: 481px) and (max-width: 768px) {
+.content-page {
+  padding: 40px 20px;
+  margin: 0 auto;
 }
 
-/* Large tablets and small desktops (769px to 1024px) */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+.content-header {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-/* Desktops (larger than 1024px) */
-@media screen and (min-width: 1025px) {
+.content-header h1 {
+  font-size: 2.5rem;
+  color: var(--font-main);
+  margin-bottom: 10px;
 }
 
-/* Large screens (4K and above, larger than 2560px) */
-@media screen and (min-width: 2560px) {
+.content-header p {
+  color: var(--font-third);
+  font-size: 1.1rem;
 }

@@ -1,3 +1,8 @@
+/* General Styles */
+:host {
+  display: block;
+}
+
 nz-select {
   width: 70px;
   color: var(--font-color-secondary) !important;
@@ -6,51 +11,128 @@ nz-select {
   color: var(--font-color-secondary) !important;
 }
 
-header nav {
+/* Header Styles */
+header {
+  width: 100%;
+  background: var(--bg-main);
+  transition: all 0.3s ease;
+}
+
+/* Top Header */
+.top-header {
+  padding: 8px 16px;
+}
+
+/* Navigation */
+nav {
+  padding: 1rem;
   border-bottom: var(--border-bottom);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-:host {
-  display: block;
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.sign-in,
-.sign-up {
-  transition: 0.3s;
-}
-
-.sign-in:hover {
-  box-shadow: none;
-}
-
-.mobileNavMenu {
-  transition: all 1.3s ease;
+/* Menu Items */
+.desktop-menu li {
+  position: relative;
+  transition: all 0.3s ease;
 }
 
 .page-header-active {
   background-color: var(--font-main);
-  padding: 3px 13px;
+  padding: 0.5rem 1rem;
   color: var(--bg-main);
   border-radius: 8px;
-  box-shadow: 0px 0px 10px -5px black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Buttons */
+.sign-in,
+.sign-up {
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+}
+
+.sign-in {
+  background-color: var(--font-main);
+  color: var(--bg-main);
+}
+
+.sign-in:hover {
+  transform: translateY(-2px);
+}
+
+.sign-up {
+  border: 1px solid var(--font-main);
+  color: var(--font-main);
+}
+
+.sign-up:hover {
+  background-color: var(--font-main);
+  color: var(--bg-main);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  width: 100%;
+  background-color: var(--font-secondary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.mobile-menu li {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Language Select */
+nz-select {
+  width: 70px;
+}
+
+::ng-deep .ant-select-arrow {
+  color: var(--font-color-secondary) !important;
+}
+
+/* Fixed Header */
 .header-visible {
   position: fixed;
-  top: 0; /* الهيدر سيبقى مثبتًا عند أعلى الصفحة */
-  z-index: 100; /* للتأكد من ظهوره فوق العناصر الأخرى */
+  top: 0;
+  z-index: 100;
+  animation: slideDown 0.3s ease;
 }
 
-/* Secondary Navbar */
-.secondary-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
-.secondary-navbar ul li {
-  padding: 5px 10px;
-  transition: color 0.3s, transform 0.3s;
-}
-.secondary-navbar ul li:hover {
-  transform: translateY(-2px);
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .top-header {
+    padding: 6px 12px;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .mobile-menu {
+    padding: 1rem;
+  }
 }

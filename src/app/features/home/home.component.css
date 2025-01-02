@@ -18,14 +18,6 @@
   padding: 0 20px;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 2rem;
-  color: var(--font-primary, #333);
-}
-
 .section-description {
   text-align: center;
   font-size: 1.2rem;
@@ -157,20 +149,26 @@ swiper-slide:hover {
 }
 
 /* Navigation Bar */
-.nav-bar {
+
+@media (max-width: 531px) {
+  .nav-bar {
+    margin-top: -45px;
+  }
+
 }
 
 .nav-bar ul {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .nav-bar ul li {
   cursor: pointer;
   margin-left: 20px;
   margin-top: 20px;
-  color: var(--font-main);
-  font-size: 13px;
+  color: var(--font-third);
+  font-size: 16px;
 }
 .nav-bar ul li:hover {
   text-decoration: underline;
@@ -181,12 +179,3 @@ swiper-slide:hover {
   overflow: hidden;
 }
 
-/* إخفاء القائمة في الشاشات الصغيرة */
-@media (max-width: 768px) {
-  .nav-bar {
-    display: none;
-  }
-  .slider {
-    width: 100%;
-  }
-}

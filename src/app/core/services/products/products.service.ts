@@ -13,6 +13,11 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
+  // Get all products
+  getAllProducts(): Observable<Product[]> {
+    return this.http.get<GlobalResponse>(environment.baseApi + 'products').pipe(map((response: GlobalResponse) => response.data));
+  }
+
   // Get products by brand
   getProductsByBrand(brandId: any): Observable<BrandsModel[]> {
     return this.http.get<BrandsModel[]>(environment.baseApi + 'products?brand=' + brandId);

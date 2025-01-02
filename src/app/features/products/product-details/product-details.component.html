@@ -1,33 +1,33 @@
-<div class="container mx-auto px-4 py-8">
+<div class="container mx-auto px-4 py-8" *ngIf="product$ | async as product">
   <div class="flex flex-col md:flex-row gap-8">
     <!-- Product Image Slider -->
     <div class="md:w-1/2">
-      <app-image-slider [images]="product.images"></app-image-slider>
+      <app-image-slider *ngIf="product.images?.length > 0" [images]="product?.images"></app-image-slider>
     </div>
 
     <!-- Product Info -->
     <div class="md:w-1/2">
-        <div class="flex items-center gap-4  mb-4">
-            <h1 class="text-3xl font-bold">{{ product.title }}</h1>
-        </div>
+      <div class="flex items-center gap-4 mb-4">
+        <h1 class="text-3xl font-bold">{{ product.title }}</h1>
+      </div>
 
       <!-- Rating -->
       <div class="flex items-center mb-4">
         <div class="flex text-yellow-400 items-center">
-          <span *ngFor="let star of getFullStars()">⭐</span>
-          <span *ngIf="hasHalfStar()">⭐</span>
-          <span class="text-xl" *ngFor="let star of getEmptyStars()">☆</span>
+          <span *ngFor="let star of getFullStars(product.ratingsAverage)">⭐</span>
+          <span *ngIf="hasHalfStar(product.ratingsAverage)">⭐</span>
+          <span class="text-xl" *ngFor="let star of getEmptyStars(product.ratingsAverage)">☆</span>
         </div>
-        <span class="ml-2 text-gray-600">{{ product.ratingsAverage }} ({{ product.ratingsQuantity }} reviews)</span>
+        <span class="ml-2 text-gray-600">{{ product.ratingsAverage }} ({{product.ratingsQuantity}}reviews)</span>
       </div>
 
       <!-- Price -->
       <div class="text-2xl font-bold text-font-secondary mb-4">
         L.E {{ product.price }}
         @if (product.quantity !== 0) {
-          <span class="text-font-main text-sm blinking">In Stock</span>
+        <span class="text-font-main text-sm blinking">In Stock</span>
         } @else {
-          <span class="text-red-600 text-sm blinking">Out of Stock</span>
+        <span class="text-red-600 text-sm blinking">Out of Stock</span>
         }
       </div>
 
@@ -43,28 +43,32 @@
       <div class="mt-8">
         <h2 class="text-xl font-bold mb-4">Product Details</h2>
         <div class="grid grid-cols-2 gap-4 text-font-secondary">
-            <div class="flex gap-2">
-                <span class="font-semibold">Sold:</span>
-                <span class="text-gray-600">{{product.sold}}</span>
+          <div class="flex gap-2">
+            <span class="font-semibold">Sold:</span>
+            <span class="text-gray-600">{{ product.sold }}</span>
+          </div>
+          <div class="flex gap-2">
+            <span class="font-semibold">Quantity:</span>
+            <span class="text-gray-600">{{ product.quantity }}</span>
+          </div>
+          <div class="flex gap-2">
+            <span class="font-semibold">Category:</span>
+            <span class="text-gray-600">{{ product.category?.name }}</span>
+          </div>
+          <div class="flex gap-2">
+            <span class="font-semibold">SubCategory:</span>
+            <div *ngIf="product && product.subcategory?.length">
+              <span class="text-gray-600">{{
+                product.subcategory[0].name}}</span>
             </div>
-            <div class="flex gap-2">
-                <span class="font-semibold">Quantity:</span>
-                <span class="text-gray-600">{{product.quantity}}</span>
-            </div>
-            <div class="flex gap-2">
-                <span class="font-semibold">Category:</span>
-                <span class="text-gray-600">{{product.category.name}}</span>
-            </div>
-            <div class="flex gap-2">
-                <span class="font-semibold">SubCategory:</span>
-                <span class="text-gray-600">{{product.subcategory[0].name}}</span>
-            </div>
-            <div class="flex gap-2">
-                <span class="font-semibold">Brand:</span>
-                <span class="text-gray-600">{{product.brand.name}}</span>
-            </div>
+          </div>
+          <div class="flex gap-2">
+            <span class="font-semibold">Brand:</span>
+            <span class="text-gray-600">{{ product.brand?.name }}</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<app-spinner *ngIf="isLoading$ | async"/>

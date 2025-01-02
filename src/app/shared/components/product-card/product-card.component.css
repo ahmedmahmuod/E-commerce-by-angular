@@ -1,9 +1,8 @@
 .product-grid {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
   flex-wrap: wrap;
-  padding: 20px;
+  margin: 20px 0;
 }
 
 .product-card {
@@ -11,12 +10,13 @@
   position: relative;
   transition: transform 0.3s ease;
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 20px;
+  border-radius: 10px;
 }
 
 .product-card:hover {

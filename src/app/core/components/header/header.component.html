@@ -1,88 +1,88 @@
 <header class="w-full bg-background-main" *ngIf="isHeaderVisible" [ngClass]="{ 'header-visible': isHeaderVisible }"
   @headerAnimation>
   <!-- Top Header -->
-  <div
-    class="top-header px-9 flex flex-wrap justify-center md:justify-between items-center bg-font-secondary py-1 text-background-main">
-    <p></p>
-    <p class="text-center text-xs md:text-sm">
-      Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-      <span routerLink="/products" class="ml-2 text-font-main font-[600] italic underline cursor-pointer">ShopNow</span>
-    </p>
-    <nz-select class="custom-select" [(ngModel)]="selectedLanguage" nzBorderless>
-      <nz-option nzValue="en" nzLabel="EN"></nz-option>
-      <nz-option nzValue="ar" nzLabel="AR"></nz-option>
-    </nz-select>
+  <div class="bg-font-secondary text-background-main">
+    <div class="container mx-auto top-header px-9 flex justify-center md:justify-between items-center py-1">
+      <p></p>
+      <p class="text-center text-xs md:text-sm">
+        Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+        <span routerLink="/products" class="ml-2 text-font-main font-[600] italic underline cursor-pointer">ShopNow</span>
+      </p>
+      <nz-select class="custom-select" [(ngModel)]="selectedLanguage" nzBorderless>
+        <nz-option nzValue="en" nzLabel="EN"></nz-option>
+        <nz-option nzValue="ar" nzLabel="AR"></nz-option>
+      </nz-select>
+    </div>
   </div>
 
   <!-- Bottom Header -->
-  <nav class="flex justify-between items-center p-4 text-base relative">
-    <h1 routerLink="/home" class="text-2xl md:text-3xl font-bold cursor-pointer text-font-main">Market</h1>
-
-    <!-- Desktop Menu -->
-    <ul class="hidden md:flex items-center gap-x-7 text-font-secondary">
-      <li routerLinkActive="page-header-active" routerLink="/home" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'Home'" [nzTooltipColor]="tooltipColor">Home</li>
-      <li routerLinkActive="page-header-active" routerLink="/about" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'About'"[nzTooltipColor]="tooltipColor">About</li>
-      <li routerLinkActive="page-header-active" routerLink="/contact" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'Contact'" [nzTooltipColor]="tooltipColor">Contact</li>
-      <li routerLinkActive="page-header-active" routerLink="/products" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'Products'" [nzTooltipColor]="tooltipColor">Products</li>
-      <li routerLinkActive="page-header-active" routerLink="/brands" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'Brands'" [nzTooltipColor]="tooltipColor">Brands</li>
-    </ul>
-
-    <!-- Account Status -->
-    <div class="account-status gap-x-2 flex items-center justify-center">
-
-      <!-- Cart and wishlist -->
-      <div class="gap-x-4 flex items-center mr-3">
-        <span routerLink="/wishlist" nz-tooltip [nzTooltipTitle]="'Wishlist'" [nzTooltipColor]="tooltipColor"
-          class="cursor-pointer text-2xl" nz-icon nzType="heart" nzTheme="outline"></span>
-        <span routerLink="/cart" nz-tooltip [nzTooltipTitle]="'Cart'" [nzTooltipColor]="tooltipColor"
-          class="cursor-pointer text-2xl" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
-      </div>
-
-      <!-- Sign buttns -->
-      <div *ngIf="!isLogged()" class="sign-btns flex items-center gap-x-2">
-        <button routerLink="/login"
-          class="hidden md:block sign-in rounded-lg bg-font-main text-white px-6 py-2 shadow-lg">Log In</button>
-        <button routerLink="/register"
-          class="hidden md:block sign-up rounded-lg px-6 py-2 text-font-main border-transparent border border-font-main">Sign Up</button>
-      </div>
-
-      <!-- profile logged -->
-      <div *ngIf="isLogged()" class="account-profile relative">
-        <!-- Dropdown Trigger -->
-        <div nz-dropdown [nzDropdownMenu]="menu"
-          class="bg-font-main p-2 shadow-2xl rounded-lg text-background-main flex items-center gap-2 hover:text-background-main transition" role="button"
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fa-solid fa-user"></i>
-          <span class="font-[500]">Ahmed.S</span>
-          <i class="fa-solid fa-caret-down"></i>
+  <nav class="p-4 text-base relative">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 routerLink="/home" class="text-2xl md:text-3xl font-bold cursor-pointer text-font-main">Market</h1>
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex items-center gap-x-7 text-font-main">
+        <li routerLinkActive="page-header-active" routerLink="/home" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'Home'" [nzTooltipColor]="tooltipColor">Home</li>
+        <li routerLinkActive="page-header-active" routerLink="/about" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'About'"[nzTooltipColor]="tooltipColor">About</li>
+        <li routerLinkActive="page-header-active" routerLink="/contact" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'Contact'" [nzTooltipColor]="tooltipColor">Contact</li>
+        <li routerLinkActive="page-header-active" routerLink="/products" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'Products'" [nzTooltipColor]="tooltipColor">Products</li>
+        <li routerLinkActive="page-header-active" routerLink="/brands" class="cursor-pointer" nz-tooltip [nzTooltipTitle]="'Brands'" [nzTooltipColor]="tooltipColor">Brands</li>
+      </ul>
+  
+      <!-- Account Status -->
+      <div class="account-status gap-x-2 flex items-center justify-center">
+  
+        <!-- Cart and wishlist -->
+        <div class="gap-x-4 flex items-center mr-3">
+          <span routerLink="/wishlist" nz-tooltip [nzTooltipTitle]="'Wishlist'" [nzTooltipColor]="tooltipColor"
+            class="cursor-pointer text-2xl" nz-icon nzType="heart" nzTheme="outline"></span>
+          <span routerLink="/cart" nz-tooltip [nzTooltipTitle]="'Cart'" [nzTooltipColor]="tooltipColor"
+            class="cursor-pointer text-2xl" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
         </div>
-
-        <!-- Dropdown Menu -->
-        <nz-dropdown-menu #menu="nzDropdownMenu" aria-label="Profile options">
-          <ul class="bg-font-secondary/100 text-background-main backdrop-blur-md shadow-xl rounded-lg border border-white/20  p-2 space-y-2 mt-3">
-            <!-- Profile Link -->
-            <li class="text-background-main hover:text-font-main cursor-pointer block px-4 py-2 text-sm font-medium transition rounded-md" aria-label="Manage Profile">
-              <i class="fa-solid fa-gear"></i>
-                Manage Profile
-            </li>
-            <!-- Logout Link -->
-            <li class="cursor-pointer block px-4 py-2 text-sm font-medium text-red-500
-            hover:bg-red-600 hover:text-background-main transition rounded-md" aria-label="Log out">
-            <i class="fa-solid fa-right-from-bracket"></i> 
-            Log out
-            </li>
-          </ul>
-        </nz-dropdown-menu>
+  
+        <!-- Sign buttns -->
+        <div *ngIf="!isLogged()" class="sign-btns flex items-center gap-x-2">
+          <button routerLink="/login"
+            class="hidden md:block sign-in rounded-lg bg-font-main text-white px-6 py-2 shadow-lg">Log In</button>
+          <button routerLink="/register"
+            class="hidden md:block sign-up rounded-lg px-6 py-2 text-font-main border-transparent border border-font-main">Sign Up</button>
+        </div>
+  
+        <!-- profile logged -->
+        <div *ngIf="isLogged()" class="account-profile relative">
+          <!-- Dropdown Trigger -->
+          <div nz-dropdown [nzDropdownMenu]="menu"
+            class="bg-font-main p-2 shadow-2xl rounded-lg text-background-main flex items-center gap-2 hover:text-background-main transition" role="button"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-user"></i>
+            <span class="font-[500]">Ahmed.S</span>
+            <i class="fa-solid fa-caret-down"></i>
+          </div>
+  
+          <!-- Dropdown Menu -->
+          <nz-dropdown-menu #menu="nzDropdownMenu" aria-label="Profile options">
+            <ul class="bg-font-secondary/100 text-background-main backdrop-blur-md shadow-xl rounded-lg border border-white/20  p-2 space-y-2 mt-3">
+              <!-- Profile Link -->
+              <li class="text-background-main hover:text-font-main cursor-pointer block px-4 py-2 text-sm font-medium transition rounded-md" aria-label="Manage Profile">
+                <i class="fa-solid fa-gear"></i>
+                  Manage Profile
+              </li>
+              <!-- Logout Link -->
+              <li class="cursor-pointer block px-4 py-2 text-sm font-medium text-red-500
+              hover:bg-red-600 hover:text-background-main transition rounded-md" aria-label="Log out">
+              <i class="fa-solid fa-right-from-bracket"></i> 
+              Log out
+              </li>
+            </ul>
+          </nz-dropdown-menu>
+        </div>
+  
+        <span (click)="toggleMenu()" class="md:hidden cursor-pointer text-2xl ml-5" nz-icon nzType="menu"
+          nzTheme="outline"></span>
       </div>
-
-
-      <span (click)="toggleMenu()" class="md:hidden cursor-pointer text-2xl ml-5" nz-icon nzType="menu"
-        nzTheme="outline"></span>
     </div>
 
     <!-- Mobile Menu -->
-    <div @slideAnimation *ngIf="isMenuOpen"
-      class="md:hidden absolute top-full left-0 bg-font-secondary text-background-main shadow-lg z-50 py-10 px-8 h-screen w-2/4">
+    <div @slideAnimation *ngIf="isMenuOpen" class="md:hidden mobile-menu absolute top-full bg-font-secondary text-background-main shadow-lg -ml-4 z-50 py-10 px-8 w-full">
       <ul class="flex flex-col items-center justify-center w-full ">
         <div class="flex flex-col items-center justify-center w-full gap-y-4 mb-10">
           <li routerLinkActive="page-header-active" routerLink="/home" class="cursor-pointer">Home</li>

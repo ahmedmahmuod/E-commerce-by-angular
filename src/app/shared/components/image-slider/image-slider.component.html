@@ -11,17 +11,8 @@
     <!-- Thumbnail Navigation -->
     <div class="thumbnails-container">
       <div class="flex gap-2 overflow-x-auto pb-2">
-        <div 
-          *ngFor="let image of images; let i = index"
-          class="thumbnail-wrapper"
-          [class.selected]="i === selectedIndex"
-          (click)="selectImage(i)"
-        >
-          <img 
-            [src]="image" 
-            class="thumbnail"
-            [alt]="'Product thumbnail ' + (i + 1)"
-          >
+          <div *ngFor="let image of images; let i = index" class="thumbnail-wrapper" [class.selected]="i === selectedIndex" (click)="selectImage(i)">
+            <img [src]="image" class="thumbnail" [alt]="'Product thumbnail ' + (i + 1)">
         </div>
       </div>
     </div>

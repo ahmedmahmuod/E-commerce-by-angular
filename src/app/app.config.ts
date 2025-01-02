@@ -31,6 +31,8 @@ import { categoriesReducer } from './stores/categories-store/categories.reducer'
 import { CategoriesEffects } from './stores/categories-store/categories.effects';
 import { productsCategoryReducer } from './stores/products/products-category-store/products-category.reducer';
 import { ProductsCategoryEffects } from './stores/products/products-category-store/products-category.effects';
+import { productsDetailsReducer } from './stores/products/product-details/product-details.reducer';
+import { ProductDetailsEffects } from './stores/products/product-details/product-details.effects';
 
 registerLocaleData(en);
 export function HttpLoaderFactory(http: HttpClient) {
@@ -43,8 +45,14 @@ export const appConfig: ApplicationConfig = {
       brands: brandsReducer,
       categories: categoriesReducer,
       productsCategory: productsCategoryReducer,
+      productDetails: productsDetailsReducer,
     }),
-    provideEffects([BrandsEffects, CategoriesEffects, ProductsCategoryEffects]),
+    provideEffects([
+      BrandsEffects,
+      CategoriesEffects,
+      ProductsCategoryEffects,
+      ProductDetailsEffects,
+    ]),
     provideStoreDevtools({ maxAge: 25 }),
 
     importProvidersFrom(BrowserAnimationsModule),
