@@ -10,6 +10,7 @@
       </p>
     </div>
     <app-home-header-page title="Products Category" [type]="(productsCategory$ | async)?.[0]?.category?.name" />
+    <app-product-filters/>
     <app-product-card [products]="productsCategory$ | async" />
   </ng-container>
   <ng-template #noProducts>

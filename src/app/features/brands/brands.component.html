@@ -3,10 +3,10 @@
     <h1>Our Brands</h1>
     <p>Discover our collection of premium brands</p>
   </div>
-  <app-home-header-page title="Brands"/>
+  <app-home-header-page title="Brands" />
 
   <div class="brands-grid mb-6">
-    <div *ngFor="let brand of (displayedBrands$ | async)" class="brand-card">
+    <div *ngFor="let brand of displayedBrands$ | async" class="brand-card">
       <div (click)="clickBrand(brand)">
         <div class="brand-image">
           <img [src]="brand.image" [alt]="brand.name" loading="lazy" />
@@ -14,16 +14,12 @@
       </div>
     </div>
   </div>
-  <!-- <div
-    *ngIf="displayedBrands().length < brands().length"
-    class="flex justify-center"
-  >
+  <div *ngIf="(displayedBrands$ | async)?.length === initialDisplayCount " class="flex justify-center">
     <p-button
       class="view-all-brands"
       (click)="clickViewAllBrands()"
       label="View All Brands"
-      icon="pi"
-    />
-  </div> -->
+      icon="pi"/>
+  </div>
 </section>
 <app-spinner *ngIf="isLoading$ | async" />

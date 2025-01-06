@@ -15,19 +15,20 @@ import * as CategoriesActions from '../../stores/categories-store/categories.act
 import { HeroSectionComponent } from './hero-section/hero-section.component';
 import { selectCategories } from '../../stores/categories-store/categories.selectors';
 import { ProductsService } from '../../core/services/products/products.service';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 register();
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeroSectionComponent, RouterLink],
+  imports: [CommonModule, HeroSectionComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeComponent {
+  private router = inject(Router);
   private productsService = inject(ProductsService);
 
   brands = signal<BrandsModel[]>([]);
@@ -77,7 +78,10 @@ export class HomeComponent {
   }
 
   // On click Category to send id category to get products
-  onCategory(id: string) {
-    this.productsService.getProductsByCategory(id);
+  navigateToCategory(categoryName: string, categoryId: string): void {
+    this.productsService.getProductsByCategory(categoryId);
+
+    const formattedName = categoryName.split(' ').join('_');
+    this.router.navigate([`/${formattedName}`], { state: { id: categoryId } });
   }
 }

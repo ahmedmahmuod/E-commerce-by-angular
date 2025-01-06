@@ -2,19 +2,23 @@
   <div class="content-header">
     <h1>Our Products</h1>
     <p>Discover our collection of premium products</p>
-
     <div class="product-page-category relative">
       <app-home-header-page title="Products" type="All"/>
-      <h1 class="text-font-main text-7xl text-center mb-10 relative"></h1>
-      <app-product-card [products]="products()" />
-      <ng-template #noProducts>
-        <nz-page-header nzBackIcon nzTitle="Category"></nz-page-header>
-        <p class="text-font-main text-7xl text-center mt-5">
-          No products found.
-        </p>
-      </ng-template>
+      <div class="flex flex-col justify-between">
+        <app-product-filters/>
+        <div>
+          <h1 class="text-font-main text-7xl text-center mb-10 relative"></h1>
+          <app-product-card [products]="products$ | async" />
+          <ng-template #noProducts>
+            <nz-page-header nzBackIcon nzTitle="Category"></nz-page-header>
+            <p class="text-font-main text-7xl text-center mt-5">
+              No products found.
+            </p>
+          </ng-template>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- <app-spinner /> -->
+<app-spinner *ngIf="isLoading$ | async" />

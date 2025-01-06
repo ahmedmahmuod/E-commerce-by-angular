@@ -5,15 +5,23 @@ import { ButtonModule } from 'primeng/button';
 import { ProductsService } from '../../core/services/products/products.service';
 import { Store } from '@ngrx/store';
 import * as BrandsActions from '../../stores/brands-store/brands.actions';
-import { selectBrands } from '../../stores/brands-store/brands.selectors';
+import {
+  selectBrands,
+  selectBrandsLoading,
+} from '../../stores/brands-store/brands.selectors';
 import { SpinnerComponent } from '../../shared/components/spinner/spinner.component';
-import { HomeHeaderPageComponent } from "../../shared/components/home-header/home-header-page.component";
+import { HomeHeaderPageComponent } from '../../shared/components/home-header/home-header-page.component';
 import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-brands',
   standalone: true,
-  imports: [CommonModule, ButtonModule, SpinnerComponent, HomeHeaderPageComponent],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    SpinnerComponent,
+    HomeHeaderPageComponent,
+  ],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.css',
 })
@@ -29,16 +37,21 @@ export class BrandsComponent {
   ) {
     // Get brands from store
     this.store.dispatch(BrandsActions.loadBrands());
-    
+
     this.store.select(selectBrands).subscribe((brands: BrandsModel[]) => {
-      this.displayedBrands$ = of(brands);      
-    })
-     
+      this.brands$ = of(brands);
+      this.displayedBrands$ = of(brands.slice(0, this.initialDisplayCount));
+      if (brands.length <= 0) {
+        this.store.select(selectBrandsLoading).subscribe((loading: boolean) => {
+          this.isLoading$ = of(loading);
+        });
+      }
+    });
   }
 
   // Click on view all brands
   clickViewAllBrands() {
-    // this.displayedBrands.set(this.brands());
+    this.displayedBrands$ = this.brands$;
   }
 
   // Click on brand to get products by brand

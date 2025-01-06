@@ -11,8 +11,6 @@ import { ProductsService } from '../../../core/services/products/products.servic
   styleUrl: './product-card.component.css',
 })
 export class ProductCardComponent {
-  private route = inject(ActivatedRoute);
-  categoryId!: string;
   @Input({ required: true }) products!: any;
 
   // Btn to Add wishlist page
@@ -23,11 +21,5 @@ export class ProductCardComponent {
   // Btn Add Product to cart
   addToCart(product: any): void {
     console.log('Added to cart:', product);
-  }
-
-  ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.categoryId = params['categoryId'];
-    });
   }
 }

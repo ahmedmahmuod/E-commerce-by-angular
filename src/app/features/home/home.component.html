@@ -5,7 +5,7 @@
     <!-- Nav -->
     <div class="nav-bar">
       <ul>
-        <li [routerLink]="['/products-category', category._id]" (click)="onCategory(category._id)" *ngFor="let category of categories()">{{ category.name }}</li>
+        <li (click)="navigateToCategory(category.name, category._id)" *ngFor="let category of categories()">{{ category.name }}</li>
       </ul>
     </div>
 
