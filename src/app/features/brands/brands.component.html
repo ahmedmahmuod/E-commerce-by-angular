@@ -7,7 +7,7 @@
 
   <div class="brands-grid mb-6">
     <div *ngFor="let brand of displayedBrands$ | async" class="brand-card">
-      <div (click)="clickBrand(brand)">
+      <div (click)="onClickBrand(brand)">
         <div class="brand-image">
           <img [src]="brand.image" [alt]="brand.name" loading="lazy" />
         </div>

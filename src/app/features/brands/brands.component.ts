@@ -1,17 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrandsModel } from '../../core/models/brands/brands.model';
 import { ButtonModule } from 'primeng/button';
-import { ProductsService } from '../../core/services/products/products.service';
 import { Store } from '@ngrx/store';
 import * as BrandsActions from '../../stores/brands-store/brands.actions';
-import {
-  selectBrands,
-  selectBrandsLoading,
-} from '../../stores/brands-store/brands.selectors';
+import { selectBrands, selectBrandsLoading } from '../../stores/brands-store/brands.selectors';
 import { SpinnerComponent } from '../../shared/components/spinner/spinner.component';
 import { HomeHeaderPageComponent } from '../../shared/components/home-header/home-header-page.component';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
+import { BrandsService } from '../../core/services/brands/brands.service';
 
 @Component({
   selector: 'app-brands',
@@ -26,15 +24,15 @@ import { Observable, of } from 'rxjs';
   styleUrl: './brands.component.css',
 })
 export class BrandsComponent {
+  private router = inject(Router);
+  private brandsService = inject(BrandsService);
+
   brands$!: Observable<BrandsModel[]>;
   displayedBrands$!: Observable<BrandsModel[]>;
   initialDisplayCount = 8;
   isLoading$!: Observable<boolean>;
 
-  constructor(
-    private productsBrandService: ProductsService,
-    private store: Store
-  ) {
+  constructor(private store: Store) {
     // Get brands from store
     this.store.dispatch(BrandsActions.loadBrands());
 
@@ -54,12 +52,8 @@ export class BrandsComponent {
     this.displayedBrands$ = this.brands$;
   }
 
-  // Click on brand to get products by brand
-  clickBrand(brand: any) {
-    this.productsBrandService
-      .getProductsByBrand(brand._id)
-      .subscribe((products: BrandsModel[]) => {
-        console.log(products);
-      });
+  // Click on brand to get id
+  onClickBrand(brand: BrandsModel) {
+    this.router.navigate(['/brands',brand._id], {state: { title: brand.name }});
   }
 }

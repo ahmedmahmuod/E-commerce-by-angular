@@ -35,6 +35,8 @@ import { productsDetailsReducer } from './stores/products/product-details/produc
 import { ProductDetailsEffects } from './stores/products/product-details/product-details.effects';
 import { AllProductsEffects } from './stores/products/all-products-store/all-products.effects';
 import { allProductsReducer } from './stores/products/all-products-store/all-products.reducer';
+import { productsBrandReducer } from './stores/products/products-brand-store/products-brand.reducer';
+import { ProductsBrandEffects } from './stores/products/products-brand-store/products-brand.effects';
 
 registerLocaleData(en);
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,6 +47,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideStore({
       brands: brandsReducer,
+      productsBrand: productsBrandReducer,
       categories: categoriesReducer,
       productsCategory: productsCategoryReducer,
       productDetails: productsDetailsReducer,
@@ -52,6 +55,7 @@ export const appConfig: ApplicationConfig = {
     }),
     provideEffects([
       BrandsEffects,
+      ProductsBrandEffects,
       CategoriesEffects,
       ProductsCategoryEffects,
       ProductDetailsEffects,

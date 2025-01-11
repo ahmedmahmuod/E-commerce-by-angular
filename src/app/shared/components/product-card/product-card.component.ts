@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, input } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ProductsService } from '../../../core/services/products/products.service';
+import { Component, inject, Input } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -11,6 +10,8 @@ import { ProductsService } from '../../../core/services/products/products.servic
   styleUrl: './product-card.component.css',
 })
 export class ProductCardComponent {
+  private router = inject(Router);
+
   @Input({ required: true }) products!: any;
 
   // Btn to Add wishlist page
@@ -21,5 +22,9 @@ export class ProductCardComponent {
   // Btn Add Product to cart
   addToCart(product: any): void {
     console.log('Added to cart:', product);
+  }
+
+  viewProduct(product: any) {
+    this.router.navigate(['product',product._id,'details']);
   }
 }

@@ -1,56 +1,59 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-filters',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './products-filter.component.html',
-  styleUrl: './products-filter.component.css',
+  styleUrls: ['./products-filter.component.css'],
 })
-export class ProductFiltersComponent {
-  @Output() filtersChanged = new EventEmitter<any>();
+export class ProductFiltersComponent implements OnInit {
+  // get data from parent
+  @Input({ required: true }) brands!: [];
+  @Input({ required: true }) categories!: [];
 
-  searchQuery: string = '';
-  selectedCategory: string = '';
-  selectedBrand: string = '';
-  selectedPriceRange: string = '';
+  // send data to parent
+  @Output() filterFormValues = new EventEmitter<any>();
 
-  categories = [
-    { id: '1', name: 'Electronics' },
-    { id: '2', name: 'Clothing' },
-    { id: '3', name: 'Books' },
-  ];
+  // Global Variables
+  filterForm: FormGroup;
 
-  brands = [
-    { id: '1', name: 'Apple' },
-    { id: '2', name: 'Samsung' },
-    { id: '3', name: 'Nike' },
-  ];
-
-  priceRanges = [
-    { id: '1', name: 'Low to High', sort: 'asc' },
-    { id: '2', name: 'High to Low', sort: 'desc' },
-  ];
-
-  applyFilters(): void {
-    this.filtersChanged.emit({
-      search: this.searchQuery,
-      category: this.selectedCategory,
-      brand: this.selectedBrand,
-      priceSort: this.selectedPriceRange
-        ? this.priceRanges.find((range) => range.id === this.selectedPriceRange)
-            ?.sort
-        : null,
+  // Constructor
+  constructor(private fb: FormBuilder) {
+    this.filterForm = this.fb.group({
+      searchQuery: [''],
+      selectedCategory: ['all'],
+      selectedBrand: ['all'],
+      selectedPriceRange: ['all'],
     });
   }
 
+  // OnInit
+  ngOnInit(): void {
+    this.filterForm.valueChanges.subscribe((values) => {
+      this.sendFilterFormValues(values);
+    });
+  }
+
+  // Reset the filter form
   resetFilters(): void {
-    this.searchQuery = '';
-    this.selectedCategory = '';
-    this.selectedBrand = '';
-    this.selectedPriceRange = '';
-    this.applyFilters();
+    this.filterForm.reset({
+      searchQuery: '',
+      selectedCategory: 'all',
+      selectedBrand: 'all',
+      selectedPriceRange: 'all',
+    });
+  }
+
+  // Send Data filter form to parent
+  sendFilterFormValues(values: any) {
+    this.filterFormValues.emit(values);
   }
 }

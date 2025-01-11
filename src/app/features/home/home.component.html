@@ -2,12 +2,8 @@
   <!-- Hero Section -->
 
   <section class="section flex-container">
-    <!-- Nav -->
-    <div class="nav-bar">
-      <ul>
-        <li (click)="navigateToCategory(category.name, category._id)" *ngFor="let category of categories()">{{ category.name }}</li>
-      </ul>
-    </div>
+    <!-- Category Nav -->
+    <app-categories-nav/>
 
     <!-- Slider -->
     <div class="slider">

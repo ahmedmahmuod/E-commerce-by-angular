@@ -1,81 +1,55 @@
 <div class="filters-container">
-    <div class="filters-grid">
-      <!-- Search Section -->
-      <div class="filter-group">
-        <label for="search" class="filter-label">Search Products</label>
-        <div class="input-group">
-          <i class="material-icons">search</i>
-          <input
-            id="search"
-            type="text"
-            [(ngModel)]="searchQuery"
-            (input)="applyFilters()"
-            placeholder="Search products by name"
-            class="search-input"
-          />
-        </div>
-      </div>
-  
-      <!-- Category Filter -->
-      <div class="filter-group">
-        <label for="category" class="filter-label">Category</label>
-        <div class="select-wrapper">
-          <select
-            id="category"
-            [(ngModel)]="selectedCategory"
-            (change)="applyFilters()"
-            class="filter-select"
-          >
-            <option value="">All Categories</option>
-            <option *ngFor="let category of categories" [value]="category.id">
-              {{ category.name }}
-            </option>
-          </select>
-        </div>
-      </div>
-  
-      <!-- Brand Filter -->
-      <div class="filter-group">
-        <label for="brand" class="filter-label">Brand</label>
-        <div class="select-wrapper">
-          <select
-            id="brand"
-            [(ngModel)]="selectedBrand"
-            (change)="applyFilters()"
-            class="filter-select"
-          >
-            <option value="">All Brands</option>
-            <option *ngFor="let brand of brands" [value]="brand.id">
-              {{ brand.name }}
-            </option>
-          </select>
-        </div>
-      </div>
-  
-      <!-- Price Range Select -->
-      <div class="filter-group">
-        <label for="price" class="filter-label">Price</label>
-        <div class="select-wrapper">
-          <select
-            id="price"
-            [(ngModel)]="selectedPriceRange"
-            (change)="applyFilters()"
-            class="filter-select"
-          >
-            <option value="">Sort by Price</option>
-            <option *ngFor="let range of priceRanges" [value]="range.id">
-              {{ range.name }}
-            </option>
-          </select>
-        </div>
-      </div>
-  
-      <!-- Reset Button -->
-      <div class="filter-group">
-        <label class="filter-label">&nbsp;</label>
-        <button class="reset-button" (click)="resetFilters()">
-          <i class="material-icons">refresh</i>
-        </button>
+  <form [formGroup]="filterForm" class="filters-grid">
+    <!-- Search Section -->
+    <div class="filter-group">
+      <label for="search" class="filter-label">Search Products</label>
+      <div class="input-group">
+        <i class="material-icons">search</i>
+        <input id="search" type="text" formControlName="searchQuery" placeholder="Search products by name" class="search-input" />
       </div>
     </div>
-  </div>
+
+    <!-- Category Filter -->
+    <div class="filter-group">
+      <label for="category" class="filter-label">Category</label>
+      <div class="select-wrapper">
+        <select id="category" formControlName="selectedCategory" class="filter-select">
+          <option value="all">All Categories</option>
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Brand Filter -->
+    <div class="filter-group">
+      <label for="brand" class="filter-label">Brand</label>
+      <div class="select-wrapper">
+        <select id="brand" formControlName="selectedBrand" class="filter-select">
+          <option value="all">All Brands</option>
+          <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Price Range Select -->
+    <div class="filter-group">
+      <label for="price" class="filter-label">Price</label>
+      <div class="select-wrapper">
+        <select id="price" formControlName="selectedPriceRange" class="filter-select">
+          <option value="all">All Prices</option>
+          <option value="low-to-high">Low to high</option>
+          <option value="high-to-low">High to low</option>
+          <option value="discounts">Discounts</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Reset Button -->
+    <div class="filter-group">
+      <label class="filter-label">&nbsp;</label>
+      <button type="button" class="reset-button" (click)="resetFilters()">
+        <i class="material-icons">refresh</i>
+      </button>
+    </div>
+  </form>
+</div>

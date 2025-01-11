@@ -41,9 +41,9 @@
   
         <!-- Sign buttns -->
         <div *ngIf="!isLogged()" class="sign-btns flex items-center gap-x-2">
-          <button routerLink="/login"
+          <button routerLink="/user/login"
             class="hidden md:block sign-in rounded-lg bg-font-main text-white px-6 py-2 shadow-lg">Log In</button>
-          <button routerLink="/register"
+          <button routerLink="/user/register"
             class="hidden md:block sign-up rounded-lg px-6 py-2 text-font-main border-transparent border border-font-main">Sign Up</button>
         </div>
   
@@ -94,9 +94,9 @@
 
         <!-- Account Status -->
         <div *ngIf="!isLogged()" class="account-status gap-y-2 flex flex-col w-full">  
-          <button routerLink="/login"
+          <button routerLink="/user/login"
             class="md:block sign-in rounded-lg bg-font-main text-background-main px-6 py-2 shadow-lg">Log In</button>
-          <button routerLink="/register" class="md:block sign-up rounded-lg px-6 py-2 text-font-main border border-font-main">Sign Up</button>
+          <button routerLink="/user/register" class="md:block sign-up rounded-lg px-6 py-2 text-font-main border border-font-main">Sign Up</button>
         </div>
       </ul>
     </div>

@@ -8,7 +8,6 @@ import { Store } from '@ngrx/store';
 import { combineLatest, map, Observable, take } from 'rxjs';
 import { selectProductDetails } from '../../../stores/products/product-details/product-details.selector';
 import { SpinnerComponent } from '../../../shared/components/spinner/spinner.component';
-import { Product } from '../../../core/models/product/product.model';
 import * as ProductsDetailsAction from '../../../stores/products/product-details/product-details.actions';
 
 @Component({
@@ -35,6 +34,7 @@ export class ProductDetailsComponent {
     // Get the product id from the route
     this.route.paramMap.subscribe((params) => {
       const productId = params.get('productId');
+      console.log(productId);
 
       if (productId) {
         this.store

@@ -1,24 +1,21 @@
 <div class="product-page-category content-page relative container mx-auto">
-  <ng-container
-    *ngIf="(productsCategory$ | async)?.length !== 0; else noProducts"
-  >
-    <div class="content-header">
-      <h1>{{(productsCategory$ | async)?.[0]?.category?.name}}</h1>
-      <p>
-        Discover our collection of
-        {{(productsCategory$ | async)?.[0]?.category?.name}}
-      </p>
-    </div>
-    <app-home-header-page title="Products Category" [type]="(productsCategory$ | async)?.[0]?.category?.name" />
-    <app-product-filters/>
-    <app-product-card [products]="productsCategory$ | async" />
-  </ng-container>
-  <ng-template #noProducts>
-    <div class="content-header">
-      <h1>Products category not found!</h1>
-    </div>
-    <app-home-header-page title="Products Category" />
-  </ng-template>
+  <div class="content-header">
+    <h1>{{ name }}</h1>
+    <p>
+      Discover our collection of {{ name }}
+    </p>
+  </div>
+  <app-home-header-page [title]="name" />
+  <app-product-filters [categories]="filterdCategory()" [brands]="filterdBrands()" (filterFormValues)="onFormFilterValues($event)"/>
+  <app-product-card [products]="products$ | async" />
+
+  <!-- Display messages based on the state -->
+  <div *ngIf="isListEmpty()" class="no-products-message">
+    There are no products on {{ name }}!.
+  </div>
+  <div *ngIf="!isListEmpty() && !hasProducts()" class="no-products-message">
+    There are no filtering products!.
+  </div>
 </div>
 
 <app-spinner *ngIf="isLoading$ | async"></app-spinner>

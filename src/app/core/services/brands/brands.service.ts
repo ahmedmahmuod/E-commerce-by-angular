@@ -16,4 +16,5 @@ export class BrandsService {
       .get<BrandsModel[]>(environment.baseApi + 'brands?limit=100')
       .pipe(map((res: any) => res.data));
   }
+  
 }

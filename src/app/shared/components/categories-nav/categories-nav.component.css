@@ -1,0 +1,23 @@
+/* Navigation Bar */
+@media (max-width: 531px) {
+  .nav-bar {
+    margin-top: -45px;
+  }
+}
+
+.nav-bar ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-bar ul li {
+  cursor: pointer;
+  margin-left: 20px;
+  margin-top: 20px;
+  color: var(--font-third);
+  font-size: 16px;
+}
+.nav-bar ul li:hover {
+  text-decoration: underline;
+}

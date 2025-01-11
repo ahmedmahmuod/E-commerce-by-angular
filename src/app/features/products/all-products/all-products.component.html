@@ -5,16 +5,12 @@
     <div class="product-page-category relative">
       <app-home-header-page title="Products" type="All"/>
       <div class="flex flex-col justify-between">
-        <app-product-filters/>
+        <app-product-filters (filterFormValues)="onFormFilterValues($event)" [categories]="filteredCategories()" [brands]="filteredBrands()"/>
         <div>
-          <h1 class="text-font-main text-7xl text-center mb-10 relative"></h1>
+          <div *ngIf="!hasProducts()" class="no-products-message">
+            There are no filtering products!.
+          </div>
           <app-product-card [products]="products$ | async" />
-          <ng-template #noProducts>
-            <nz-page-header nzBackIcon nzTitle="Category"></nz-page-header>
-            <p class="text-font-main text-7xl text-center mt-5">
-              No products found.
-            </p>
-          </ng-template>
         </div>
       </div>
     </div>
