@@ -1,9 +1,8 @@
 <div class="home-content">
   <!-- Hero Section -->
-
   <section class="section flex-container">
     <!-- Category Nav -->
-    <app-categories-nav/>
+    <app-categories-nav class="category-nav" />
 
     <!-- Slider -->
     <div class="slider">
@@ -14,29 +13,19 @@
   <!-- Brands section -->
   <section class="section brands-section">
     <div class="section-container">
-      <h2 class="section-title">Featured Brands</h2>
+      <app-page-title [title]="'Featured Brands'"/>
       <div class="brands-container">
-        <swiper-container
-          [breakpoints]="breakpoints"
-          [speed]="1500"
-          [grabCursor]="true"
-          [freeMode]="false"
-          [allowTouchMove]="true"
-        >
-          <swiper-slide *ngFor="let brand of brands()">
-            <div class="brand-item">
-              <img
-                class="rounded-full"
-                [src]="brand.image"
-                [alt]="brand.name"
-                loading="lazy"
-              />
-              <div class="brand-overlay">
-                <span class="brand-name">{{ brand.name }}</span>
-              </div>
+        <swiper-container [breakpoints]="breakpoints" [speed]="swiperConfig.speed" [grabCursor]="true" [freeMode]="false" [allowTouchMove]="true"
+        [navigation]="swiperConfig.navigation" [pagination]="swiperConfig.pagination" [autoplay]="swiperConfig.autoplay" [loop]="swiperConfig.loop">
+        <swiper-slide *ngFor="let brand of brands()">
+          <div class="brand-item">
+            <img class="rounded-full" [src]="brand.image" [alt]="brand.name" loading="lazy" />
+            <div class="brand-overlay">
+              <span class="brand-name">{{ brand.name }}</span>
             </div>
-          </swiper-slide>
-        </swiper-container>
+          </div>
+        </swiper-slide>
+      </swiper-container>
       </div>
     </div>
   </section>

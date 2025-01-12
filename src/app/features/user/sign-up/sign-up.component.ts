@@ -24,10 +24,6 @@ export class SignUpComponent {
         Validators.email,
         Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')
       ]],
-      phone: ['', [
-        Validators.required,
-        Validators.pattern('^[0-9]{11}$')
-      ]],
       password: ['', [
         Validators.required,
         Validators.minLength(8),
@@ -66,10 +62,6 @@ export class SignUpComponent {
       case 'email':
         if (control.errors['required']) return 'Email is required';
         if (control.errors['email'] || control.errors['pattern']) return 'Please enter a valid email';
-        break;
-      case 'phone':
-        if (control.errors['required']) return 'Phone number is required';
-        if (control.errors['pattern']) return 'Please enter a valid 11-digit phone number';
         break;
       case 'password':
         if (control.errors['required']) return 'Password is required';

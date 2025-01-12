@@ -10,6 +10,7 @@ import { HomeHeaderPageComponent } from '../../shared/components/home-header/hom
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { BrandsService } from '../../core/services/brands/brands.service';
+import { PageTitleComponent } from "../../shared/components/page-title/page-title.component";
 
 @Component({
   selector: 'app-brands',
@@ -19,7 +20,8 @@ import { BrandsService } from '../../core/services/brands/brands.service';
     ButtonModule,
     SpinnerComponent,
     HomeHeaderPageComponent,
-  ],
+    PageTitleComponent
+],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.css',
 })

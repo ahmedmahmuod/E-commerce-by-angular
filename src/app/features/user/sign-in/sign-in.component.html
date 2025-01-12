@@ -2,16 +2,14 @@
     <div class="login-card">
         <div class="login-header">
             <h1>Welcome Back</h1>
-            <p>Please sign in to continue</p>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
             <div class="form-group">
-                <label for="email">Email Address</label>
                 <div class="input-container">
                     <input type="email" id="email" formControlName="email"
                         [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
-                        placeholder="Enter your email">
+                        placeholder="Email">
                     <span class="icon">✉️</span>
                 </div>
                 <span class="error-message" *ngIf="getErrorMessage('email')">
@@ -21,12 +19,11 @@
 
             <div class="form-group">
                 <div class="password-header">
-                    <label for="password">Password</label>
                 </div>
                 <div class="input-container">
                     <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
                         [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-                        placeholder="Enter your password">
+                        placeholder="Password">
                     <button type="button" class="toggle-password" (click)="togglePasswordVisibility()"
                         [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
                         {{ showPassword ? '👁️' : '👁️‍🗨️' }}
@@ -42,11 +39,11 @@
                     <span *ngIf="!isSubmitting">Sign In</span>
                     <span *ngIf="isSubmitting" class="spinner"></span>
                 </button>
-                <a routerLink="/forget-password" class="forgot-password" (click)="forgotPassword($event)">Forgot Password?</a>
+                <a routerLink="/user/forget-password" class="forgot-password" (click)="forgotPassword($event)">Forgot Password?</a>
             </div>
         </form>
         <div class="signup-prompt">
-            <p>Don't have an account? <a routerLink="/register" (click)="signUp($event)">Sign up</a></p>
+            <p>Don't have an account? <a routerLink="/user/register" (click)="signUp($event)">Sign up</a></p>
         </div>
     </div>
 </div>

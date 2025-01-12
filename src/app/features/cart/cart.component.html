@@ -1,18 +1,20 @@
 <div class="cart-container">
-    <h1>Your Cart ({{cartItems.length}})</h1>
+    <app-page-title class="m-10" title="Your Cart (2)"/>
     <div class="cart-content">
         <div class="cart-items">
             <div class="cart-item shadow-lg rounded-xl" *ngFor="let item of cartItems">
-                <img src="/assets/images/laptop.webp">
+                <img src="../../../assets/images/laptop.webp">
                 <div class="item-details">
                     <h3>{{ item.name }}</h3>
-                    <p class="ref">Stoke:{{ item.ref }}</p>
+                    <p class="ref">Stock: {{ item.ref }}</p>
                     <div class="delivery-badges">
                         <div>
-                            <span class="badge" *ngIf="item.deliveryOptions.clickAndCollect"><i
-                                    class="fa-solid fa-circle-check text-lime-500"></i> Click & Collect</span>
-                            <span class="badge" *ngIf="item.deliveryOptions.homeDelivery"><i
-                                    class="fa-solid fa-circle-check text-lime-500"></i> Home Delivery</span>
+                            <span class="badge" *ngIf="item.deliveryOptions.clickAndCollect">
+                                <i class="fa-solid fa-circle-check text-lime-500"></i> Click & Collect
+                            </span>
+                            <span class="badge" *ngIf="item.deliveryOptions.homeDelivery">
+                                <i class="fa-solid fa-circle-check text-lime-500"></i> Home Delivery
+                            </span>
                         </div>
                         <app-view-product />
                     </div>
@@ -21,19 +23,22 @@
                         <div class="quantity-controls">
                             <span>Qty:</span>
                             <div class="flex">
-                                <button class="decrease" (click)="decreaseQuantity(item)"><i
-                                        class="fa-solid fa-minus"></i></button>
+                                <button class="decrease" (click)="decreaseQuantity(item)">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
                                 <input type="number" [(ngModel)]="item.quantity" readonly>
-                                <button class="increase" (click)="increaseQuantity(item)"><i
-                                        class="fa-solid fa-plus"></i></button>
+                                <button class="increase" (click)="increaseQuantity(item)">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
                             </div>
-                            <div class="price text-gray-500">L.E {{ (item.price).toFixed(2)}}</div>
+                            <div class="price text-gray-500">L.E {{ (item.price).toFixed(2) }}</div>
                         </div>
-                        <div class="price text-font-main">L.E {{ (item.price * item.quantity).toFixed(2)}}</div>
+                        <div class="price text-font-main">L.E {{ (item.price * item.quantity).toFixed(2) }}</div>
                     </div>
                 </div>
-                <button class="remove-item" (click)="removeItem(item)"><i
-                        class="fa-solid fa-xmark text-red-600"></i></button>
+                <button class="remove-item" (click)="removeItem(item)">
+                    <i class="fa-solid fa-xmark text-red-600"></i>
+                </button>
             </div>
         </div>
         <div class="cart-summary shadow-lg rounded-xl">
@@ -59,19 +64,5 @@
                 </p>
             </div>
         </div>
-    </div>
-
-    <div class="delivery-info shadow-lg rounded-xl">
-        <h3>Delivery Information:</h3>
-        <p>Standard Delivery is 2-4 working days.</p>
-        <h4>Need it faster?</h4>
-        <p>You can upgrade to Next Day Delivery during Checkout for Next Working Day delivery (Order before 10pm).
-            Next Day Delivery is not available outside of Mainland UK. Delivery is Monday to Friday, excluding public
-            holidays.</p>
-        <p>Any orders placed after 10pm Friday and over the weekend will not be dispatched until Monday, excluding
-            Public Holidays.</p>
-        <p>FREE returns to any Smyths Toys Superstore near you.</p>
-        <p class="note">Please note, some large items (such as bikes, doll houses, playhouses) will be delivered in
-            their original packing which may display images or details of the contents.</p>
     </div>
 </div>

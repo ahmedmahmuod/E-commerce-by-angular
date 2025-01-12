@@ -4,7 +4,6 @@
   justify-content: center;
   background-color: var(--bg-main);
   padding: 20px;
-  margin: 50px;
 }
 
 .login-card {
@@ -12,28 +11,29 @@
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
-  padding: 40px;
+  max-width: 350px;
+  padding: 20px; 
 }
 
 .login-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px; /* تصغير */
 }
 
 .login-header h1 {
   color: var(--bg-main);
-  font-size: 2rem;
+  font-size: 1.5rem; /* تصغير */
   margin: 0 0 8px 0;
 }
 
 .login-header p {
   color: var(--bg-main);
   margin: 0;
+  font-size: 0.875rem; /* تصغير */
 }
 
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 15px; /* تصغير */
 }
 
 label {
@@ -49,11 +49,11 @@ label {
 
 input {
   width: 100%;
-  padding: 12px 16px;
+  padding: 10px 14px; /* تصغير */
   padding-right: 40px;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.875rem; /* تصغير */
   transition: all 0.3s ease;
 }
 
@@ -78,7 +78,7 @@ input.error {
   border: none;
   cursor: pointer;
   padding: 0;
-  font-size: 1.2rem;
+  font-size: 1rem; /* تصغير */
 }
 
 .toggle-password:focus {
@@ -87,19 +87,19 @@ input.error {
 
 .error-message {
   display: block;
-  color: #e53e3e;
+  color: red;
   font-size: 0.875rem;
   margin-top: 4px;
 }
 
 .login-button {
   width: 100%;
-  padding: 12px;
+  padding: 10px; /* تصغير */
   background-color: var(--bg-secondary);
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.875rem; /* تصغير */
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -132,20 +132,23 @@ input.error {
 
 @media (max-width: 480px) {
   .login-card {
-    padding: 30px 20px;
+    padding: 20px 15px; /* تصغير */
+  }
+
+  .login-header h1 {
+    font-size: 1.25rem; /* تصغير */
   }
 }
 
 .signup-prompt {
   text-align: center;
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid var(--bg-main);
+  margin-top: 15px; /* تصغير */
 }
 
 .signup-prompt p {
   color: var(--bg-secondary);
   margin: 0;
+  font-size: 0.875rem; /* تصغير */
 }
 
 .signup-prompt a {
@@ -162,7 +165,7 @@ input.error {
 .forgot-password {
   color: var(--bg-main);
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 0.75rem; /* تصغير */
   transition: color 0.2s ease;
   display: flex;
   justify-content: center;

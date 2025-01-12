@@ -25,7 +25,7 @@
   bottom: 0;
   width: 50px;
   height: 2px;
-  background: #859f3d;
+  background: var(--font-main);
 }
 
 .footer-section ul {
@@ -42,7 +42,7 @@
   transition: all 0.3s ease;
 }
 .footer-section a:hover {
-    color: #859f3d;
+    color: var(--font-main);
 }
 
 .social-links {

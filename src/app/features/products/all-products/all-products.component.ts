@@ -13,6 +13,7 @@ import {
   selectAllProductsLoading,
 } from '../../../stores/products/all-products-store/all-products.selector';
 import * as AllProductsAction from '../../../stores/products/all-products-store/all-products.action';
+import { PageTitleComponent } from "../../../shared/components/page-title/page-title.component";
 
 @Component({
   selector: 'app-all-products',
@@ -24,7 +25,8 @@ import * as AllProductsAction from '../../../stores/products/all-products-store/
     HomeHeaderPageComponent,
     SpinnerComponent,
     ProductFiltersComponent,
-  ],
+    PageTitleComponent
+],
   templateUrl: './all-products.component.html',
   styleUrls: ['./all-products.component.css'],
 })

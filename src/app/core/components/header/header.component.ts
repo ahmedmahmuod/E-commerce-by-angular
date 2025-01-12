@@ -1,4 +1,4 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, signal, HostListener } from '@angular/core';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { FormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
@@ -15,7 +15,6 @@ import {
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
-NzIconModule;
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -75,28 +74,22 @@ NzIconModule;
 })
 export class HeaderComponent {
   selectedLanguage = signal<string>('en');
-  tooltipColor: string = getComputedStyle(document.documentElement)
-    .getPropertyValue('--tooltip-color')
-    .trim();
   isMenuOpen: boolean = false;
   isHeaderVisible = true;
-  lastScrollTop = 50;
-
   isLogged = signal<boolean>(false);
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const currentScrollTop =
-      window.scrollY || document.documentElement.scrollTop;
-    if (currentScrollTop > this.lastScrollTop) {
-      this.isHeaderVisible = false;
-    } else if (currentScrollTop < this.lastScrollTop) {
-      this.isHeaderVisible = true;
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    const menu = document.querySelector('.mobile-menu') as HTMLElement;
+    const menuIcon = document.querySelector('.menu-icon') as HTMLElement;
+
+    if (this.isMenuOpen && menu && menuIcon && !menu.contains(target) && !menuIcon.contains(target)) {
+      this.isMenuOpen = false;
     }
-    this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
   }
 }

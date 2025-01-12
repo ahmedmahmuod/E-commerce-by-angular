@@ -1,6 +1,6 @@
 <section class="brands-page container mx-auto">
   <div class="brands-header">
-    <h1>Our Brands</h1>
+    <app-page-title title="Our Brands"/>
     <p>Discover our collection of premium brands</p>
   </div>
   <app-home-header-page title="Brands" />
@@ -15,11 +15,7 @@
     </div>
   </div>
   <div *ngIf="(displayedBrands$ | async)?.length === initialDisplayCount " class="flex justify-center">
-    <p-button
-      class="view-all-brands"
-      (click)="clickViewAllBrands()"
-      label="View All Brands"
-      icon="pi"/>
+    <p-button class="view-all-brands" (click)="clickViewAllBrands()" label="View All Brands" icon="pi"/>
   </div>
 </section>
 <app-spinner *ngIf="isLoading$ | async" />

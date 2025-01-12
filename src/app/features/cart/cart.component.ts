@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ViewProductComponent } from './../../shared/components/buttons/view-product/view-product.component';
+import { PageTitleComponent } from "../../shared/components/page-title/page-title.component";
 
 interface CartItem {
   id: string;
@@ -19,7 +20,7 @@ interface CartItem {
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, FormsModule, ViewProductComponent],
+  imports: [CommonModule, FormsModule, ViewProductComponent, PageTitleComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
