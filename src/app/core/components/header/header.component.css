@@ -180,3 +180,20 @@ nz-select {
     padding: 1rem;
   }
 }
+
+.wishlist-count,
+.cart-count {
+  color: var(--font-main);
+  position: absolute;
+  z-index: -1;
+
+}
+
+.wishlist-count {
+  top: -14px;
+  left: 7px;
+}
+.cart-count {
+  top: -14px;
+  right: 7px;
+}

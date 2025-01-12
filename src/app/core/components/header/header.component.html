@@ -27,9 +27,11 @@
         <!-- Profile logged -->
         <div class="profile-logged flex justify-center">
           <!-- Cart and wishlist -->
-          <div class="gap-x-4 flex items-center mr-3">
-            <span routerLink="/wishlist" class="cursor-pointer text-2xl text-background-main" nz-icon nzType="heart" nzTheme="outline"></span>
-            <span routerLink="/cart" class="cursor-pointer text-2xl text-background-main" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+          <div class="gap-x-4 relative flex items-center mr-3">
+            <span class="wishlist-count">3</span>
+            <span class="cart-count">5</span>
+            <span routerLink="/wishlist" class="wishlist-btn cursor-pointer text-2xl text-background-main" nz-icon nzType="heart" nzTheme="outline"></span>
+            <span routerLink="/cart" class="cart-btn cursor-pointer text-2xl text-background-main" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
           </div>
 
           <!-- Dropdown Trigger -->

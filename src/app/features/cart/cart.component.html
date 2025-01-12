@@ -1,45 +1,40 @@
 <div class="cart-container">
-    <app-page-title class="m-10" title="Your Cart (2)"/>
+    <app-page-title class="m-10" title="Your Cart ({{cartItems.length}})"/>
     <div class="cart-content">
         <div class="cart-items">
-            <div class="cart-item shadow-lg rounded-xl" *ngFor="let item of cartItems">
-                <img src="../../../assets/images/laptop.webp">
-                <div class="item-details">
-                    <h3>{{ item.name }}</h3>
-                    <p class="ref">Stock: {{ item.ref }}</p>
-                    <div class="delivery-badges">
-                        <div>
-                            <span class="badge" *ngIf="item.deliveryOptions.clickAndCollect">
-                                <i class="fa-solid fa-circle-check text-lime-500"></i> Click & Collect
-                            </span>
-                            <span class="badge" *ngIf="item.deliveryOptions.homeDelivery">
-                                <i class="fa-solid fa-circle-check text-lime-500"></i> Home Delivery
-                            </span>
+            @if (cartItems.length >= 1) {
+                <div class="cart-item shadow-lg" *ngFor="let item of cartItems">
+                    <img src="../../../assets/images/laptop.webp">
+                    <div class="item-details">
+                        <h3>{{ item.name }}</h3>
+                        <div class="flex justify-between">
+                            <div class="price">L.E {{ (item.price).toFixed(2) }}</div>
+                            <p class="ref">Stock: {{ item.ref }}</p>
                         </div>
-                        <app-view-product />
-                    </div>
-                    <hr class="m-5">
-                    <div class="quantity-price">
-                        <div class="quantity-controls">
-                            <span>Qty:</span>
-                            <div class="flex">
-                                <button class="decrease" (click)="decreaseQuantity(item)">
-                                    <i class="fa-solid fa-minus"></i>
-                                </button>
-                                <input type="number" [(ngModel)]="item.quantity" readonly>
-                                <button class="increase" (click)="increaseQuantity(item)">
-                                    <i class="fa-solid fa-plus"></i>
-                                </button>
+                        <hr class="m-5">
+                        <div class="quantity-price">
+                            <div class="quantity-controls">
+                                <div class="flex items-center gap-2">
+                                    <button class="decrease" (click)="decreaseQuantity(item)">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </button>
+                                    <input type="number" [(ngModel)]="item.quantity" readonly>
+                                    <button class="increase" (click)="increaseQuantity(item)">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="price">L.E {{ (item.price * item.quantity).toFixed(2) }}</div>
+                                <app-view-product/>
                             </div>
-                            <div class="price text-gray-500">L.E {{ (item.price).toFixed(2) }}</div>
                         </div>
-                        <div class="price text-font-main">L.E {{ (item.price * item.quantity).toFixed(2) }}</div>
                     </div>
+                    <button class="remove-item" (click)="removeItem(item)">
+                        <i class="delete-btn fa-regular fa-trash-can"></i>
+                    </button>
                 </div>
-                <button class="remove-item" (click)="removeItem(item)">
-                    <i class="fa-solid fa-xmark text-red-600"></i>
-                </button>
-            </div>
+            } @else {
+                <h1 class="empty-cart">Your Cart is empty!</h1>
+            }
         </div>
         <div class="cart-summary shadow-lg rounded-xl">
             <div>

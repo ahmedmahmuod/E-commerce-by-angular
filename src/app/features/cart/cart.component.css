@@ -2,7 +2,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .cart-content {
@@ -17,10 +17,16 @@
 
 .cart-summary {
   flex: 1;
-  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--font-secondary);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 5px;
 }
 
 .cart-item {
@@ -28,16 +34,14 @@
   gap: 20px;
   padding: 20px;
   margin-bottom: 20px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+  border-bottom: 3px solid var(--font-secondary);
 }
 
 .cart-item img {
   width: 120px;
   height: 120px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 8px;
 }
 
@@ -48,29 +52,13 @@
 .item-details h3 {
   margin: 0 0 10px 0;
   font-size: 18px;
-  color: #333;
+  color: var(--font-secondary);
 }
 
 .ref {
   color: #666;
   font-size: 14px;
   margin-bottom: 10px;
-}
-
-.delivery-badges {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.badge {
-  background: #e8f5e9;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 14px;
-  color: #2e7d32;
 }
 
 .quantity-price {
@@ -82,30 +70,27 @@
 .quantity-controls {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  width: 100%;
+  gap: 5px;
 }
 
 .quantity-controls button {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border: 1px solid #ddd;
-  background: #fff;
+  background: var(--font-secondary);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #333;
-  font-size: 20px;
+  color: var(--bg-main);
   border-radius: 50%;
-  transition: background 0.3s ease;
-}
-
-.quantity-controls button:hover {
-  background: #f0f0f0;
+  transition: 0.3s ease;
 }
 
 .quantity-controls input {
-  width: 60px;
+  width: 50px;
   text-align: center;
   border: 1px solid #ddd;
   padding: 8px;
@@ -114,9 +99,9 @@
 }
 
 .price {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
-  color: #333;
+  color: var(--font-main);
 }
 
 .remove-item {
@@ -127,7 +112,7 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #ff4444;
+  color: red;
   transition: color 0.3s ease;
 }
 
@@ -140,7 +125,7 @@
   justify-content: space-between;
   margin-bottom: 10px;
   font-size: 16px;
-  color: #555;
+  color: var(--bg-main);
 }
 
 .total {
@@ -149,40 +134,40 @@
   border-top: 1px solid #e0e0e0;
   padding-top: 10px;
   margin-top: 10px;
-  color: #333;
+  color: var(--font-main);
 }
 
 .checkout-button {
   width: 100%;
   padding: 15px;
-  background-color: #4CAF50;
+  background-color: var(--font-main);
   color: white;
   border: none;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
   margin: 10px 0;
-  transition: background 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .checkout-button:hover {
-  background-color: #45a049;
+  background-color: var(--font-main);
+  opacity: 0.9;
 }
 
 .terms {
   font-size: 12px;
-  color: #666;
+  color: var(--font-main);
   text-align: center;
 }
 
 .terms a {
   text-decoration: underline;
-  color: #666;
+  color: var(--font-main);
 }
 
 .terms a:hover {
   text-decoration: none;
-  color: #333;
 }
 
 /* Media Queries for Responsive Design */
@@ -201,7 +186,7 @@
   }
 
   .cart-item img {
-    width: 100%;
+    width: 200px;
     height: auto;
   }
 
@@ -223,4 +208,14 @@
   .terms {
     font-size: 10px;
   }
+}
+
+.empty-cart {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: var(--font-third);
 }

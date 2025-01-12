@@ -1,3 +1,86 @@
-<div class="container">
+<div class="container text-font-secondary">
+    <app-page-title [title]="'My Wishlist (3)'"></app-page-title>
     
-</div>
+    <!-- Desktop View -->
+    <div class="hidden md:block">
+      @if (products.length >= 1) {
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Product name</th>
+              <th>Unit price</th>
+              <th>Stock status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td class="text-center">
+                <i class="delete-btn fa-regular fa-trash-can"></i>
+              </td>
+              <td class="image-cell">
+                <img src="../../../assets/images/product2.webp" alt="{{ product.name }}" />
+              </td>
+              <td>{{ product.name }}</td>
+              <td class="price-cell">
+                <span class="original-price">3999 L.E</span>
+                <span class="sale-price">2999 L.E</span>
+              </td>
+              <td>{{ product.stockStatus }}</td>
+              <td class="action-cell gap-1 flex flex-col">
+                <div class="date">Added on: {{ product.addedOn }}</div>
+                <div class="flex items-center justify-center gap-3">
+                  <i class="fa-regular fa-eye text-lg hover:text-font-main cursor-pointer"></i>
+                  <app-add-to-cart-button/>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      } @else {
+        <h1 class="text-2xl text-font-third font-bold text-center">There are no products in your wishlist!.</h1>
+      }
+    </div>
+
+    <!-- Mobile View -->
+    <div class="md:hidden">
+      <div class="space-y-6">
+        <div *ngFor="let product of products" class="bg-background-main rounded-lg shadow-lg p-4">
+          <div class="flex justify-between items-start mb-3">
+            <div class="w-20 h-20">
+              <img 
+                src="../../../assets/images/product2.webp" 
+                alt="{{ product.name }}"
+                class="w-full h-full object-contain rounded"
+              />
+            </div>
+            <i class="delete-btn fa-regular fa-trash-can"></i>
+          </div>
+          
+          <div class="space-y-2">
+            <h3 class="font-medium">{{ product.name }}</h3>
+            
+            <div class="flex items-center gap-2">
+              <span class="original-price text-sm">3999 L.E</span>
+              <span class="sale-price">2999 L.E</span>
+            </div>
+            
+            <div class="text-sm">
+              Status: <span>{{ product.stockStatus }}</span>
+            </div>
+            
+            <div class="text-xs date">
+              Added on: {{ product.addedOn }}
+            </div>
+            
+            <div class="flex items-center justify-between mt-4">
+              <i class="fa-regular fa-eye text-lg hover:text-font-main cursor-pointer"></i>
+              <app-add-to-cart-button/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

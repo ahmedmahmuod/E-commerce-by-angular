@@ -1,0 +1,85 @@
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-main);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.product-table th {
+  text-align: left;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  color: var(--font-secondary);
+  font-weight: 600;
+  background: var(--bg-main);
+}
+
+.product-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+.image-cell {
+  width: 100px;
+  padding: 8px;
+}
+
+.image-cell img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--font-secondary);
+  font-size: 22px;
+  transition: color 0.2s ease;
+}
+
+.delete-btn:hover {
+  color: #ef4444;
+}
+
+.price-cell {
+  white-space: nowrap;
+}
+
+.original-price {
+  color: var(--font-third);
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+.sale-price {
+  color: var(--font-main);
+  font-weight: 600;
+}
+
+.action-cell {
+  text-align: center;
+}
+
+.date {
+  color: var(--font-third);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+}
