@@ -22,14 +22,6 @@ export class HeroSectionComponent {
       image: 'assets/images/imgSlider2.jpg',
       title: 'Quality & Style Combined',
     },
-    {
-      image: 'assets/images/imgSlider3.avif',
-      title: 'Exclusive Collections',
-    },
-    {
-      image: 'assets/images/imgSlider3.avif',
-      title: 'Exclusive Collections',
-    },
   ];
 
 

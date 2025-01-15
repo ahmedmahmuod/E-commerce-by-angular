@@ -17,7 +17,16 @@
       <div class="account-status gap-x-2 flex items-center">
         
         <!-- logo -->
-        <img src="../../../../assets/images/logo.png" alt="Logo" class="w-11 cursor-pointer block md:hidden" routerLink="/home">
+         <div>
+           <img src="../../../../assets/images/logo.png" alt="Logo" class="w-11 cursor-pointer block md:hidden" routerLink="/home">
+         </div>
+
+        <!-- language -->
+        <nz-select class="custom-select z-50" [(ngModel)]="selectedLanguage" nzBorderless>
+          <nz-option nzValue="en" nzLabel="EN"></nz-option>
+          <nz-option nzValue="ar" nzLabel="AR"></nz-option>
+        </nz-select>
+
         <!-- Sign buttons -->
         <div *ngIf="!isLogged()" class="sign-btns flex items-center">
             <button routerLink="/user/login" class="hidden md:block sign-in rounded-lg bg-font-main text-white px-6 py-2 shadow-lg">Log In</button>
@@ -28,8 +37,8 @@
         <div class="profile-logged flex justify-center">
           <!-- Cart and wishlist -->
           <div class="gap-x-4 relative flex items-center mr-3">
-            <span class="wishlist-count">3</span>
-            <span class="cart-count">5</span>
+            <span class="wishlist-count">0</span>
+            <span class="cart-count">0</span>
             <span routerLink="/wishlist" class="wishlist-btn cursor-pointer text-2xl text-background-main" nz-icon nzType="heart" nzTheme="outline"></span>
             <span routerLink="/cart" class="cart-btn cursor-pointer text-2xl text-background-main" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
           </div>
@@ -49,7 +58,7 @@
           <nz-dropdown-menu #menu="nzDropdownMenu" aria-label="Profile options">
             <ul class="bg-font-secondary/100 text-background-main backdrop-blur-md shadow-xl rounded-lg border border-white/20 p-2 space-y-2 mt-3">
               <!-- Profile Link -->
-              <li class="text-background-main hover:text-font-main cursor-pointer block px-4 py-2 text-sm font-medium transition rounded-md" aria-label="Manage Profile">
+              <li routerLink="/user/profile" class="text-background-main hover:text-font-main cursor-pointer block px-4 py-2 text-sm font-medium transition rounded-md" aria-label="Manage Profile">
                 <i class="fa-solid fa-gear"></i>
                 Manage Profile
               </li>

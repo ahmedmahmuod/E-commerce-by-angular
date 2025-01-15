@@ -1,0 +1,35 @@
+<div class="profile-container">
+  <!-- Side Navigation -->
+  <div class="nav-container"> <!-- هنا ضفنا class جديده -->
+    <nav class="side-nav">
+      <div class="nav-group">
+        <h3>Manage my account</h3>
+        <ul>
+          <li>
+            <a routerLink="/user/profile/my-details" routerLinkActive="active">My Details</a>
+          </li>
+          <li>
+            <a routerLink="/user/profile/change-password" routerLinkActive="active">Change Password</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-group">
+        <h3>My Orders</h3>
+        <ul>
+          <li>
+            <a routerLink="/user/profile/my-orders" routerLinkActive="active">Orders</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="login-button">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span routerLink="orders">Log out</span>
+    </div>
+  </div>
+
+  <!-- Content Area -->
+  <main class="content-area">
+    <router-outlet></router-outlet>
+  </main>
+</div>

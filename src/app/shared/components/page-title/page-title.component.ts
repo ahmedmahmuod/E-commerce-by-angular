@@ -16,7 +16,7 @@ import { Component, Input } from '@angular/core';
       }
 
       .section-title {
-        color: var(--font-main);
+        color: var(--font-secondary);
         font-size: 35px;
         text-align: center;
         margin-bottom: 20px;

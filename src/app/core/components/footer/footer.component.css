@@ -1,14 +1,19 @@
 .footer {
   padding: 40px 0 20px;
+  background-color: var(--font-secondary);
 }
 
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr); 
   gap: 40px;
   padding: 0 20px;
+}
+
+.footer-section {
+  text-align: center;
 }
 
 .footer-section h4 {
@@ -21,7 +26,8 @@
 .footer-section h4::after {
   content: "";
   position: absolute;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 0;
   width: 50px;
   height: 2px;
@@ -41,8 +47,15 @@
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 .footer-section a:hover {
-    color: var(--font-main);
+  color: var(--font-main);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .social-links {
@@ -54,6 +67,7 @@
 .social-icon {
   display: flex;
   align-items: center;
+  justify-content: center; 
   gap: 8px;
 }
 
@@ -64,6 +78,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .footer-content {
     grid-template-columns: 1fr;

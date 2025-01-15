@@ -14,7 +14,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   margin-bottom: 20px;
   border-radius: 10px;
 }
@@ -61,7 +61,7 @@
 }
 
 .icon-btn {
-  background-color: var(--font-main);
+  background-color: var(--font-secondary);
   border: none;
   border-radius: 50%;
   width: 30px;
@@ -117,7 +117,7 @@
 }
 
 .add-to-cart-btn {
-  background-color: var(--font-main);
+  background-color: var(--font-secondary);
   color: var(--bg-main);
   border: none;
   padding: 10px 20px;

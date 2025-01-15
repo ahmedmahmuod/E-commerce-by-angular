@@ -9,11 +9,11 @@
             <div class="form-group">
                 <div class="input-container">
                     <input type="text" id="name" formControlName="name"
-                        [class.error]="signupForm.get('name')?.invalid && signupForm.get('name')?.touched"
+                        [class.error]="signupForm.get('name')?.invalid && (signupForm.get('name')?.touched || signupForm.get('name')?.dirty)"
                         placeholder="Full Name">
                     <span class="icon">👤</span>
                 </div>
-                <span class="error-message" *ngIf="getErrorMessage('name')">
+                <span class="error-message" *ngIf="(signupForm.get('name')?.touched || signupForm.get('name')?.dirty) && getErrorMessage('name')">
                     {{ getErrorMessage('name') }}
                 </span>
             </div>
@@ -22,12 +22,25 @@
             <div class="form-group">
                 <div class="input-container">
                     <input type="email" id="email" formControlName="email"
-                        [class.error]="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+                        [class.error]="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || signupForm.get('email')?.dirty)"
                         placeholder="Email">
                     <span class="icon">✉️</span>
                 </div>
-                <span class="error-message" *ngIf="getErrorMessage('email')">
+                <span class="error-message" *ngIf="(signupForm.get('email')?.touched || signupForm.get('email')?.dirty) && getErrorMessage('email')">
                     {{ getErrorMessage('email') }}
+                </span>
+            </div>
+
+            <!-- Phone Field -->
+            <div class="form-group">
+                <div class="input-container">
+                    <input type="text" id="phone" formControlName="phone"
+                        [class.error]="signupForm.get('phone')?.invalid && (signupForm.get('phone')?.touched || signupForm.get('phone')?.dirty)"
+                        placeholder="Phone Number">
+                    <span class="icon">📞</span>
+                </div>
+                <span class="error-message" *ngIf="(signupForm.get('phone')?.touched || signupForm.get('phone')?.dirty) && getErrorMessage('phone')">
+                    {{ getErrorMessage('phone') }}
                 </span>
             </div>
 
@@ -35,14 +48,14 @@
             <div class="form-group">
                 <div class="input-container">
                     <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
-                        [class.error]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                        [class.error]="signupForm.get('password')?.invalid && (signupForm.get('password')?.touched || signupForm.get('password')?.dirty)"
                         placeholder="Password">
                     <button type="button" class="toggle-password" (click)="togglePasswordVisibility('password')"
                         [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
                         {{ showPassword ? '👁️' : '👁️‍🗨️' }}
                     </button>
                 </div>
-                <span class="error-message" *ngIf="getErrorMessage('password')">
+                <span class="error-message" *ngIf="(signupForm.get('password')?.touched || signupForm.get('password')?.dirty) && getErrorMessage('password')">
                     {{ getErrorMessage('password') }}
                 </span>
             </div>
@@ -51,14 +64,19 @@
             <div class="form-group">
                 <div class="input-container">
                     <input [type]="showRePassword ? 'text' : 'password'" id="rePassword" formControlName="rePassword"
-                        [class.error]="signupForm.get('rePassword')?.invalid && signupForm.get('rePassword')?.touched"
+                        [class.error]="signupForm.get('rePassword')?.invalid && (signupForm.get('rePassword')?.touched || signupForm.get('rePassword')?.dirty)"
                         placeholder="Confirm Password">
                     <button type="button" class="toggle-password" (click)="togglePasswordVisibility('rePassword')"
                         [attr.aria-label]="showRePassword ? 'Hide password' : 'Show password'">
                         {{ showRePassword ? '👁️' : '👁️‍🗨️' }}
                     </button>
                 </div>
-                <span class="error-message" *ngIf="getErrorMessage('rePassword')">
+                <!-- Error message for password mismatch -->
+                <span class="error-message" *ngIf="(signupForm.get('rePassword')?.touched || signupForm.get('rePassword')?.dirty) && signupForm.hasError('mismatch')">
+                    Passwords do not match
+                </span>
+                <!-- Error message for required field -->
+                <span class="error-message" *ngIf="(signupForm.get('rePassword')?.touched || signupForm.get('rePassword')?.dirty) && getErrorMessage('rePassword')">
                     {{ getErrorMessage('rePassword') }}
                 </span>
             </div>
@@ -70,7 +88,7 @@
         </form>
 
         <div class="login-prompt">
-            <p>Already have an account? <a routerLink="/user/login" (click)="login($event)">Sign in</a></p>
+            <p>Already have an account? <a routerLink="/user/login">Sign in</a></p>
         </div>
     </div>
 </div>

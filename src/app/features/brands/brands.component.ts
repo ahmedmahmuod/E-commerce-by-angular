@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrandsModel } from '../../core/models/brands/brands.model';
-import { ButtonModule } from 'primeng/button';
 import { Store } from '@ngrx/store';
 import * as BrandsActions from '../../stores/brands-store/brands.actions';
 import { selectBrands, selectBrandsLoading } from '../../stores/brands-store/brands.selectors';
@@ -9,25 +8,24 @@ import { SpinnerComponent } from '../../shared/components/spinner/spinner.compon
 import { HomeHeaderPageComponent } from '../../shared/components/home-header/home-header-page.component';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { BrandsService } from '../../core/services/brands/brands.service';
 import { PageTitleComponent } from "../../shared/components/page-title/page-title.component";
+import { GlobalBtnComponent } from "../../shared/components/buttons/global-btn/global-btn.component";
 
 @Component({
   selector: 'app-brands',
   standalone: true,
   imports: [
     CommonModule,
-    ButtonModule,
     SpinnerComponent,
     HomeHeaderPageComponent,
-    PageTitleComponent
+    PageTitleComponent,
+    GlobalBtnComponent
 ],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.css',
 })
 export class BrandsComponent {
   private router = inject(Router);
-  private brandsService = inject(BrandsService);
 
   brands$!: Observable<BrandsModel[]>;
   displayedBrands$!: Observable<BrandsModel[]>;

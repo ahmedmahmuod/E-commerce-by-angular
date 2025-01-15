@@ -1,0 +1,101 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.nav-container {
+  width: 100%;
+}
+
+.side-nav {
+  width: 100%;
+  background-color: var(--font-secondary);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.nav-group {
+  margin-bottom: 1.5rem;
+}
+
+.nav-group h3 {
+  font-size: 1.1rem;
+  color: var(--font-main);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(169, 169, 169, 0.2);
+}
+
+.nav-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-group li {
+  margin: 0.5rem 0;
+}
+
+.nav-group a {
+  color: var(--bg-main);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-group a:hover {
+  background: #e9ecef;
+  color: #333;
+}
+
+.nav-group a.active {
+  background: var(--font-main);
+  color: var(--bg-main);
+}
+
+.content-area {
+  flex: 1;
+  border-radius: 8px;
+}
+
+.login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  gap: 4px;
+  cursor: pointer;
+  transition: 0.5s;
+  padding: 5px 17px;
+  width: fit-content;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+.login-button:hover {
+  background-color: red;
+  color: var(--bg-main);
+}
+
+@media (min-width: 768px) {
+  .profile-container {
+    flex-direction: row;
+  }
+
+  .nav-container {
+    width: 250px;
+  }
+
+  .side-nav {
+    width: 250px;
+    margin-bottom: 0;
+  }
+}

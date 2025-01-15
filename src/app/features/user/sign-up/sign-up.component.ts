@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,95 +10,68 @@ import { RouterLink } from '@angular/router';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent {
-  signupForm: FormGroup;
+export class SignupComponent implements OnInit {
+  signupForm!: FormGroup;
   showPassword = false;
   showRePassword = false;
   isSubmitting = false;
 
-  constructor(private fb: FormBuilder) {
-    this.signupForm = this.fb.group({
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.signupForm = this.fb.nonNullable.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [
-        Validators.required,
-        Validators.email,
-        Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')
-      ]],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')
-      ]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       rePassword: ['', [Validators.required]]
-    }, {
-      validators: (control) => {
-        const password = control.get('password');
-        const rePassword = control.get('rePassword');
-        if (password?.value !== rePassword?.value) {
-          return { passwordMismatch: true };
-        }
-        return null;
-      }
-    });
+    }, { validators: this.passwordMatchValidator });
   }
 
-  togglePasswordVisibility(field: 'password' | 'rePassword') {
+  // Custom validator to check if password and confirm password match
+  passwordMatchValidator(control: AbstractControl) {
+    const password = control.get('password')?.value;
+    const rePassword = control.get('rePassword')?.value;
+    return password === rePassword ? null : { mismatch: true };
+  }
+
+  // Toggle password visibility
+  togglePasswordVisibility(field: string) {
     if (field === 'password') {
       this.showPassword = !this.showPassword;
-    } else {
+    } else if (field === 'rePassword') {
       this.showRePassword = !this.showRePassword;
     }
   }
 
-  getErrorMessage(field: string): string {
-    const control = this.signupForm.get(field);
-    if (!control?.errors || !control.touched) return '';
-
-    switch (field) {
-      case 'name':
-        if (control.errors['required']) return 'Name is required';
-        if (control.errors['minlength']) return 'Name must be at least 3 characters';
-        break;
-      case 'email':
-        if (control.errors['required']) return 'Email is required';
-        if (control.errors['email'] || control.errors['pattern']) return 'Please enter a valid email';
-        break;
-      case 'password':
-        if (control.errors['required']) return 'Password is required';
-        if (control.errors['minlength']) return 'Password must be at least 8 characters';
-        if (control.errors['pattern']) {
-          return 'Password must contain at least one uppercase letter, one lowercase letter, and one number';
-        }
-        break;
-      case 'rePassword':
-        if (control.errors['required']) return 'Please confirm your password';
-        if (this.signupForm.errors?.['passwordMismatch']) return 'Passwords do not match';
-        break;
+  // Get error message for form controls
+  getErrorMessage(controlName: string): string {
+    const control = this.signupForm.get(controlName);
+    if (control?.hasError('required')) {
+      return 'This field is required';
+    } else if (control?.hasError('pattern') && controlName === 'phone') {
+      return 'Please enter a valid Egyptian phone number (11 digits starting with 01)';
+    } else if (control?.hasError('minlength')) {
+      return `Minimum length is ${control.errors?.['minlength'].requiredLength} characters`;
+    } else if (control?.hasError('email')) {
+      return 'Please enter a valid email address';
+    } else if (control?.hasError('mismatch')) {
+      return 'Passwords do not match';
     }
     return '';
   }
 
+  // Handle form submission
   onSubmit() {
-    if (this.signupForm.valid && !this.isSubmitting) {
-      this.isSubmitting = true;
-      console.log('Form data:', this.signupForm.value);
-
-      // Simulate API call
-      setTimeout(() => {
-        this.isSubmitting = false;
-      }, 1500);
-    } else {
-      Object.keys(this.signupForm.controls).forEach(key => {
-        const control = this.signupForm.get(key);
-        if (control?.invalid) {
-          control.markAsTouched();
-        }
-      });
+    if (this.signupForm.invalid) {
+      return;
     }
-  }
-
-  login(event: Event) {
-    event.preventDefault();
-    console.log('Navigate to login');
+    this.isSubmitting = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+      console.log('Form submitted:', this.signupForm.value);
+      this.isSubmitting = false;
+    }, 2000);
   }
 }

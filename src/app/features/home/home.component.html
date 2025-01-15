@@ -1,9 +1,6 @@
 <div class="home-content">
   <!-- Hero Section -->
   <section class="section flex-container">
-    <!-- Category Nav -->
-    <app-categories-nav class="category-nav" />
-
     <!-- Slider -->
     <div class="slider">
       <app-hero-section></app-hero-section>
@@ -12,21 +9,108 @@
 
   <!-- Brands section -->
   <section class="section brands-section">
+    <!-- hr Divider -->
+    <div class="section-divider"><span></span></div>
     <div class="section-container">
-      <app-page-title [title]="'Featured Brands'"/>
+      <app-page-title [title]="'Featured Brands'" />
       <div class="brands-container">
-        <swiper-container [breakpoints]="breakpoints" [speed]="swiperConfig.speed" [grabCursor]="true" [freeMode]="false" [allowTouchMove]="true"
-        [navigation]="swiperConfig.navigation" [pagination]="swiperConfig.pagination" [autoplay]="swiperConfig.autoplay" [loop]="swiperConfig.loop">
-        <swiper-slide *ngFor="let brand of brands()">
-          <div class="brand-item">
-            <img class="rounded-full" [src]="brand.image" [alt]="brand.name" loading="lazy" />
-            <div class="brand-overlay">
-              <span class="brand-name">{{ brand.name }}</span>
+        <swiper-container
+          [breakpoints]="breakpoints"
+          [speed]="swiperConfig.speed"
+          [grabCursor]="true"
+          [freeMode]="false"
+          [allowTouchMove]="true"
+          [navigation]="swiperConfig.navigation"
+          [pagination]="swiperConfig.pagination"
+          [autoplay]="swiperConfig.autoplay"
+          [loop]="swiperConfig.loop">
+          <swiper-slide (click)="onBrandClick(brand)" *ngFor="let brand of brands()" >
+            <div class="brand-item">
+              <img [src]="brand.image" [alt]="brand.name" loading="lazy"/>
+              <div class="brand-overlay">
+                <span class="brand-name">{{ brand.name }}</span>
+              </div>
             </div>
-          </div>
-        </swiper-slide>
-      </swiper-container>
+          </swiper-slide>
+        </swiper-container>
+        <div class="flex justify-center">
+          <app-global-btn routerLink="/brands" title="Discover other brands"/>
+        </div>
       </div>
     </div>
   </section>
+
+<!-- Products Section -->
+<section class="section brands-section">
+  <!-- hr Divider -->
+  <div class="section-divider"><span></span></div>
+  <div class="section-container">
+    <app-page-title [title]="'Best Selling Products'" />
+    <app-product-card [products]="limitProductsFilter()"/>
+    <div class="flex justify-center">
+      <app-global-btn routerLink="/products" title="See all our products!"/>
+    </div>
+  </div>
+</section>
+
+<!-- category Section -->
+<section class="section brands-section">
+  <!-- hr Divider -->
+  <div class="section-divider"><span></span></div>
+  <div class="section-container">
+    <app-page-title [title]="'Browse by category'" />
+    <swiper-container
+    [breakpoints]="breakpoints"
+    [speed]="swiperConfig.speed"
+    [grabCursor]="true"
+    [freeMode]="false"
+    [allowTouchMove]="true"
+    [navigation]="swiperConfig.navigation"
+    [pagination]="swiperConfig.pagination"
+    [autoplay]="swiperConfig.autoplay"
+    [loop]="swiperConfig.loop">
+    <swiper-slide (click)="onCategoryClick(category)" *ngFor="let category of categories()" >
+      <div class="brand-item">
+        <img [src]="category.image" [alt]="category.name" loading="lazy"/>
+        <div class="brand-overlay">
+          <span class="brand-name">{{ category.name }}</span>
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+  </div>
+</section>
+
+<!-- End Section -->
+<section class="section brands-section">
+  <!-- hr Divider -->
+  <div class="section-divider"><span></span></div>
+  <div class="section-container">
+    <div class="features-container">
+      <div class="feature-item">
+        <div class="icon-circle">
+          <i class="fas fa-truck"></i>
+        </div>
+        <h3>FREE AND FAST DELIVERY</h3>
+        <p>Free delivery for all orders over $140</p>
+      </div>
+
+      <div class="feature-item">
+        <div class="icon-circle">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3>24/7 CUSTOMER SERVICE</h3>
+        <p>Friendly 24/7 customer support</p>
+      </div>
+
+      <div class="feature-item">
+        <div class="icon-circle">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>MONEY BACK GUARANTEE</h3>
+        <p>We return money within 30 days</p>
+      </div>
+    </div>
+  </div>
+</section>
 </div>

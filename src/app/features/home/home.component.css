@@ -34,9 +34,6 @@
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-  background: var(--font-main);
-  padding: 10px;
   margin: 10px;
 }
 
@@ -47,7 +44,7 @@
 
 .brand-item img {
   width: 100%;
-  max-height: 150px;
+  height: 200px;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -57,11 +54,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: var(--font-main);
   padding: 10px;
   transform: translateY(100%);
   transition: transform 0.3s ease;
   text-align: center;
+  opacity: 0.8;
 }
 
 .brand-item:hover .brand-overlay {
@@ -207,5 +205,73 @@ swiper-slide {
 
 swiper-slide:hover {
   opacity: 1;
-  transform: scale(1.05); /* تكبير السلايد عند الـ hover */
+  transform: scale(1.05);
+}
+
+.section-divider {
+  display: flex;
+  justify-content: center;
+}
+.section-divider span {
+  width: 90%;
+  height: 0.5px;
+  background-color: darkgray;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+/* End section */
+.features-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  background-color: var(--font-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  /* border: 4px solid var(--font-main); */
+}
+
+.icon-circle i {
+  font-size: 30px;
+  color: var(--bg-main);
+}
+
+h3 {
+  color: var(--font-secondary);
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .features-container {
+    flex-direction: column;
+    gap: 30px;
+  }
 }
