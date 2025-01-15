@@ -1,30 +1,35 @@
+import { AuthService } from './../../../core/services/user/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-
+import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { Toast } from 'primeng/toast';
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, Toast, ButtonModule],
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css'],
+  providers: [MessageService]
 })
 export class SignupComponent implements OnInit {
+  
   signupForm!: FormGroup;
   showPassword = false;
   showRePassword = false;
   isSubmitting = false;
-
-  constructor(private fb: FormBuilder) {}
-
+  
+  constructor (private fb: FormBuilder, private authService: AuthService, private meassageService: MessageService) {}
+  
   ngOnInit(): void {
     this.signupForm = this.fb.nonNullable.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      rePassword: ['', [Validators.required]]
+      name: ['Ahmed Mahmoud', [Validators.required, Validators.minLength(3)]],
+      email: ['ahmedmahmoud1122@gmail.com', [Validators.required, Validators.email]],
+      phone: ['01212120120', [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]],
+      password: ['Ahmed@2399', [Validators.required, Validators.minLength(8)]],
+      rePassword: ['Ahmed@2399', [Validators.required]]
     }, { validators: this.passwordMatchValidator });
   }
 
@@ -70,8 +75,18 @@ export class SignupComponent implements OnInit {
     
     // Simulate API call
     setTimeout(() => {
-      console.log('Form submitted:', this.signupForm.value);
       this.isSubmitting = false;
-    }, 2000);
+
+      this.authService.signUp(this.signupForm.value).subscribe({
+        next: (response) => {
+          this.meassageService.add({ severity: 'success', summary: 'Succ', detail: 'Message Content' });
+        },
+        error: (error) => {
+          this.meassageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
+
+        }
+      })    
+
+    }, 1000);
   }
 }

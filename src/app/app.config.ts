@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
@@ -37,6 +37,8 @@ import { AllProductsEffects } from './stores/products/all-products-store/all-pro
 import { allProductsReducer } from './stores/products/all-products-store/all-products.reducer';
 import { productsBrandReducer } from './stores/products/products-brand-store/products-brand.reducer';
 import { ProductsBrandEffects } from './stores/products/products-brand-store/products-brand.effects';
+import { interceptors } from './core/services/user/interceptors';
+import { providePrimeNG } from 'primeng/config';
 
 registerLocaleData(en);
 export function HttpLoaderFactory(http: HttpClient) {
@@ -68,7 +70,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
 
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
+    ...interceptors,
     ...TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -78,7 +81,9 @@ export const appConfig: ApplicationConfig = {
     }).providers!,
     provideNzI18n(en_US),
     importProvidersFrom(FormsModule),
-    provideAnimationsAsync(),
     provideHttpClient(),
+
+    provideAnimationsAsync(),
+    providePrimeNG()
   ],
 };
