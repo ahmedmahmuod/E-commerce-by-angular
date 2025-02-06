@@ -34,12 +34,12 @@ export class SignInComponent {
 
   constructor(private fb: FormBuilder, private messageService: MessageService) {
     this.loginForm = this.fb.group({
-      email: ['', [
+      email: ['easytechnologyy1@gmail.com', [
         Validators.required,
         Validators.email,
         Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')
       ]],
-      password: ['', [Validators.required]]
+      password: ['ahmedmahmoud', [Validators.required]]
     });
 
     this.langService.currentLanguage$.subscribe((lang) => {

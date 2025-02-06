@@ -26,6 +26,7 @@
 
   "User": {
     "Login": {
+      "Title_Page": "Market - Sign in",
       "Title": "Welcome Back",
       "Sign_In": "Sign In",
       "Forget_Pass": "Forgot Password?",
@@ -41,6 +42,7 @@
     },
 
     "Sign_Up": {
+      "Title_Page": "Market - Register",
       "Title": "Create your account",
       "Sign_Up": "Create new account",
       "Have_Acc": {
@@ -58,6 +60,7 @@
     },
 
     "Forget_Pass": {
+      "Title_Page":"Market - Forget Password",
       "Phase_1": {
         "Name": "Email",
         "Title": "Reset Your Password",
@@ -93,6 +96,7 @@
     "Profile": {
       "Title": "Welcome",
       "My_Details": {
+        "Title_Page": "Profile - My Details",
         "Title": "My Details",
         "Placeholders": {
           "Name": "Full Name",
@@ -101,6 +105,7 @@
         "Btn": "Update your data"
       },
       "Change_Password": {
+        "Title_Page": "Profile - Change Password",
         "Title": "Change Password",
         "Placeholders": {
           "Current_Pass": "Current Password",
@@ -110,6 +115,7 @@
         "Btn": "Update password"
       },
       "Orders": {
+        "Title_Page": "Profile - My Orders",
         "Title": "My Orders",
         "Table_Details": {
           "Date": "Date",
@@ -151,6 +157,7 @@
 
   "Pages": {
     "Home": {
+      "Title": "Market - Home",
       "Hero_Section": {
         "Title_One": "Discover Amazing Products",
         "Title_Two": "Quality & Style Combined",
@@ -189,6 +196,7 @@
     },
 
     "About": {
+      "Title_Page": "Market - About",
       "Title": "Welcome to Our Online Store",
       "Head": {
         "Title": "Who We Are",
@@ -215,6 +223,7 @@
     },
 
     "Contact": {
+      "Title_Page": "Market - Contact",
       "Title": "Get in Touch",
       "Cards": {
         "One": {
@@ -243,6 +252,7 @@
     },
 
     "Products": {
+      "Title_Page": "Market - Products",
       "All_Products": {
         "Title": "Our Products",
         "Desc": "Discover our collection of premium products",
@@ -280,6 +290,7 @@
     },
 
     "Brands": {
+      "Title_Page": "Market - Brands",
       "All_Brands": {
         "Title": "Our Brands",
         "Desc": "Discover our collection of premium brands",
@@ -292,6 +303,7 @@
     },
 
     "Wishlist": {
+      "Title_Page":"Market - Wishlist",
       "Title": "My Wishlist",
       "Table_Details": {
         "Image": "Image",
@@ -317,6 +329,7 @@
     },
 
     "Cart": {
+      "Title_Page":"Market - Cart",
       "Title": "My Cart",
       "Price": "L.E ",
       "Checkout": {
@@ -330,6 +343,7 @@
           "Terms_of_Service": "Terms of Service"
         },
         "After_Checkout": {
+          "Title_Page": "Market - Order Details",
           "Information_Order": {
             "Title": "Add your order information",
             "Placeholders": {
@@ -347,6 +361,7 @@
               "City": "City is required"
             },
             "Success_Page": {
+              "Title_Page":"Market - Payment Success",
               "Title": "Payment Successful",
               "Thanks": "Thank you for your payment",
               "Message": "Your transaction has been completed successfully.",
@@ -366,6 +381,7 @@
     },
 
     "Error_Page": {
+      "Title_Page":"Market - Page Not Found",
       "Title": "Oops! Page Not Found",
       "Link": "Return Home"
     }
@@ -399,6 +415,10 @@
       "Add_To_Cart": "Add to Cart",
       "Add_To_Wishlist": "Add to Wishlist",
       "View_Details": "View Details"
+    },
+
+    "Global": {
+      "Product_Details_Title_Page": "Market - Product Details"
     }
   }, 
 
