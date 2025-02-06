@@ -1,11 +1,4 @@
-import {
-  Component,
-  CUSTOM_ELEMENTS_SCHEMA,
-  effect,
-  inject,
-  OnInit,
-  signal,
-} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { register } from 'swiper/element/bundle';
 import { BrandsModel } from '../../core/models/brands/brands.model';
@@ -22,6 +15,9 @@ import { Router, RouterLink } from '@angular/router';
 import { GlobalBtnComponent } from '../../shared/components/buttons/global-btn/global-btn.component';
 import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
 import { Product } from '../../core/models/product/product.model';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 
 register();
 
@@ -35,12 +31,16 @@ register();
     GlobalBtnComponent,
     RouterLink,
     ProductCardComponent,
+    ToastModule,
+    TranslateModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [MessageService],
+  
 })
-export class HomeComponent {
+export class HomeComponent  {
   private router = inject(Router);
   private store = inject(Store);
 
@@ -48,7 +48,7 @@ export class HomeComponent {
   products = signal<Product[]>([]);
   limitProductsFilter = signal<Product[]>([]);
   categories = signal<BrandsModel[]>([]);
-
+  
   constructor() {
     // Call ngrx store to get all brands
     this.store.dispatch(BrandsActions.loadBrands());

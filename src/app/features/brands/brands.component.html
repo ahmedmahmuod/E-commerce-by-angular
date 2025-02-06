@@ -1,9 +1,9 @@
 <section class="brands-page container mx-auto">
   <div class="brands-header">
-    <app-page-title title="Our Brands"/>
-    <p>Discover our collection of premium brands</p>
+    <app-page-title title="{{'Pages.Brands.All_Brands.Title' | translate}}"/>
+    <p>{{'Pages.Brands.All_Brands.Desc' | translate}}s</p>
   </div>
-  <app-home-header-page title="Brands" />
+  <app-home-header-page title="{{'Pages.Brands.All_Brands.Page_Header.Title' | translate}}" type="{{'Pages.Brands.All_Brands.Page_Header.Type' | translate}}" />
 
   <div class="brands-grid mb-6">
     <div *ngFor="let brand of displayedBrands$ | async" class="brand-card">
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div *ngIf="(displayedBrands$ | async)?.length === initialDisplayCount " class="flex justify-center">
-    <app-global-btn (click)="clickViewAllBrands()" title="View All Brands"/>
+    <app-global-btn (click)="clickViewAllBrands()" title="{{'Pages.Brands.All_Brands.View_Btn' | translate}}"/>
   </div>
 </section>
 <app-spinner *ngIf="isLoading$ | async" />

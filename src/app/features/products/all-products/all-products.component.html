@@ -1,14 +1,14 @@
 <section class="content-page container mx-auto">
   <div class="content-header">
-    <app-page-title title="Our Products"/>
-    <p>Discover our collection of premium products</p>
+    <app-page-title title="{{'Pages.Products.All_Products.Title' | translate}}"/>
+    <p>{{'Pages.Products.All_Products.Desc' | translate}}</p>
     <div class="product-page-category relative">
-      <app-home-header-page title="Products" type="All"/>
+      <app-home-header-page title="{{'Pages.Products.All_Products.Page_Header.Title' | translate}}" type="{{'Pages.Products.All_Products.Page_Header.Type' | translate}}"/>
       <div class="flex flex-col justify-between">
         <app-product-filters (filterFormValues)="onFormFilterValues($event)" [categories]="filteredCategories()" [brands]="filteredBrands()"/>
         <div>
           <div *ngIf="!hasProducts()" class="no-products-message">
-            There are no filtering products!.
+            {{'Shared.Filter_Products.Results.If_Empty_Result' | translate}}
           </div>
           <app-product-card [products]="products$ | async" />
         </div>

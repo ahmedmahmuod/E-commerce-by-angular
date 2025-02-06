@@ -12,7 +12,7 @@
     <!-- hr Divider -->
     <div class="section-divider"><span></span></div>
     <div class="section-container">
-      <app-page-title [title]="'Featured Brands'" />
+      <app-page-title title="{{'Pages.Home.Brand_Section.Title' | translate}}" />
       <div class="brands-container">
         <swiper-container
           [breakpoints]="breakpoints"
@@ -34,7 +34,7 @@
           </swiper-slide>
         </swiper-container>
         <div class="flex justify-center">
-          <app-global-btn routerLink="/brands" title="Discover other brands"/>
+          <app-global-btn routerLink="/brands" title="{{'Pages.Home.Brand_Section.Btn' | translate}}"/>
         </div>
       </div>
     </div>
@@ -45,10 +45,10 @@
   <!-- hr Divider -->
   <div class="section-divider"><span></span></div>
   <div class="section-container">
-    <app-page-title [title]="'Best Selling Products'" />
+    <app-page-title title="{{'Pages.Home.Products_Section.Title' | translate}}" />
     <app-product-card [products]="limitProductsFilter()"/>
     <div class="flex justify-center">
-      <app-global-btn routerLink="/products" title="See all our products!"/>
+      <app-global-btn routerLink="/products" title="{{'Pages.Home.Products_Section.Btn' | translate}}"/>
     </div>
   </div>
 </section>
@@ -58,7 +58,7 @@
   <!-- hr Divider -->
   <div class="section-divider"><span></span></div>
   <div class="section-container">
-    <app-page-title [title]="'Browse by category'" />
+    <app-page-title title="{{'Pages.Home.Categories_Section.Title' | translate}}" />
     <swiper-container
     [breakpoints]="breakpoints"
     [speed]="swiperConfig.speed"
@@ -91,26 +91,27 @@
         <div class="icon-circle">
           <i class="fas fa-truck"></i>
         </div>
-        <h3>FREE AND FAST DELIVERY</h3>
-        <p>Free delivery for all orders over $140</p>
+        <h3>{{'Pages.Home.End_Section.Card_One.Title' | translate}}</h3>
+        <p>{{'Pages.Home.End_Section.Card_One.Desc' | translate}}</p>
       </div>
 
       <div class="feature-item">
         <div class="icon-circle">
           <i class="fas fa-headset"></i>
         </div>
-        <h3>24/7 CUSTOMER SERVICE</h3>
-        <p>Friendly 24/7 customer support</p>
+        <h3>{{'Pages.Home.End_Section.Card_Two.Title' | translate}}</h3>
+        <p>{{'Pages.Home.End_Section.Card_Two.Desc' | translate}}</p>
       </div>
 
       <div class="feature-item">
         <div class="icon-circle">
           <i class="fas fa-shield-alt"></i>
         </div>
-        <h3>MONEY BACK GUARANTEE</h3>
-        <p>We return money within 30 days</p>
+        <h3>{{'Pages.Home.End_Section.Card_Three.Title' | translate}}</h3>
+        <p>{{'Pages.Home.End_Section.Card_Three.Desc' | translate}}</p>
       </div>
     </div>
   </div>
 </section>
 </div>
+<p-toast position="bottom-right"></p-toast>

@@ -2,8 +2,8 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  max-height: 70vh;
-
+  max-height: 78vh;
+  height: 100%;
 }
 
 .hero-image {
@@ -20,7 +20,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9));
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
 }
 
 .hero-content {
@@ -36,17 +36,12 @@
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   color: var(--bg-main);
-}
-
-.hero-description {
-  color: var(--font-main);
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  font-family: var(--font-family);
 }
 
 .hero-button {
@@ -64,9 +59,8 @@
 }
 
 .hero-button:hover {
-  background-color: var(--font-main);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px var(--font-secondary);
+  box-shadow: 0 4px 15px var(--font-third);
 }
 
 ::ng-deep .ant-carousel {
@@ -90,11 +84,11 @@
 
 @media (max-width: 992px) {
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .hero-description {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -113,17 +107,22 @@
   }
 
   .hero-button {
-    padding: 0.5rem 1.5rem;
-    font-size: 0.7rem;
+    padding: 0.7rem 2rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 576px) {
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .hero-description {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .hero-button {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.8rem;
   }
 }

@@ -10,6 +10,7 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { PageTitleComponent } from "../../shared/components/page-title/page-title.component";
 import { GlobalBtnComponent } from "../../shared/components/buttons/global-btn/global-btn.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brands',
@@ -19,7 +20,8 @@ import { GlobalBtnComponent } from "../../shared/components/buttons/global-btn/g
     SpinnerComponent,
     HomeHeaderPageComponent,
     PageTitleComponent,
-    GlobalBtnComponent
+    GlobalBtnComponent,
+    TranslateModule
 ],
   templateUrl: './brands.component.html',
   styleUrl: './brands.component.css',
@@ -49,7 +51,7 @@ export class BrandsComponent {
 
   // Click on view all brands
   clickViewAllBrands() {
-    this.displayedBrands$ = this.brands$;
+    this.displayedBrands$ = this.brands$;    
   }
 
   // Click on brand to get id

@@ -11,7 +11,7 @@ import { ButtonModule } from 'primeng/button';
   styles: [
     `
       .view-all {
-        padding: 7px 13px;
+        padding: 10px;
         text-align: center;
         background-color: var(--font-main);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -22,12 +22,11 @@ import { ButtonModule } from 'primeng/button';
         align-items: center;
         width: fit-content;
         cursor: pointer;
-        font-size: 7px !important;
-        border-radius: 10px;
+        font-size: 18px !important;
       }
       .view-all:hover {
         background-color: var(--font-secondary);
-    }
+      }
     `,
   ],
 })

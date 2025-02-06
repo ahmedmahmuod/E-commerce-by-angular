@@ -1,43 +1,49 @@
 <div class="product-grid">
-    <div *ngFor="let product of products" class="product-card">
-      <div class="top-card-product">
-        @if (product.priceAfterDiscount) {
-          <div class="discount-badge">
-            -{{ ((product.price - product.priceAfterDiscount) / product.price * 100).toFixed(0) }}%
-          </div>
-        }
-          <div class="image-container">
-            <img [src]="product.imageCover" [alt]="product.title" class="product-image" />
-            <div class="icon-buttons">
-              <button (click)="addToWishlist(product)" class="icon-btn wishlist-btn">
-                <i class="fa-regular fa-heart"></i>
-              </button>
-              <button (click)="viewProduct(product)" [routerLink]="[product._id, 'details']"  class="icon-btn view-btn">
-                <i class="fa-regular fa-eye"></i>
-              </button>
-            </div>
-            <button (click)="addToCart(product)" class="add-to-cart-btn">
-              Add To Cart
+  <div *ngFor="let product of products" class="product-card">
+    <div class="top-card-product">
+      @if (product.priceAfterDiscount) {
+        <div class="discount-badge">
+          -{{ ((product.price - product.priceAfterDiscount) / product.price * 100).toFixed(0) }}%
+        </div>
+      }
+        <div class="image-container">
+          <img [src]="product.imageCover" [alt]="product.title" class="product-image" />
+          <div class="icon-buttons">
+            <button (click)="addToWishlist(product)" class="icon-btn wishlist-btn" aria-label="Add to Wishlist">
+              <i class="fa-regular fa-heart"></i>
+            </button>
+            <button (click)="viewProduct(product)" [routerLink]="[product._id, 'details']"  class="icon-btn view-btn" aria-label="View Product">
+              <i class="fa-regular fa-eye"></i>
             </button>
           </div>
-      </div>
-      <div class="bottom-card-product">
-          <h3 class="product-title">{{ product.title }}</h3>
-          <div class="product-price">
-            @if (product.priceAfterDiscount) {
-              <span class="discounted-price">${{ product.price }}</span>
-              <span class="original-price">${{ product.priceAfterDiscount }}</span>
-            } @else {
-              <span class="discounted-price">${{ product.price }}</span>
-              <span class="original-price">$0</span>
-            }
-          </div>
-          <div class="product-rating text-lg">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="rating-count">({{ product.ratingsAverage }})</span>
-          </div>
-      </div>
+          <button (click)="addToCart(product)" class="add-to-cart-btn">
+            {{'Shared.Buttons.Add_To_Cart' | translate}}
+          </button>
+        </div>
+    </div>
+    <div class="bottom-card-product">
+        <h3 class="product-title">{{ product.title }}</h3>
+        <div class="product-price">
+          @if (product.priceAfterDiscount) {
+            <span class="discounted-price mx-2">{{ product.price | currency: ('Pages.Products.Product_Details.Price' | translate)}}</span>
+            <span class="original-price">{{ product.priceAfterDiscount | currency: ('Pages.Products.Product_Details.Price' | translate) }}</span>
+          } @else {
+            <span class="discounted-price">{{ product.price | currency: ('Pages.Products.Product_Details.Price' | translate) }}</span>
+          }
+        </div>
+        <div class="product-rating text-lg">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="rating-count">({{ product.ratingsAverage }})</span>
+        </div>
     </div>
   </div>
+</div>
+
+@if ((currentLang$ | async) === 'en') {
+  <p-toast dir="ltr" position="bottom-right"></p-toast>
+} @else {
+  <p-toast dir="ltr" position="bottom-left"></p-toast>
+}
+<app-spinner *ngIf="isLoading$ | async"/>

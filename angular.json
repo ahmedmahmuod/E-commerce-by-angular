@@ -34,9 +34,13 @@
               }
             ],
             "styles": [
-              "src/theme.less",
-              "src/custom-theme.scss",
-              "src/styles.css"
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "src/styles.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "node_modules/swiper/swiper-bundle.min.css"
             ],
             "scripts": []
           },
@@ -108,15 +112,13 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
+              "src/styles.css",
               "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "node_modules/swiper/swiper-bundle.min.css"
-
             ],
             "scripts": []
           }

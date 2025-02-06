@@ -1,63 +1,100 @@
 <div class="cart-container">
-    <app-page-title class="m-10" title="Your Cart ({{cartItems.length}})"/>
-    <div class="cart-content">
+  @if (cartItems$ | async; as cartItems) {
+    <ng-container>
+      <app-page-title class="m-10" title="{{'Pages.Cart.Title' | translate}} ({{ isLoggedIn ? cartItems.numOfCartItems : 0 }})" />
+      <div class="cart-content">
         <div class="cart-items">
-            @if (cartItems.length >= 1) {
-                <div class="cart-item shadow-lg" *ngFor="let item of cartItems">
-                    <img src="../../../assets/images/laptop.webp">
-                    <div class="item-details">
-                        <h3>{{ item.name }}</h3>
-                        <div class="flex justify-between">
-                            <div class="price">L.E {{ (item.price).toFixed(2) }}</div>
-                            <p class="ref">Stock: {{ item.ref }}</p>
-                        </div>
-                        <hr class="m-5">
-                        <div class="quantity-price">
-                            <div class="quantity-controls">
-                                <div class="flex items-center gap-2">
-                                    <button class="decrease" (click)="decreaseQuantity(item)">
-                                        <i class="fa-solid fa-minus"></i>
-                                    </button>
-                                    <input type="number" [(ngModel)]="item.quantity" readonly>
-                                    <button class="increase" (click)="increaseQuantity(item)">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </button>
-                                </div>
-                                <div class="price">L.E {{ (item.price * item.quantity).toFixed(2) }}</div>
-                                <app-view-product/>
-                            </div>
-                        </div>
+          <ng-container *ngIf="isLoggedIn; else loggedOutTemplate">
+            <ng-container *ngIf="cartItems.data.products.length > 0; else emptyCartTemplate">
+              <div class="cart-item shadow-lg" *ngFor="let item of cartItems.data.products">
+                <img [src]="item.product.imageCover" alt="{{ item.product.title }}" />
+                <div class="item-details">
+                  <h3>{{ item.product.title }}</h3>
+                  <div class="flex justify-between">
+                    <div class="price">{{ item.price.toFixed(2) | currency: ('Pages.Cart.Price' | translate) }}</div>
+                  </div>
+                  <hr class="m-5" />
+                  <div class="quantity-price">
+                    <div class="quantity-controls">
+                      <div class="flex items-center gap-2">
+                        <button (click)="inDeQuantity(item, item.count - 1)" class="decrease" [disabled]="item.count === 1" aria-label="Decrease quantity">
+                          <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <input type="number" [value]="item.count" disabled />
+                        <button (click)="inDeQuantity(item, item.count + 1)" class="increase" aria-label="Increase quantity">
+                          <i class="fa-solid fa-plus"></i>
+                        </button>
+                      </div>
+                      <div class="price">
+                        {{ (item.price * item.count).toFixed(2) | currency: ('Pages.Cart.Price' | translate) }}
+                      </div>
+                      <app-view-product (click)="viewProduct(item)"/>
                     </div>
-                    <button class="remove-item" (click)="removeItem(item)">
-                        <i class="delete-btn fa-regular fa-trash-can"></i>
-                    </button>
+                  </div>
                 </div>
-            } @else {
-                <h1 class="empty-cart">Your Cart is empty!</h1>
-            }
+                <button (click)="deleteProductCart(item)" class="remove-item" aria-label="Remove item from cart">
+                  <i class="delete-btn fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </ng-container>
+          </ng-container>
         </div>
-        <div class="cart-summary shadow-lg rounded-xl">
+        <ng-template #emptyCartTemplate>
+          <div class="empty-cart-message">
+            <h1 class="empty-cart-title">{{'Pages.Cart.If_Empty.Title' | translate}}</h1>
+            <button class="empty-cart-button" routerLink="/products">{{'Pages.Cart.If_Empty.Btn' | translate}}</button>
+          </div>
+        </ng-template>
+        <ng-template #loggedOutTemplate>
+          <div class="empty-cart-message">
+            <p class="empty-cart-subtext">{{'Pages.Cart.If_Not_Login.Title' | translate}}</p>
+            <button class="empty-cart-button" routerLink="/login">{{'Pages.Cart.If_Not_Login.Btn' | translate}}</button>
+          </div>
+        </ng-template>
+        <ng-container *ngIf="isLoggedIn">
+          <div class="cart-summary shadow-lg rounded-xl">
             <div>
-                <div class="summary-row">
-                    <span>Subtotal:</span>
-                    <span>L.E {{ subtotal.toFixed(2) }}</span>
-                </div>
-                <div class="summary-row">
-                    <span>Delivery:</span>
-                    <span>L.E {{ delivery.toFixed(2) }}</span>
-                </div>
-                <div class="summary-row total">
-                    <span>Total:</span>
-                    <span>L.E {{ total.toFixed(2) }}</span>
-                </div>
+              <div class="summary-row">
+                <span>{{'Pages.Cart.Checkout.Subtotal' | translate}}:</span>
+                <span>{{ calculateTotal(cartItems.data.products).toFixed(2) | currency: ('Pages.Cart.Price' | translate) }}</span>
+              </div>
+              <div class="summary-row">
+                <span>{{('Pages.Cart.Checkout.Delivery' | translate) }}:</span>
+                <span>{{('Pages.Cart.Price' | translate) }} 0</span>
+              </div>
+              <div class="summary-row total">
+                <span>{{('Pages.Cart.Checkout.Total' | translate)}}:</span>
+                <span>{{ calculateTotal(cartItems.data.products).toFixed(2) | currency: ('Pages.Cart.Price' | translate) }}</span>
+              </div>
             </div>
             <div>
-                <button class="checkout-button">Checkout</button>
-                <p class="terms">
-                    This site is protected by reCAPTCHA and the Google
-                    <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a> apply.
-                </p>
+              <button [disabled]="cartItems.data.products.length < 1" [routerLink]="['/cart/checkout/'+ cartItems.cartId]" class="checkout-button" [ngClass]="{'disabled-button': cartItems.data.products.length < 1}">
+                {{('Pages.Cart.Checkout.Btn' | translate) }}
+              </button>              
+              <p class="terms">
+                {{('Pages.Cart.Checkout.Checkout_Details.Title' | translate)}}
+                <a routerLink="/about">{{('Pages.Cart.Checkout.Checkout_Details.Privacy_Policy' | translate)}}</a>
+                 & 
+                 <a routerLink="/about">{{('Pages.Cart.Checkout.Checkout_Details.Terms_of_Service' | translate)}}</a>
+              </p>
             </div>
-        </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  } @else {
+    <div class="empty-cart-message">
+      <p class="empty-cart-subtext">{{'Pages.Cart.If_Not_Login.Title' | translate}}</p>
+      <span routerLink="/user/login" class="empty-cart-button">
+        <i class="fa-solid fa-user"></i>
+        {{'Pages.Cart.If_Not_Login.Btn' | translate}} 
+      </span>
     </div>
+  }
 </div>
+@if ((currentLang$ | async) === 'en') {
+  <p-toast dir="ltr" position="bottom-right"></p-toast>
+} @else {
+  <p-toast dir="ltr" position="bottom-left"></p-toast>
+}
+<app-spinner *ngIf="loading$ | async"/>

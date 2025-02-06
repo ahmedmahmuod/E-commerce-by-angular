@@ -6,25 +6,22 @@
 /* Variabls */
 :root {
   /* background */
-  --bg-main: #DBD3D3;
+  --bg-main: #dbd3d3;
   --bg-secondary: #091057;
   /* font */
-  --font-main: #EC8305;
+  --font-main: #ec8305;
   --font-secondary: #091057;
   --font-third: #666;
 
   /* others */
+  --font-family: 'El Messiri', sans-serif;
   --border-bottom: 1px solid #8787875e;
   --tooltip-color: #859f3d;
+  
 }
 
-.ant-tooltip-inner {
-  color: white !important;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
+* {
+  font-family: var(--font-family);
 }
 
 /* Media Query [Responsive] */

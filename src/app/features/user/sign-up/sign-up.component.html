@@ -1,7 +1,7 @@
 <div class="signup-container">
     <div class="signup-card">
         <div class="signup-header">
-            <h1>Create Your Account</h1>
+            <h1>{{'User.Sign_Up.Title' | translate}}</h1>
         </div>
 
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
@@ -10,7 +10,7 @@
                 <div class="input-container">
                     <input type="text" id="name" formControlName="name"
                         [class.error]="signupForm.get('name')?.invalid && (signupForm.get('name')?.touched || signupForm.get('name')?.dirty)"
-                        placeholder="Full Name">
+                        placeholder="{{'User.Sign_Up.Placeholders.Name' | translate}}">
                     <span class="icon">👤</span>
                 </div>
                 <span class="error-message" *ngIf="(signupForm.get('name')?.touched || signupForm.get('name')?.dirty) && getErrorMessage('name')">
@@ -23,7 +23,7 @@
                 <div class="input-container">
                     <input type="email" id="email" formControlName="email"
                         [class.error]="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || signupForm.get('email')?.dirty)"
-                        placeholder="Email">
+                        placeholder="{{'User.Sign_Up.Placeholders.Email' | translate}}">
                     <span class="icon">✉️</span>
                 </div>
                 <span class="error-message" *ngIf="(signupForm.get('email')?.touched || signupForm.get('email')?.dirty) && getErrorMessage('email')">
@@ -36,7 +36,7 @@
                 <div class="input-container">
                     <input type="text" id="phone" formControlName="phone"
                         [class.error]="signupForm.get('phone')?.invalid && (signupForm.get('phone')?.touched || signupForm.get('phone')?.dirty)"
-                        placeholder="Phone Number">
+                        placeholder="{{'User.Sign_Up.Placeholders.Phone' | translate}}">
                     <span class="icon">📞</span>
                 </div>
                 <span class="error-message" *ngIf="(signupForm.get('phone')?.touched || signupForm.get('phone')?.dirty) && getErrorMessage('phone')">
@@ -49,7 +49,7 @@
                 <div class="input-container">
                     <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
                         [class.error]="signupForm.get('password')?.invalid && (signupForm.get('password')?.touched || signupForm.get('password')?.dirty)"
-                        placeholder="Password">
+                        placeholder="{{'User.Sign_Up.Placeholders.Password' | translate}}">
                     <button type="button" class="toggle-password" (click)="togglePasswordVisibility('password')"
                         [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
                         {{ showPassword ? '👁️' : '👁️‍🗨️' }}
@@ -65,7 +65,7 @@
                 <div class="input-container">
                     <input [type]="showRePassword ? 'text' : 'password'" id="rePassword" formControlName="rePassword"
                         [class.error]="signupForm.get('rePassword')?.invalid && (signupForm.get('rePassword')?.touched || signupForm.get('rePassword')?.dirty)"
-                        placeholder="Confirm Password">
+                        placeholder="{{'User.Sign_Up.Placeholders.Confirm_Pass' | translate}}">
                     <button type="button" class="toggle-password" (click)="togglePasswordVisibility('rePassword')"
                         [attr.aria-label]="showRePassword ? 'Hide password' : 'Show password'">
                         {{ showRePassword ? '👁️' : '👁️‍🗨️' }}
@@ -73,7 +73,11 @@
                 </div>
                 <!-- Error message for password mismatch -->
                 <span class="error-message" *ngIf="(signupForm.get('rePassword')?.touched || signupForm.get('rePassword')?.dirty) && signupForm.hasError('mismatch')">
-                    Passwords do not match
+                    @if ((currentLang$ | async) === 'en') {
+                        Passwords do not match
+                    } @else {
+                        كلمات المرور غير متطابقه
+                    }
                 </span>
                 <!-- Error message for required field -->
                 <span class="error-message" *ngIf="(signupForm.get('rePassword')?.touched || signupForm.get('rePassword')?.dirty) && getErrorMessage('rePassword')">
@@ -81,15 +85,17 @@
                 </span>
             </div>
 
-            <button type="submit" class="submit-button" [disabled]="signupForm.invalid || isSubmitting">
-                <span *ngIf="!isSubmitting">Create Account</span>
-                <span *ngIf="isSubmitting" class="spinner"></span>
-            </button>
+            <app-button-loading background="background-second" text="{{'User.Sign_Up.Sign_Up' | translate}}" [loading]="isSubmitting" [disabled]="isSubmitting || signupForm.invalid"/>
         </form>
 
         <div class="login-prompt">
-            <p>Already have an account? <a routerLink="/user/login">Sign in</a></p>
+            <p>{{'User.Sign_Up.Have_Acc.Title' | translate}}<a routerLink="/user/login"> {{'User.Sign_Up.Have_Acc.Link' | translate}}</a></p>
         </div>
     </div>
 </div>
-<p-toast />
+
+@if ((currentLang$ | async) === 'en') {
+    <p-toast dir="ltr" position="bottom-right"></p-toast>
+} @else {
+    <p-toast dir="ltr" position="bottom-left"></p-toast>
+}

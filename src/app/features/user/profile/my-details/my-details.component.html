@@ -1,12 +1,49 @@
 <div class="details-container">
-  <div class="form-group">
-    <input type="text" placeholder="Name" class="form-control" />
-  </div>
-  <div class="form-group">
-    <input type="email" placeholder="Email" class="form-control" />
-  </div>
-  <div class="form-group">
-    <input type="tel" placeholder="Phone" class="form-control" />
-  </div>
-  <button class="save-btn">Save Changes</button>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <!-- Name Field -->
+    <div class="form-group">
+      <div class="input-container">
+        <input type="text" id="name" formControlName="name"
+          [class.error]="userForm.get('name')?.invalid && (userForm.get('name')?.touched || userForm.get('name')?.dirty)"
+          placeholder="{{'User.Profile.My_Details.Placeholders.Name' | translate}}">
+        <span class="icon">👤</span>
+      </div>
+      <span class="error-message" *ngIf="(userForm.get('name')?.touched || userForm.get('name')?.dirty) && getErrorMessage('name')">
+        {{ getErrorMessage('name') }}
+      </span>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <div class="input-container">
+        <input class="text-font-third" type="email" id="email" formControlName="email"
+          [class.error]="userForm.get('email')?.invalid && (userForm.get('email')?.touched || userForm.get('email')?.dirty)"
+          placeholder="Email">
+        <span class="icon">✉️</span>
+      </div>
+      <span class="error-message" *ngIf="(userForm.get('email')?.touched || userForm.get('email')?.dirty) && getErrorMessage('email')">
+        {{ getErrorMessage('email') }}
+      </span>
+    </div>
+
+    <!-- Phone Field -->
+    <div class="form-group">
+      <div class="input-container">
+        <input type="text" id="phone" formControlName="phone"
+          [class.error]="userForm.get('phone')?.invalid && (userForm.get('phone')?.touched || userForm.get('phone')?.dirty)"
+          placeholder="{{'User.Profile.My_Details.Placeholders.Phone_Number' | translate}}">
+        <span class="icon">📞</span>
+      </div>
+      <span class="error-message" *ngIf="(userForm.get('phone')?.touched || userForm.get('phone')?.dirty) && getErrorMessage('phone')">
+        {{ getErrorMessage('phone') }}
+      </span>
+    </div>
+
+    <app-button-loading text="{{'User.Profile.My_Details.Btn' | translate}}" [disabled]="userForm.invalid || isSubmitting" [loading]="isSubmitting"/>
+  </form>
 </div>
+@if ((currentLang$ | async) === 'en') {
+  <p-toast dir="ltr" position="bottom-right"></p-toast>
+} @else {
+  <p-toast dir="ltr" position="bottom-left"></p-toast>
+}

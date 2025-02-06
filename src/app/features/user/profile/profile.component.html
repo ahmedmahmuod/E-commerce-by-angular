@@ -1,31 +1,56 @@
 <div class="profile-container">
   <!-- Side Navigation -->
-  <div class="nav-container"> <!-- هنا ضفنا class جديده -->
+  <div class="nav-container">
     <nav class="side-nav">
+      <!-- Profile Section -->
+      <div class="profile-info">
+        <h3  class="profile-name">({{'User.Profile.Title' | translate}})</h3>
+        <h3 class=" text-background-main">{{ (userData$ | async)?.data.name }}</h3>
+      </div>
+
+      <!-- Navigation Links -->
       <div class="nav-group">
-        <h3>Manage my account</h3>
         <ul>
           <li>
-            <a routerLink="/user/profile/my-details" routerLinkActive="active">My Details</a>
+            <a routerLink="/user/profile/my-details" routerLinkActive="active">
+              <i class="fa-solid fa-user-pen"></i>
+              <span>{{'User.Profile.My_Details.Title' | translate}}</span>
+            </a>
           </li>
           <li>
-            <a routerLink="/user/profile/change-password" routerLinkActive="active">Change Password</a>
+            <a routerLink="/user/profile/change-password" routerLinkActive="active">
+              <i class="fa-solid fa-lock"></i>
+              <span>{{'User.Profile.Change_Password.Title' | translate}}</span>
+            </a>
           </li>
         </ul>
       </div>
+
       <div class="nav-group">
-        <h3>My Orders</h3>
+        <h3 aria-hidden="true"></h3>
         <ul>
           <li>
-            <a routerLink="/user/profile/my-orders" routerLinkActive="active">Orders</a>
+            <a routerLink="/user/profile/my-orders" routerLinkActive="active">
+              <i class="fa-solid fa-box"></i>
+              <span>{{'User.Profile.Orders.Title' | translate}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Logout Button -->
+      <div class="nav-group logout-group">
+        <h3 aria-hidden="true"></h3>
+        <ul>
+          <li (click)="logOut()">
+            <a class="logout-link">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <span>{{'User.Profile.Logout.Title' | translate}}</span>
+            </a>
           </li>
         </ul>
       </div>
     </nav>
-    <div class="login-button">
-      <i class="fa-solid fa-right-from-bracket"></i>
-      <span routerLink="orders">Log out</span>
-    </div>
   </div>
 
   <!-- Content Area -->

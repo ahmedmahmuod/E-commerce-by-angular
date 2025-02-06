@@ -1,5 +1,416 @@
 {
-    "HELLO": "Hello",
-    "WELCOME": "Welcome to our application!"
+  "Header": {
+    "Pages": {
+      "Home": "Home",
+      "About": "About Us",
+      "Contact": "Contact",
+      "Products": "Products",
+      "Brands": "Brands"
+    },
+
+    "Lang": {
+      "en": "English",
+      "ar": "Arabic"
+    },
+
+    "Profile": {
+      "Manage_Profile": "Manage Profile",
+      "Logout": "Logout"
+    },
+
+    "Auth": {
+      "Login": "Login",
+      "Register": "Register"
+    }
+  },
+
+  "User": {
+    "Login": {
+      "Title": "Welcome Back",
+      "Sign_In": "Sign In",
+      "Forget_Pass": "Forgot Password?",
+      "Have_Acc": {
+        "Title":  "Don't have an account?",
+        "Link": "Sign Up"
+      },
+
+      "Placeholders": {
+        "Email": "Email",
+        "Password": "Password"
+      }
+    },
+
+    "Sign_Up": {
+      "Title": "Create your account",
+      "Sign_Up": "Create new account",
+      "Have_Acc": {
+        "Title":  "Already have an account?",
+        "Link": "Sign In"
+      },
+      "Placeholders": {
+        "Name": "Full Name",
+        "Email": "Email",
+        "Phone": "Phone Number",
+        "Password": "Password",
+        "Confirm_Pass": "Confirm Password"
+
+      }
+    },
+
+    "Forget_Pass": {
+      "Phase_1": {
+        "Name": "Email",
+        "Title": "Reset Your Password",
+        "Email": "Enter your email address",
+        "Btn": "Next"
+      },
+
+      "Phase_2": {
+        "Name": "Verification",
+        "Title": "Verifying your code that we sent to your email",
+        "Btn": "Verifying",
+        "Resend": {
+          "Title": "Something went wrong?",
+          "Link": "Resend email"
+        }
+      },
+
+      "Phase_3": {
+        "Name": "Finish",
+        "Title": "Set new password",
+        "Btn": "Finish",
+        "Placeholders": {
+          "Email": "Enter your email address",
+          "New_Password": "Enter new password"
+        }
+      },
+
+      "Success": {
+        "Title": "Password reset successfully!",
+        "Description": "You can now log in with your new password"
+      }
+    }, 
+    "Profile": {
+      "Title": "Welcome",
+      "My_Details": {
+        "Title": "My Details",
+        "Placeholders": {
+          "Name": "Full Name",
+          "Phone_Number": "Phone Number"
+        },
+        "Btn": "Update your data"
+      },
+      "Change_Password": {
+        "Title": "Change Password",
+        "Placeholders": {
+          "Current_Pass": "Current Password",
+          "New_Pass": "New Password",
+          "Confirm_Pass": "Confirm New Password"
+        },
+        "Btn": "Update password"
+      },
+      "Orders": {
+        "Title": "My Orders",
+        "Table_Details": {
+          "Date": "Date",
+          "Id": "ID",
+          "Status": "Status",
+          "Payment": "Payment",
+          "Total": "Total",
+          "Items": "Items"
+        },
+        "Product_Details": {
+          "Status": {
+            "Pending": "Pending",
+            "Delivered": "Success"
+          },
+          "Payment_Methode": {
+            "Cash": "Cash",
+            "Card": "Card"
+          },
+          "Price":"L.E ",
+          "Btn": "View order"
+        },
+        "Order_Details": {
+          "Title": "Order Details",
+          "Table_Details": {
+            "Product_Name": "Name",
+            "Image": "Image",
+            "Unit_Price": "L.E ",
+            "Price": "Price",
+            "Quantity": "Quantity"
+          }
+        },
+        "If_Empty": "There are no orders yet"
+      },
+      "Logout": {
+        "Title": "Log out"
+      }
+    }
+  },
+
+  "Pages": {
+    "Home": {
+      "Hero_Section": {
+        "Title_One": "Discover Amazing Products",
+        "Title_Two": "Quality & Style Combined",
+        "Btn": "Explore Now"
+      },
+
+      "Brand_Section": {
+        "Title": "Featured Brands",
+        "Btn": "Discover More"
+      },
+
+      "Products_Section": {
+        "Title": "Best Selling Products",
+        "Btn": "Discover More"
+      },
+      "Categories_Section": {
+        "Title": "Browse by category"
+      },
+
+      "End_Section": {
+        "Card_One": {
+          "Title": "FREE AND FAST DELIVERY",
+          "Desc": "Free delivery for all orders over $140"
+        },
+
+        "Card_Two": {
+          "Title": "CUSTOMER SERVICE 24/7",
+          "Desc": "Friendly 24/7 customer support"
+        },
+
+        "Card_Three": {
+          "Title": "MONEY BACK GUARANTEE",
+          "Desc": "We return money within 30 days"
+        }
+      }
+    },
+
+    "About": {
+      "Title": "Welcome to Our Online Store",
+      "Head": {
+        "Title": "Who We Are",
+        "Desc": "We are a leading e-commerce store dedicated to providing the best products with the highest quality at competitive prices. Founded in 2025, our mission is to make online shopping easier and more enjoyable for our customers."
+      },
+      "Cards": {
+        "Card_One": {
+          "Title": "Fast Delivery",
+          "Desc": "We ensure your products arrive as quickly as possible"
+        },
+        "Card_Two": {
+          "Title": "Premium Quality",
+          "Desc": "We carefully select our products to ensure your satisfaction"
+        },
+        "Card_Three": {
+          "Title": "Support",
+          "Desc": "Our team is always here to help you"
+        }
+      },
+      "Footer": {
+        "Title": "Our Vision",
+        "Desc": "We aspire to be the first choice for online shopping in the region by providing a seamless and secure shopping experience, focusing on customer satisfaction and product quality."
+      }
+    },
+
+    "Contact": {
+      "Title": "Get in Touch",
+      "Cards": {
+        "One": {
+          "Title": "Our Location",
+          "Desc": "Egypt, Damietta"
+        },
+        "Two": {
+          "Title": "Phone Number",
+          "Desc": "+20 1021872093"
+        },
+        "Three": {
+          "Title": "Email Address",
+          "Desc": "easytechnologyy1@gmail.com"
+        },
+        "Four": {
+          "Title": "Working Hours",
+          "Desc": "Sunday to Thursday, 9:00 AM to 5:00 PM"
+        }
+      },
+      "Form": {
+        "Name": "Enter Your Name",
+        "Email": "Enter Your Email",
+        "Message": "Enter Your Message",
+        "Submit": "Send Message"
+      }
+    },
+
+    "Products": {
+      "All_Products": {
+        "Title": "Our Products",
+        "Desc": "Discover our collection of premium products",
+        "Page_Header": {
+          "Title": "Products",
+          "Type": "All"
+        }
+      },
+
+      "Products_Type": {
+        "Desc": "Discover our collection of",
+        "Page_Header": {
+          "Type": "All"
+        }
+      },
+
+      "Product_Details": {
+        "Price": "L.E ",
+        "Rateing": "Reviews",
+        "Stock": {
+          "In_Stock": "In Stock",
+          "Out_Stock": "Out of Stock"
+        },
+        "Add_to_Cart": "Add to Cart",
+        "Sold": "Sold",
+        "Quantity": "Quantity",
+        "Category": "Category",
+        "Subcategory": "Subcategory",
+        "Brand": "Brand"
+      },
+
+      "Shared": {
+        "If_No_Products": "There are no products here!."
+      }
+    },
+
+    "Brands": {
+      "All_Brands": {
+        "Title": "Our Brands",
+        "Desc": "Discover our collection of premium brands",
+        "Page_Header": {
+          "Title": "Brands",
+          "Type": "All"
+        },
+        "View_Btn": "View all brands"
+      }
+    },
+
+    "Wishlist": {
+      "Title": "My Wishlist",
+      "Table_Details": {
+        "Image": "Image",
+        "Product_Name": "Product Name",
+        "Price": "Unit Price",
+        "Stock_Status": "Stock Status"
+      },
+      "Add_To_Cart": "Add to Cart",
+      "Created_On": "Added on:",
+      "Price": "L.E ",
+      "Stock": {
+        "In_Stock": "In Stock",
+        "Out_Stock": "Out of Stock"
+      },
+      "If_Empty": {
+        "Title": "Your wishlist is empty",
+        "Btn": "Continue Shopping"
+      },
+      "If_Not_Login": {
+        "Title": "You must be logged in to add items to your wishlist",
+        "Btn": "Login"
+      }
+    },
+
+    "Cart": {
+      "Title": "My Cart",
+      "Price": "L.E ",
+      "Checkout": {
+        "Subtotal": "Subtotal",
+        "Delivery": "Delivery",
+        "Total": "Total",
+        "Btn": "Checkout",
+        "Checkout_Details": {
+          "Title": "This site is protected by reCAPTCHA and the Google",
+          "Privacy_Policy": "Privacy Policy",
+          "Terms_of_Service": "Terms of Service"
+        },
+        "After_Checkout": {
+          "Information_Order": {
+            "Title": "Add your order information",
+            "Placeholders": {
+              "Details": "Your order details",
+              "Phone_Number": "Phone Number",
+              "City": "City"
+            },
+            "Buttons": {
+              "Cash_On_Delevery": "Cash on Delivery",
+              "Cash_On_Visa": "Pay with Visa"
+            },
+            "Validations": {
+              "Details": "Details are required and must be at least 3 characters",
+              "Phone_Number": "Please enter a valid phone number (11 digits)",
+              "City": "City is required"
+            },
+            "Success_Page": {
+              "Title": "Payment Successful",
+              "Thanks": "Thank you for your payment",
+              "Message": "Your transaction has been completed successfully.",
+              "Btn": "View your orders"
+            }
+          }
+        }
+      },
+      "If_Empty": {
+        "Title": "Your cart is empty",
+        "Btn": "Continue Shopping"
+      },
+      "If_Not_Login": {
+        "Title": "You must be logged in to add items to your cart",
+        "Btn": "Login"
+      }
+    },
+
+    "Error_Page": {
+      "Title": "Oops! Page Not Found",
+      "Link": "Return Home"
+    }
+  },
+
+  "Shared": {
+    "Filter_Products": {
+      "Inputs": {
+        "Search": {
+          "Placeholder": "Search products by name"
+        },
+        "Category": {
+          "Default_Value": "All Categories"
+        },
+        "Brand": {
+          "Default_Value": "All Brands"
+        },
+        "Prices": {
+          "Default_Value": "All Prices",
+          "Low_to_high": "Low to high",
+          "High_to_low": "High to low",
+          "Discounts": "Discounts"
+        }
+      },
+
+      "Results": {
+        "If_Empty_Result": "There are no filtering products!."
+      }
+    },
+    "Buttons": {
+      "Add_To_Cart": "Add to Cart",
+      "Add_To_Wishlist": "Add to Wishlist",
+      "View_Details": "View Details"
+    }
+  }, 
+
+  "Footer": {
+    "Titles": {
+      "Follow_Us": "Follow Us",
+      "Contact_Us": "Contact Us",
+      "Quick_Links": "Quick Links"
+    },
+    "Rights": {
+      "Title": "2025 All rights reserved for",
+      "Name": "(Developer)"
+    } 
   }
-  
+}

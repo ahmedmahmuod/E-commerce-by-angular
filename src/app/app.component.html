@@ -1,5 +1,5 @@
-<div class="all-content flex flex-col min-h-screen">
-    <app-header />
+<div [dir]="dir" class="all-content flex flex-col min-h-screen">
+    <app-header (languageChanged)="switchLanguage($event)" />
     <div class="flex-grow content-body"> 
         <router-outlet></router-outlet>
     </div>

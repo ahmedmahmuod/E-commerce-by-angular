@@ -3,71 +3,68 @@
     <table class="orders-table">
       <thead>
         <tr>
-          <th>Date</th>
-          <th>ID</th>
-          <th>Status</th>
-          <th>Payment</th>
-          <th>Total</th>
-          <th>Items</th>
-          <th>Actions</th>
+          <th>{{'User.Profile.Orders.Table_Details.Date' | translate}}</th>
+          <th>{{'User.Profile.Orders.Table_Details.Id' | translate}}</th>
+          <th>{{'User.Profile.Orders.Table_Details.Status' | translate}}</th>
+          <th>{{'User.Profile.Orders.Table_Details.Payment' | translate}}</th>
+          <th>{{'User.Profile.Orders.Table_Details.Total' | translate}}</th>
+          <th>{{'User.Profile.Orders.Table_Details.Items' | translate}}</th>
+          <th aria-hidden="true"></th>
         </tr>
       </thead>
       <tbody>
+        @if ((orders$ | async).length >= 1) {
+        <tr *ngFor="let order of orders$ | async">
+          <td>{{ order.createdAt | date }}</td>
+          <td>{{ order.id }}</td>
+          <td>
+            <span [ngClass]="{ 'status success': order.isPaid, 'status processing': !order.isPaid }">
+              {{ order.isPaid ? ('User.Profile.Orders.Product_Details.Status.Delivered' | translate) : ('User.Profile.Orders.Product_Details.Status.Pending' | translate) }}
+            </span>
+          </td>
+          <td>
+            @if (order.paymentMethodType === 'cash') {
+              {{ 'User.Profile.Orders.Product_Details.Payment_Methode.Cash' | translate }}
+            } @else {
+              {{ 'User.Profile.Orders.Product_Details.Payment_Methode.Card' | translate }}
+              
+            }
+
+          </td>
+          <td>{{ order.totalOrderPrice | currency: ('User.Profile.Orders.Product_Details.Price' | translate) }}</td>
+          <td>{{ order.cartItems.length }}</td>
+          <td>
+            <p-button class="order-dialog" (click)="viewOrderProducts(order)" icon="pi pi-search" label="{{'User.Profile.Orders.Product_Details.Btn' | translate}}" />
+          </td>
+        </tr>
+        } @else {
         <tr>
-          <td>Jan 15, 2025</td>
-          <td>37471</td>
-          <td><span class="status processing">Processing</span></td>
-          <td>Cash</td>
-          <td>EGP 6,518.00</td>
-          <td>3</td>
-          <td><button class="view-btn">View order</button></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <p></p>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td>Jan 3, 2025</td>
-          <td>37025</td>
-          <td><span class="status processing">Processing</span></td>
-          <td>Card</td>
-          <td>EGP 2,727.00</td>
-          <td>3</td>
-          <td><button class="view-btn">View order</button></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <span class="text-font-third text-3xl">{{'User.Profile.Orders.If_Empty' | translate}}</span>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
-        <tr>
-          <td>Jan 1, 2025</td>
-          <td>36996</td>
-          <td><span class="status processing">Processing</span></td>
-          <td>Card</td>
-          <td>EGP 549.00</td>
-          <td>1</td>
-          <td><button class="view-btn">View order</button></td>
-        </tr>
-        <tr>
-          <td>Jan 1, 2025</td>
-          <td>36995</td>
-          <td><span class="status processing">Processing</span></td>
-          <td>Cash</td>
-          <td>EGP 549.00</td>
-          <td>1</td>
-          <td><button class="view-btn">View order</button></td>
-        </tr>
-        <tr>
-          <td>Jan 1, 2025</td>
-          <td>36994</td>
-          <td><span class="status processing">Processing</span></td>
-          <td>Cash</td>
-          <td>EGP 744.00</td>
-          <td>1</td>
-          <td><button class="view-btn">View order</button></td>
-        </tr>
-        <tr>
-          <td>Jan 1, 2025</td>
-          <td>36978</td>
-          <td><span class="status processing">Processing</span></td>
-          <td>Cash</td>
-          <td>EGP 4,829.00</td>
-          <td>1</td>
-          <td><button class="view-btn">View order</button></td>
-        </tr>
+        }
       </tbody>
     </table>
   </div>
 </div>
+@if ((currentLang$ | async) === 'en') {
+  <p-toast dir="ltr" position="bottom-right"></p-toast>
+} @else {
+  <p-toast dir="ltr" position="bottom-left"></p-toast>
+}
+<app-spinner *ngIf="loading$ | async"/>
+

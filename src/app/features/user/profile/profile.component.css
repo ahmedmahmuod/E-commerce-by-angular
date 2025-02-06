@@ -15,19 +15,49 @@
 .side-nav {
   width: 100%;
   background-color: var(--font-secondary);
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.nav-group {
+/* Profile Info Section */
+.profile-info {
+  text-align: center;
   margin-bottom: 1.5rem;
 }
 
-.nav-group h3 {
-  font-size: 1.1rem;
+.profile-info h3{
+  font-family: var(--font-family);
+}
+
+.profile-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--bg-main);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem;
+}
+
+.profile-icon i {
+  font-size: 1.5rem;
   color: var(--font-main);
-  margin-bottom: 0.5rem;
+}
+
+.profile-name {
+  font-size: 1.2rem;
+  color: var(--font-main);
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-group h3 {
+  font-size: 1rem;
+  color: var(--font-main);
+  margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(169, 169, 169, 0.2);
 }
@@ -45,15 +75,16 @@
 .nav-group a {
   color: var(--bg-main);
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  display: block;
-  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 8px;
   transition: all 0.3s ease;
 }
 
 .nav-group a:hover {
-  background: #e9ecef;
-  color: #333;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-group a.active {
@@ -61,41 +92,41 @@
   color: var(--bg-main);
 }
 
+.nav-group a i {
+  font-size: 1rem;
+}
+
+/* Logout Button */
+.logout-link {
+  color: #ff4d4d !important;
+  border: 1px solid transparent;
+}
+
+.logout-link:hover {
+  background: rgba(255, 77, 77, 0.1) !important;
+  border: 1px solid #ff4d4d;
+}
+
+/* Content Area */
 .content-area {
   flex: 1;
-  border-radius: 8px;
+  border-radius: 12px;
+  background-color: var(--bg-main);
+  padding: 1.5rem;
 }
 
-.login-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: red;
-  gap: 4px;
-  cursor: pointer;
-  transition: 0.5s;
-  padding: 5px 17px;
-  width: fit-content;
-  margin: 10px auto;
-  border-radius: 5px;
-}
-
-.login-button:hover {
-  background-color: red;
-  color: var(--bg-main);
-}
-
-@media (min-width: 768px) {
+/* Responsive Design */
+@media (min-width: 868px) {
   .profile-container {
     flex-direction: row;
   }
 
   .nav-container {
-    width: 250px;
+    width: 300px;
   }
 
   .side-nav {
-    width: 250px;
+    width: 300px;
     margin-bottom: 0;
   }
 }

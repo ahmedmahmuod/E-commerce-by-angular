@@ -1,16 +1,18 @@
-<header class="w-full" *ngIf="isHeaderVisible" [ngClass]="{ 'header-visible': isHeaderVisible }" @headerAnimation>
+<header class="w-full h-20" *ngIf="isHeaderVisible" [ngClass]="{ 'header-visible': isHeaderVisible }" @headerAnimation>
   <!-- Header -->
-  <nav class="p-4 text-base relative">
-    <div class="mx-auto flex justify-around items-center">
+  <nav class="p-4 text-base relative h-full">
+    <div class="mx-auto flex justify-around items-center h-full m-0">
 
       <!-- Desktop Menu -->
-      <ul class="hidden md:flex items-center gap-x-7">
-        <img src="../../../../assets/images/logo.png" alt="Logo" class="w-11 cursor-pointer" routerLink="/home">
-        <li routerLinkActive="page-header-active" routerLink="/home" class="cursor-pointer">Home</li>
-        <li routerLinkActive="page-header-active" routerLink="/about" class="cursor-pointer">About</li>
-        <li routerLinkActive="page-header-active" routerLink="/contact" class="cursor-pointer">Contact</li>
-        <li routerLinkActive="page-header-active" routerLink="/products" class="cursor-pointer">Products</li>
-        <li routerLinkActive="page-header-active" routerLink="/brands" class="cursor-pointer">Brands</li>
+      <ul class="hidden md:flex items-center gap-x-7 h-full m-0">
+        <li>
+          <img src="../../../../assets/images/logo.png" alt="Logo" class="logo cursor-pointer" routerLink="/home">
+        </li>
+        <li routerLinkActive="page-header-active" routerLink="/home" class="cursor-pointer">{{'Header.Pages.Home' | translate}}</li>
+        <li routerLinkActive="page-header-active" routerLink="/about" class="cursor-pointer">{{'Header.Pages.About' | translate}}</li>
+        <li routerLinkActive="page-header-active" routerLink="/contact" class="cursor-pointer">{{'Header.Pages.Contact' | translate}}</li>
+        <li routerLinkActive="page-header-active" routerLink="/products" class="cursor-pointer">{{'Header.Pages.Products' | translate}}</li>
+        <li routerLinkActive="page-header-active" routerLink="/brands" class="cursor-pointer">{{'Header.Pages.Brands' | translate}}</li>
       </ul>  
 
       <!-- Account Status -->
@@ -18,29 +20,33 @@
         
         <!-- logo -->
          <div>
-           <img src="../../../../assets/images/logo.png" alt="Logo" class="w-11 cursor-pointer block md:hidden" routerLink="/home">
+           <img src="../../../../assets/images/logo.png" alt="Logo" class="logo cursor-pointer block md:hidden" routerLink="/home">
          </div>
 
         <!-- language -->
-        <nz-select class="custom-select z-50" [(ngModel)]="selectedLanguage" nzBorderless>
-          <nz-option nzValue="en" nzLabel="EN"></nz-option>
-          <nz-option nzValue="ar" nzLabel="AR"></nz-option>
+        <nz-select class="custom-select z-50" [(ngModel)]="selectedLanguage" nzBorderless (ngModelChange)="switchLanguage($event)">
+          <nz-option nzValue="en" nzLabel="{{'Header.Lang.en' | translate}}"></nz-option>
+          <nz-option nzValue="ar" nzLabel="{{'Header.Lang.ar' | translate}}"></nz-option>
         </nz-select>
-
+        
         <!-- Sign buttons -->
         <div *ngIf="!isLogged()" class="sign-btns flex items-center">
-            <button routerLink="/user/login" class="hidden md:block sign-in rounded-lg bg-font-main text-white px-6 py-2 shadow-lg">Log In</button>
-            <button routerLink="/user/register" class="hidden md:block sign-up rounded-lg px-6 py-2 text-font-main border-transparent border border-font-main">Sign Up</button>
+            <button routerLink="/user/login" class="hidden md:block sign-in rounded-lg bg-font-main text-white px-6 py-2 shadow-lg">{{'Header.Auth.Login' | translate}}</button>
+            <button routerLink="/user/register" class="hidden md:block sign-up rounded-lg px-6 py-2 text-font-main border-transparent border border-font-main">{{'Header.Auth.Register' | translate}}</button>
         </div>
   
         <!-- Profile logged -->
         <div class="profile-logged flex justify-center">
           <!-- Cart and wishlist -->
           <div class="gap-x-4 relative flex items-center mr-3">
-            <span class="wishlist-count">0</span>
-            <span class="cart-count">0</span>
-            <span routerLink="/wishlist" class="wishlist-btn cursor-pointer text-2xl text-background-main" nz-icon nzType="heart" nzTheme="outline"></span>
-            <span routerLink="/cart" class="cart-btn cursor-pointer text-2xl text-background-main" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+             <div class="cart-wishlist">
+               <span *ngIf="wishlistCount$ && isLogged()" class="wishlist-count">{{wishlistCount$ | async}}</span>
+               <span *ngIf="cartCount$ && isLogged()" class="cart-count">{{ cartCount$ | async }} </span>
+             </div>
+            <div class="flex items-start gap-2">
+              <span routerLink="/wishlist" class="wishlist-btn cursor-pointer text-2xl"><i nz-icon nzType="heart" nzTheme="outline"></i></span>
+              <span routerLink="/cart" class="cart-btn cursor-pointer text-2xl" nz-icon nzType="shopping-cart" nzTheme="outline"></span>
+            </div>
           </div>
 
           <!-- Dropdown Trigger -->
@@ -49,8 +55,13 @@
                class="bg-font-main p-2 shadow-2xl rounded-lg text-background-main flex items-center gap-2 hover:text-background-main transition" role="button"
                aria-haspopup="true" aria-expanded="false">
                <i class="fa-solid fa-user"></i>
-               <span class="font-[500]">Ahmed.S</span>
-               <i class="fa-solid fa-caret-down"></i>
+               
+               <span *ngIf="userData$ | async as userData">
+                <ng-container *ngIf="userData?.name.split(' ') as nameParts">
+                  {{ nameParts[0] }} .{{ nameParts[1]?.[0] || '' }}
+                </ng-container>
+              </span>            
+              <i class="fa-solid fa-caret-down"></i>
              </div>
            </div>
   
@@ -60,12 +71,12 @@
               <!-- Profile Link -->
               <li routerLink="/user/profile" class="text-background-main hover:text-font-main cursor-pointer block px-4 py-2 text-sm font-medium transition rounded-md" aria-label="Manage Profile">
                 <i class="fa-solid fa-gear"></i>
-                Manage Profile
+                {{'Header.Profile.Manage_Profile' | translate}}
               </li>
               <!-- Logout Link -->
-              <li class="cursor-pointer block px-4 py-2 text-sm font-medium text-red-500 hover:bg-red-600 hover:text-background-main transition rounded-md" aria-label="Log out">
+              <li (click)="logOut()" class="cursor-pointer block px-4 py-2 text-sm font-medium text-red-500 hover:bg-red-600 hover:text-background-main transition rounded-md" aria-label="Log out">
                 <i class="fa-solid fa-right-from-bracket"></i> 
-                Log out
+                {{'Header.Profile.Logout' | translate}}
               </li>
             </ul>
           </nz-dropdown-menu>
@@ -79,17 +90,17 @@
     <div @slideAnimation *ngIf="isMenuOpen" class="md:hidden mobile-menu" [ngClass]="{ 'open': isMenuOpen }">
       <ul class="flex flex-col items-center justify-center w-full">
         <div class="flex flex-col items-center justify-center w-full gap-y-4 mb-10">
-          <li routerLinkActive="page-header-active" routerLink="/home" class="cursor-pointer">Home</li>
-          <li routerLinkActive="page-header-active" routerLink="/about" class="cursor-pointer">About</li>
-          <li routerLinkActive="page-header-active" routerLink="/contact" class="cursor-pointer">Contact</li>
-          <li routerLinkActive="page-header-active" routerLink="/products" class="cursor-pointer">Products</li>
-          <li routerLinkActive="page-header-active" routerLink="/brands" class="cursor-pointer">Brands</li>
+          <li routerLinkActive="page-header-active" routerLink="/home" class="cursor-pointer">{{'Header.Pages.Home' | translate}}</li>
+          <li routerLinkActive="page-header-active" routerLink="/about" class="cursor-pointer">{{'Header.Pages.About' | translate}}</li>
+          <li routerLinkActive="page-header-active" routerLink="/contact" class="cursor-pointer">{{'Header.Pages.Contact' | translate}}</li>
+          <li routerLinkActive="page-header-active" routerLink="/products" class="cursor-pointer">{{'Header.Pages.Products' | translate}}</li>
+          <li routerLinkActive="page-header-active" routerLink="/brands" class="cursor-pointer">{{'Header.Pages.Brands' | translate}}</li>
         </div>
 
         <!-- Account Status -->
         <div *ngIf="!isLogged()" class="account-status gap-y-2 flex flex-col w-full">  
-          <button routerLink="/user/login" class="md:block sign-in rounded-lg bg-font-main text-background-main px-6 py-2 shadow-lg">Log In</button>
-          <button routerLink="/user/register" class="md:block sign-up rounded-lg px-6 py-2 text-font-main border border-font-main">Sign Up</button>
+          <button routerLink="/user/login" class="md:block sign-in rounded-lg bg-font-main text-background-main px-6 py-2 shadow-lg">{{'Header.Auth.Login' | translate}}</button>
+          <button routerLink="/user/register" class="md:block sign-up rounded-lg px-6 py-2 text-font-main border border-font-main">{{'Header.Auth.Register' | translate}}</button>
         </div>
       </ul>
     </div>

@@ -38,6 +38,12 @@
       {
         "duplicate-id-active": "off"
       }
+    ],
+    "axe/aria": [
+      "default",
+      {
+        "empty-table-header": "off"
+      }
     ]
   }
 }

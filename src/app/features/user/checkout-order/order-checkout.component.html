@@ -1,0 +1,44 @@
+<div class="order">
+    <div class="checkout-form">
+      <h1>{{'Pages.Cart.Checkout.After_Checkout.Information_Order.Title' | translate}}</h1>
+      <form [formGroup]="checkoutForm">
+        <div class="form-group">
+          <input placeholder="{{'Pages.Cart.Checkout.After_Checkout.Information_Order.Placeholders.Details' | translate}}" id="details" type="text" formControlName="details" [class.error]="isFieldInvalid('details')">
+          <div class="error-message" *ngIf="isFieldInvalid('details')">
+            {{'Pages.Cart.Checkout.After_Checkout.Information_Order.Validations.Details' | translate}}
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <input placeholder="{{'Pages.Cart.Checkout.After_Checkout.Information_Order.Placeholders.Phone_Number' | translate}}" type="text" formControlName="phone" [class.error]="isFieldInvalid('phone')" >
+          <div class="error-message" *ngIf="isFieldInvalid('phone')">
+            {{'Pages.Cart.Checkout.After_Checkout.Information_Order.Validations.Phone_Number' | translate}}
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <input placeholder="{{'Pages.Cart.Checkout.After_Checkout.Information_Order.Placeholders.City' | translate}}" id="city" type="text" formControlName="city" [class.error]="isFieldInvalid('city')">
+          <div class="error-message" *ngIf="isFieldInvalid('city')">
+            {{'Pages.Cart.Checkout.After_Checkout.Information_Order.Validations.City' | translate}}
+          </div>
+        </div>
+  
+        <div class="payment-buttons">
+          <button type="button" class="payment-btn visa" (click)="processPayment('visa')" [disabled]="!checkoutForm.valid">
+            <i class="visa-icon"></i>
+            {{'Pages.Cart.Checkout.After_Checkout.Information_Order.Buttons.Cash_On_Visa' | translate}}
+          </button>
+          <button  type="button" class="payment-btn cash" (click)="processPayment('cash')" [disabled]="!checkoutForm.valid">
+            <i class="cash-icon"></i>
+            {{'Pages.Cart.Checkout.After_Checkout.Information_Order.Buttons.Cash_On_Delevery' | translate}}          
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  @if ((currentLang$ | async) === 'en') {
+    <p-toast dir="ltr" position="bottom-right"></p-toast>
+} @else {
+    <p-toast dir="ltr" position="bottom-left"></p-toast>
+}
+<app-spinner *ngIf="loading$ | async"/>

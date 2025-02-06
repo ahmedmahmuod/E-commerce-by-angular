@@ -1,58 +1,53 @@
 <div class="contact-container">
     <div class="contact-header">
-        <app-page-title title="Get in Touch"/>
+        <app-page-title title="{{'Pages.Contact.Title' | translate}}"/>
     </div>
 
     <div class="contact-content">
         <div class="contact-form">
             <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <input type="text" id="name" formControlName="name" placeholder="Enter your name"
+                    <input type="text" id="name" formControlName="name" placeholder="{{'Pages.Contact.Form.Name' | translate}}"
                         [class.error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
                 </div>
 
                 <div class="form-group">
-                    <input type="email" id="email" formControlName="email" placeholder="Enter your email"
+                    <input type="email" id="email" formControlName="email" placeholder="{{'Pages.Contact.Form.Email' | translate}}"
                         [class.error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" id="subject" formControlName="subject" placeholder="Enter subject"
-                        [class.error]="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched">
-                </div>
-
-                <div class="form-group">
-                    <textarea id="message" formControlName="message" rows="5" placeholder="Enter your message"
+                    <textarea id="message" formControlName="message" rows="5" placeholder="{{'Pages.Contact.Form.Message' | translate}}"
                         [class.error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
                 </div>
 
-                <button type="submit" [disabled]="contactForm.invalid">Send Message</button>
+                <button type="submit" [disabled]="contactForm.invalid">{{'Pages.Contact.Form.Submit' | translate}}</button>
             </form>
         </div>
 
         <div class="contact-info">
             <div class="info-card">
                 <div class="icon">📍</div>
-                <h3>Our Location</h3>
-                <p>Egypt, Damietta</p>
+                <h3>{{'Pages.Contact.Cards.One.Title' | translate}}</h3>
+                <p>{{'Pages.Contact.Cards.One.Desc' | translate}}</p>
             </div>
 
             <div class="info-card">
                 <div class="icon">📞</div>
-                <h3>Phone Number</h3>
-                <p>+20 1021872093<br>+20 1125734333</p>
+                <h3>{{'Pages.Contact.Cards.Two.Title' | translate}}</h3>
+                <p>{{'Pages.Contact.Cards.Two.Desc' | translate}}</p>
             </div>
 
             <div class="info-card">
                 <div class="icon">✉️</div>
-                <h3>Email Address</h3>
-                <p>{{'ahmedmahmuuud@gmail.com'}}<br>{{'easytechnologyy1@gmail.com'}}</p>
+                <h3>{{'Pages.Contact.Cards.Three.Title' | translate}}</h3>
+                <p>{{'Pages.Contact.Cards.Three.Desc' | translate}}</p>
             </div>
 
             <div class="info-card">
                 <div class="icon">⏰</div>
-                <h3>Working Hours</h3>
-                <p>Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 4PM</p>
+                <h3>{{'Pages.Contact.Cards.Four.Title' | translate}}</h3>
+                <p>{{'Pages.Contact.Cards.Four.Desc' | translate}}</p>
             </div>
         </div>
     </div>

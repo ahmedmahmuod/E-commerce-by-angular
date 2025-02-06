@@ -18,16 +18,16 @@
           <span *ngIf="hasHalfStar(product.ratingsAverage)">⭐</span>
           <span class="text-xl" *ngFor="let star of getEmptyStars(product.ratingsAverage)">☆</span>
         </div>
-        <span class="ml-2 text-gray-600">{{ product.ratingsAverage }} ({{product.ratingsQuantity}}reviews)</span>
+        <span class="ml-2 text-gray-600">{{ product.ratingsAverage }} ({{product.ratingsQuantity}} {{'Pages.Products.Product_Details.Rateing' | translate}})</span>
       </div>
 
       <!-- Price -->
       <div class="text-2xl font-bold text-font-secondary mb-4">
-        L.E {{ product.price }}
+        {{ product.price | currency: ('Pages.Products.Product_Details.Price' | translate)}} 
         @if (product.quantity !== 0) {
-        <span class="text-font-main text-sm blinking">In Stock</span>
+        <span class="text-font-main text-sm blinking">{{'Pages.Products.Product_Details.Stock.In_Stock' | translate}}</span>
         } @else {
-        <span class="text-red-600 text-sm blinking">Out of Stock</span>
+        <span class="text-red-600 text-sm blinking">{{'Pages.Products.Product_Details.Stock.Out_Stock' | translate}}</span>
         }
       </div>
 
@@ -36,34 +36,34 @@
         {{ product.description }}
       </p>
 
-      <!-- Add to Cart -->
-      <app-add-to-cart-button />
+      <!-- Add to Cart --> 
+      <app-add-to-cart-button (click)="addToCart(product)" />
 
       <!-- Additional Details -->
       <div class="mt-8">
         <h2 class="text-xl font-bold mb-4">Product Details</h2>
         <div class="grid grid-cols-2 gap-4 text-font-secondary">
           <div class="flex gap-2">
-            <span class="font-semibold">Sold:</span>
+            <span class="font-semibold">{{'Pages.Products.Product_Details.Sold' | translate}} :</span>
             <span class="text-gray-600">{{ product.sold }}</span>
           </div>
           <div class="flex gap-2">
-            <span class="font-semibold">Quantity:</span>
+            <span class="font-semibold">{{'Pages.Products.Product_Details.Quantity' | translate}} :</span>
             <span class="text-gray-600">{{ product.quantity }}</span>
           </div>
           <div class="flex gap-2">
-            <span class="font-semibold">Category:</span>
+            <span class="font-semibold">{{'Pages.Products.Product_Details.Category' | translate}} :</span>
             <span class="text-gray-600">{{ product.category?.name }}</span>
           </div>
           <div class="flex gap-2">
-            <span class="font-semibold">SubCategory:</span>
+            <span class="font-semibold">{{'Pages.Products.Product_Details.Subcategory' | translate}} :</span>
             <div *ngIf="product && product.subcategory?.length">
               <span class="text-gray-600">{{
                 product.subcategory[0].name}}</span>
             </div>
           </div>
           <div class="flex gap-2">
-            <span class="font-semibold">Brand:</span>
+            <span class="font-semibold">{{'Pages.Products.Product_Details.Brand' | translate}} :</span>
             <span class="text-gray-600">{{ product.brand?.name }}</span>
           </div>
         </div>
@@ -71,4 +71,9 @@
     </div>
   </div>
 </div>
+@if ((currentLang$ | async) === 'en') {
+  <p-toast dir="ltr" position="bottom-right"></p-toast>
+} @else {
+  <p-toast dir="ltr" position="bottom-left"></p-toast>
+}
 <app-spinner *ngIf="isLoading$ | async"/>

@@ -1,15 +1,14 @@
 <div class="login-container">
     <div class="login-card">
         <div class="login-header">
-            <h1>Welcome Back</h1>
+            <h1>{{'User.Login.Title' | translate}}</h1>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
             <div class="form-group">
                 <div class="input-container">
                     <input type="email" id="email" formControlName="email"
-                        [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
-                        placeholder="Email">
+                        [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" placeholder="{{'User.Login.Placeholders.Email' | translate}}">
                     <span class="icon">✉️</span>
                 </div>
                 <span class="error-message" *ngIf="getErrorMessage('email')">
@@ -23,7 +22,7 @@
                 <div class="input-container">
                     <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
                         [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-                        placeholder="Password">
+                        placeholder="{{'User.Login.Placeholders.Password' | translate}}">
                     <button type="button" class="toggle-password" (click)="togglePasswordVisibility()"
                         [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
                         {{ showPassword ? '👁️' : '👁️‍🗨️' }}
@@ -35,15 +34,17 @@
             </div>
 
             <div class="form-footer">
-                <button type="submit" class="login-button" [disabled]="loginForm.invalid || isSubmitting">
-                    <span *ngIf="!isSubmitting">Sign In</span>
-                    <span *ngIf="isSubmitting" class="spinner"></span>
-                </button>
-                <a routerLink="/user/forget-password" class="forgot-password" (click)="forgotPassword($event)">Forgot Password?</a>
+                <app-button-loading background="background-second" text="{{'User.Login.Sign_In' | translate}}" [loading]="isSubmitting" [disabled]="isSubmitting || loginForm.invalid"/>
+                <a routerLink="/user/forget-password" class="forgot-password">{{'User.Login.Forget_Pass' | translate}}</a>
             </div>
         </form>
         <div class="signup-prompt">
-            <p>Don't have an account? <a routerLink="/user/register" (click)="signUp($event)">Sign up</a></p>
+            <p>{{'User.Login.Have_Acc.Title' | translate}} <a routerLink="/user/register">{{'User.Login.Have_Acc.Link' | translate}}</a></p>
         </div>
     </div>
 </div>
+@if ((currentLang$ | async) === 'en') {
+    <p-toast dir="ltr" position="bottom-right"></p-toast>
+} @else {
+    <p-toast dir="ltr" position="bottom-left"></p-toast>
+}

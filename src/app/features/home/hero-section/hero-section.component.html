@@ -1,11 +1,21 @@
-<nz-carousel nzAutoPlay [nzEffect]="'fade'" [nzAutoPlaySpeed]="3000">
-  <div *ngFor="let slide of heroSlides" nz-carousel-content>
+<nz-carousel nzAutoPlay [nzEffect]="'fade'" [nzAutoPlaySpeed]="1500">
+  <div nz-carousel-content>
     <div class="hero-slide">
-      <img [src]="slide.image" [alt]="slide.title" class="hero-image" />
+      <img [src]="'assets/images/imgSlider1.jpg'" alt="{{'Pages.Home.Hero_Section.Title_One' | translate}}" class="hero-image" />
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <h1 class="hero-title">{{ slide.title }}</h1>
-        <button routerLink="/products" class="hero-button">Explore Now</button>
+        <h1 class="hero-title">{{'Pages.Home.Hero_Section.Title_One' | translate}}</h1>
+        <button routerLink="/products" class="hero-button">{{'Pages.Home.Hero_Section.Btn' | translate}}</button>
+      </div>
+    </div>
+  </div>
+  <div nz-carousel-content>
+    <div class="hero-slide">
+      <img [src]="'assets/images/imgSlider2.jpg'" alt="{{'Pages.Home.Hero_Section.Title_Two' | translate}}" class="hero-image" />
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">{{'Pages.Home.Hero_Section.Title_Two' | translate}}</h1>
+        <button routerLink="/products" class="hero-button">{{'Pages.Home.Hero_Section.Btn' | translate}}</button>
       </div>
     </div>
   </div>

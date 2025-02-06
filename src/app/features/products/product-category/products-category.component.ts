@@ -10,9 +10,10 @@ import * as ProductsCategoryAction from '../../../stores/products/products-categ
 import * as ProductsBrandAction from '../../../stores/products/products-brand-store/products-brand.action';
 import { selectProductCategory, selectProductCategoryLaoding } from '../../../stores/products/products-category-store/products-category.selector';
 import { selectProductBrand, selectProductBrandLaoding } from '../../../stores/products/products-brand-store/products-brand.selector';
-import { map, Observable, of, take } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { HomeHeaderPageComponent } from '../../../shared/components/home-header/home-header-page.component';
 import { ProductFiltersComponent } from '../../../shared/components/products-filter/products-filter.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products-category',
@@ -24,6 +25,7 @@ import { ProductFiltersComponent } from '../../../shared/components/products-fil
     ProductCardComponent,
     HomeHeaderPageComponent,
     ProductFiltersComponent,
+    TranslateModule
   ],
   templateUrl: './products-category.component.html',
   styleUrl: './products-category.component.css',

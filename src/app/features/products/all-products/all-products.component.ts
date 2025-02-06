@@ -14,6 +14,7 @@ import {
 } from '../../../stores/products/all-products-store/all-products.selector';
 import * as AllProductsAction from '../../../stores/products/all-products-store/all-products.action';
 import { PageTitleComponent } from "../../../shared/components/page-title/page-title.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-products',
@@ -25,7 +26,8 @@ import { PageTitleComponent } from "../../../shared/components/page-title/page-t
     HomeHeaderPageComponent,
     SpinnerComponent,
     ProductFiltersComponent,
-    PageTitleComponent
+    PageTitleComponent,
+    TranslateModule
 ],
   templateUrl: './all-products.component.html',
   styleUrls: ['./all-products.component.css'],

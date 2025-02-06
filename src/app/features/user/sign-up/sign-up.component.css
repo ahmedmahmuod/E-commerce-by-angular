@@ -21,8 +21,9 @@
 
 .signup-header h1 {
   color: var(--bg-main);
-  font-size: 1.5rem; /* تصغير */
+  font-size: 1.5rem;
   margin: 0 0 8px 0;
+  font-family: var(--font-family);
 }
 
 .signup-header p {

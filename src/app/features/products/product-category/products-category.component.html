@@ -2,19 +2,19 @@
   <div class="content-header">
     <h1>{{ name }}</h1>
     <p>
-      Discover our collection of {{ name }}
+      {{'Pages.Products.Products_Type.Desc' | translate}} {{ name }}
     </p>
   </div>
-  <app-home-header-page [title]="name" />
+  <app-home-header-page [title]="name" type="{{'Pages.Products.Products_Type.Page_Header.Type' | translate}}"/>
   <app-product-filters [categories]="filterdCategory()" [brands]="filterdBrands()" (filterFormValues)="onFormFilterValues($event)"/>
   <app-product-card [products]="products$ | async" />
 
   <!-- Display messages based on the state -->
   <div *ngIf="isListEmpty()" class="no-products-message">
-    There are no products on {{ name }}!.
+    {{'Pages.Products.Shared.If_No_Products' | translate}}
   </div>
   <div *ngIf="!isListEmpty() && !hasProducts()" class="no-products-message">
-    There are no filtering products!.
+    {{'Shared.Filter_Products.Results.If_Empty_Result' | translate}}
   </div>
 </div>
 
