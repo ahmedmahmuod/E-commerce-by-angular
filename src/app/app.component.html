@@ -1,7 +1,7 @@
 <div [dir]="dir" class="all-content flex flex-col min-h-screen">
     <app-header (languageChanged)="switchLanguage($event)" />
-    <div class="flex-grow content-body"> 
-        <router-outlet></router-outlet>
+    <div [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''" class="flex-grow content-body"> 
+        <router-outlet #outlet="outlet"></router-outlet>
     </div>
     <app-footer />
 </div>

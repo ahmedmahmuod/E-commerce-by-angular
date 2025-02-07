@@ -33,11 +33,8 @@ export const routes: Routes = [
       { path: '**', redirectTo: 'page-not-found', pathMatch: 'full' },
     ],
   },
-  
   { path: ':categoryOrBrandName/:productId/details', data: { title: 'Shared.Global.Product_Details_Title_Page' }, loadComponent: () => import('./features/products/product-details/product-details.component').then(m => m.ProductDetailsComponent) },
   { path: ':type/:id', data: { title: 'Pages.Products.Title_Page' }, loadComponent: () => import('./features/products/product-category/products-category.component').then(m => m.ProductsCategoryComponent) },
-  
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**',redirectTo: 'page-not-found', pathMatch: 'full' },
-
 ];

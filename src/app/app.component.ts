@@ -9,12 +9,23 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './core/services/language.service';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
+import { animate, style, transition, trigger } from '@angular/animations';
+
+const fadeAnimation = trigger('fadeAnimation', [
+  transition('* <=> *', [
+    style({ opacity: 0 }),
+    animate('200ms ease-in', style({ opacity: 1 }))
+  ])
+]);
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [HeaderComponent, RouterOutlet, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  animations: [fadeAnimation],
+
 })
 export class AppComponent {
   private authService = inject(AuthService);
@@ -75,5 +86,9 @@ export class AppComponent {
         });
       });
     }
+  }
+
+  getRouteAnimation(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 }

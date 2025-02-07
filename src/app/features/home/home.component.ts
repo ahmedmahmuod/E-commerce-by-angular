@@ -32,7 +32,7 @@ register();
     RouterLink,
     ProductCardComponent,
     ToastModule,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
