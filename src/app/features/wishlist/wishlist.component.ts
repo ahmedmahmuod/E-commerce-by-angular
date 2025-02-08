@@ -21,12 +21,11 @@ import { ViewProductComponent } from "../../shared/components/buttons/view-produ
 import { LanguageService } from '../../core/services/language.service';
 
 @Component({
-  selector: 'app-wishlist',
-  standalone: true,
-  imports: [CommonModule, PageTitleComponent, AddToCartComponent, SpinnerComponent, ButtonModule, ToastModule, RouterLink, TranslateModule, ViewProductComponent],
-  templateUrl: './wishlist.component.html',
-  styleUrl: './wishlist.component.css',
-  providers: [MessageService, CartsService]
+    selector: 'app-wishlist',
+    imports: [CommonModule, PageTitleComponent, AddToCartComponent, SpinnerComponent, ButtonModule, ToastModule, RouterLink, TranslateModule, ViewProductComponent],
+    templateUrl: './wishlist.component.html',
+    styleUrl: './wishlist.component.css',
+    providers: [MessageService, CartsService]
 })
 export class WishlistComponent implements OnInit {
   // Private variables

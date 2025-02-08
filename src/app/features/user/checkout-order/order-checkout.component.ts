@@ -12,12 +12,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './order-checkout.component.html',
-  styleUrls: ['./order-checkout.component.css'],
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, SpinnerComponent, ButtonModule, ToastModule, TranslateModule],
-  providers: [MessageService]
+    selector: 'app-checkout',
+    templateUrl: './order-checkout.component.html',
+    styleUrls: ['./order-checkout.component.css'],
+    imports: [ReactiveFormsModule, CommonModule, SpinnerComponent, ButtonModule, ToastModule, TranslateModule],
+    providers: [MessageService]
 })
 export class OrderCheckoutComponent {
   private orderService = inject(OrdersService);

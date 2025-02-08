@@ -17,13 +17,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../../core/services/language.service';
 
 @Component({
-  selector: 'app-orders',
-  standalone: true,
-  imports: [CommonModule, RouterModule, ButtonModule, ToastModule, SpinnerComponent, DynamicDialogModule, TranslateModule],
-  templateUrl: './orders.component.html',
-  styleUrl: './orders.component.css',
-  providers: [MessageService, DialogService,DynamicDialogRef]
-  
+    selector: 'app-orders',
+    imports: [CommonModule, RouterModule, ButtonModule, ToastModule, SpinnerComponent, DynamicDialogModule, TranslateModule],
+    templateUrl: './orders.component.html',
+    styleUrl: './orders.component.css',
+    providers: [MessageService, DialogService, DynamicDialogRef]
 })
 export class OrdersComponent implements OnInit, OnDestroy {
   private messageService = inject(MessageService)

@@ -18,20 +18,19 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
-  selector: 'app-product-details',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ImageSliderComponent,
-    AddToCartComponent,
-    SpinnerComponent,
-    ButtonModule,
-    ToastModule,
-    TranslateModule
-  ],
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css',
-  providers: [MessageService, CartsService]
+    selector: 'app-product-details',
+    imports: [
+        CommonModule,
+        ImageSliderComponent,
+        AddToCartComponent,
+        SpinnerComponent,
+        ButtonModule,
+        ToastModule,
+        TranslateModule
+    ],
+    templateUrl: './product-details.component.html',
+    styleUrl: './product-details.component.css',
+    providers: [MessageService, CartsService]
 })
 export class ProductDetailsComponent implements OnDestroy {
   private route = inject(ActivatedRoute);

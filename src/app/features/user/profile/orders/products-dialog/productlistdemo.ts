@@ -8,10 +8,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  providers: [DialogService],
-  standalone: true,
-  imports: [TableModule, ButtonModule, TranslateModule, CommonModule],
-  template: `
+    providers: [DialogService],
+    imports: [TableModule, ButtonModule, TranslateModule, CommonModule],
+    template: `
     <div class="product-dialog">
       <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }" header="Order Details">
         <ng-template pTemplate="header">
@@ -41,8 +40,8 @@ import { CommonModule } from '@angular/common';
       </p-table>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .product-dialog {
         padding: 1rem;
         border-radius: 0px !important;
@@ -115,7 +114,7 @@ import { CommonModule } from '@angular/common';
         background-color: #dddddd;
       }
     `,
-  ],
+    ]
 })
 export class ProductListDemo implements OnInit {
   private productDialogService = inject(ProductDialogService)

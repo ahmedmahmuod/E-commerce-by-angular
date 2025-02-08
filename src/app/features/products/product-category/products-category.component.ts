@@ -16,19 +16,18 @@ import { ProductFiltersComponent } from '../../../shared/components/products-fil
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-products-category',
-  standalone: true,
-  imports: [
-    CommonModule,
-    NzPageHeaderModule,
-    SpinnerComponent,
-    ProductCardComponent,
-    HomeHeaderPageComponent,
-    ProductFiltersComponent,
-    TranslateModule
-  ],
-  templateUrl: './products-category.component.html',
-  styleUrl: './products-category.component.css',
+    selector: 'app-products-category',
+    imports: [
+        CommonModule,
+        NzPageHeaderModule,
+        SpinnerComponent,
+        ProductCardComponent,
+        HomeHeaderPageComponent,
+        ProductFiltersComponent,
+        TranslateModule
+    ],
+    templateUrl: './products-category.component.html',
+    styleUrl: './products-category.component.css'
 })
 export class ProductsCategoryComponent {
   private store = inject(Store);

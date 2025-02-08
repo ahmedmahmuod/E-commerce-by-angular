@@ -3,11 +3,10 @@ import { PageTitleComponent } from "../../shared/components/page-title/page-titl
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [PageTitleComponent, TranslateModule],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.css'
+    selector: 'app-about',
+    imports: [PageTitleComponent, TranslateModule],
+    templateUrl: './about.component.html',
+    styleUrl: './about.component.css'
 })
 export class AboutComponent {
 

@@ -22,23 +22,21 @@ import { TranslateModule } from '@ngx-translate/core';
 register();
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    HeroSectionComponent,
-    PageTitleComponent,
-    GlobalBtnComponent,
-    RouterLink,
-    ProductCardComponent,
-    ToastModule,
-    TranslateModule,
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [MessageService],
-  
+    selector: 'app-home',
+    imports: [
+        CommonModule,
+        HeroSectionComponent,
+        PageTitleComponent,
+        GlobalBtnComponent,
+        RouterLink,
+        ProductCardComponent,
+        ToastModule,
+        TranslateModule,
+    ],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [MessageService]
 })
 export class HomeComponent  {
   private router = inject(Router);

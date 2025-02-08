@@ -14,12 +14,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../../core/services/language.service';
 
 @Component({
-  selector: 'app-my-details',
-  standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, ToastModule, ButtonModule, ButtonComponent, TranslateModule],
-  templateUrl: './my-details.component.html',
-  styleUrl: './my-details.component.css',
-  providers: [MessageService],
+    selector: 'app-my-details',
+    imports: [CommonModule, RouterModule, ReactiveFormsModule, ToastModule, ButtonModule, ButtonComponent, TranslateModule],
+    templateUrl: './my-details.component.html',
+    styleUrl: './my-details.component.css',
+    providers: [MessageService]
 })
 export class MyDetailsComponent {
   userForm!: FormGroup;

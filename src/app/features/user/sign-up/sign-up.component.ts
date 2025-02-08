@@ -11,20 +11,19 @@ import { ButtonComponent } from "../../../shared/components/buttons/loading-butt
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../core/services/language.service';
 @Component({
-  selector: 'app-signup',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterLink,
-    ToastModule,
-    ButtonModule,
-    ButtonComponent,
-    TranslateModule
-],
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css'],
-  providers: [MessageService],
+    selector: 'app-signup',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterLink,
+        ToastModule,
+        ButtonModule,
+        ButtonComponent,
+        TranslateModule
+    ],
+    templateUrl: './sign-up.component.html',
+    styleUrls: ['./sign-up.component.css'],
+    providers: [MessageService]
 })
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;

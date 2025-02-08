@@ -16,13 +16,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
-  selector: 'app-product-card',
-  standalone: true,
-  imports: [CommonModule, RouterLink, ButtonModule, ToastModule, SpinnerComponent, TranslateModule],
-  templateUrl: './product-card.component.html',
-  styleUrl: './product-card.component.css',
-  providers: [MessageService, CartsService]
-
+    selector: 'app-product-card',
+    imports: [CommonModule, RouterLink, ButtonModule, ToastModule, SpinnerComponent, TranslateModule],
+    templateUrl: './product-card.component.html',
+    styleUrl: './product-card.component.css',
+    providers: [MessageService, CartsService]
 })
 export class ProductCardComponent {
   private router = inject(Router);

@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-profile',
-  standalone: true,
-  imports: [RouterLink, RouterOutlet, RouterModule,CommonModule, TranslateModule],
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+    selector: 'app-profile',
+    imports: [RouterLink, RouterOutlet, RouterModule, CommonModule, TranslateModule],
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
   private userService = inject(UserService);

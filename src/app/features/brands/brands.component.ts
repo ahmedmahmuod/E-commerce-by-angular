@@ -13,18 +13,17 @@ import { GlobalBtnComponent } from "../../shared/components/buttons/global-btn/g
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-brands',
-  standalone: true,
-  imports: [
-    CommonModule,
-    SpinnerComponent,
-    HomeHeaderPageComponent,
-    PageTitleComponent,
-    GlobalBtnComponent,
-    TranslateModule
-],
-  templateUrl: './brands.component.html',
-  styleUrl: './brands.component.css',
+    selector: 'app-brands',
+    imports: [
+        CommonModule,
+        SpinnerComponent,
+        HomeHeaderPageComponent,
+        PageTitleComponent,
+        GlobalBtnComponent,
+        TranslateModule
+    ],
+    templateUrl: './brands.component.html',
+    styleUrl: './brands.component.css'
 })
 export class BrandsComponent {
   private router = inject(Router);

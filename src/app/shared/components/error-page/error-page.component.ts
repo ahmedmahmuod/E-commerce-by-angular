@@ -3,10 +3,9 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-not-found',
-  standalone: true,
-  imports: [RouterLink, TranslateModule],
-  template: `
+    selector: 'app-not-found',
+    imports: [RouterLink, TranslateModule],
+    template: `
     <div class="error-container">
       <div class="error-content">
         <div class="glitch" data-text="404">404</div>
@@ -18,8 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
       </div>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .error-container {
       min-height: 100vh;
       display: flex;
@@ -158,6 +157,6 @@ import { TranslateModule } from '@ngx-translate/core';
       }
     }
   `,
-  ],
+    ]
 })
 export class NotFoundComponent {}

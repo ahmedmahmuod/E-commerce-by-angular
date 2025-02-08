@@ -13,12 +13,11 @@ import { ButtonComponent } from "../../../shared/components/buttons/loading-butt
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../core/services/language.service';
 @Component({
-  selector: 'app-sign-in',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, ButtonModule, ToastModule, ButtonComponent, TranslateModule],
-  templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.css',
-  providers: [MessageService],
+    selector: 'app-sign-in',
+    imports: [CommonModule, ReactiveFormsModule, RouterLink, ButtonModule, ToastModule, ButtonComponent, TranslateModule],
+    templateUrl: './sign-in.component.html',
+    styleUrl: './sign-in.component.css',
+    providers: [MessageService]
 })
 export class SignInComponent {
   private tokenService = inject(TokenService);

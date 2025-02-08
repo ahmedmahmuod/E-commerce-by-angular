@@ -3,11 +3,10 @@ import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-success-payment',
-  standalone: true,
-  imports: [TranslateModule],
-  templateUrl: './success-payment.component.html',
-  styleUrl: './success-payment.component.css',
+    selector: 'app-success-payment',
+    imports: [TranslateModule],
+    templateUrl: './success-payment.component.html',
+    styleUrl: './success-payment.component.css'
 })
 export class SuccessPaymentComponent implements OnInit {
   private router = inject(Router)

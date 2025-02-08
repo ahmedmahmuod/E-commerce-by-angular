@@ -15,12 +15,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
-  selector: 'app-password-reset',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, ButtonComponent, ToastModule, ButtonModule, TranslateModule],
-  templateUrl: './forget-password.component.html',
-  styleUrls: ['./forget-password.component.css'],
-  providers: [MessageService],
+    selector: 'app-password-reset',
+    imports: [CommonModule, ReactiveFormsModule, FormsModule, ButtonComponent, ToastModule, ButtonModule, TranslateModule],
+    templateUrl: './forget-password.component.html',
+    styleUrls: ['./forget-password.component.css'],
+    providers: [MessageService]
 })
 export class PasswordResetComponent {
   // Inject services

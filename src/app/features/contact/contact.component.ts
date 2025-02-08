@@ -5,11 +5,10 @@ import { PageTitleComponent } from "../../shared/components/page-title/page-titl
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, PageTitleComponent, TranslateModule],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.css'
+    selector: 'app-contact',
+    imports: [CommonModule, ReactiveFormsModule, PageTitleComponent, TranslateModule],
+    templateUrl: './contact.component.html',
+    styleUrl: './contact.component.css'
 })
 export class ContactComponent {
   contactForm: FormGroup;

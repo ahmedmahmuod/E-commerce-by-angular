@@ -21,62 +21,49 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    TranslateModule,
-    FormsModule,
-    NzIconModule,
-    NzRateModule,
-    NzSelectModule,
-    NzIconModule,
-    NzToolTipModule,
-    CommonModule,
-    RouterLink,
-    NzDropDownModule,
-    NzIconModule,
-    RouterLinkActive,
-  ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.css',
-  animations: [
-    trigger('headerAnimation', [
-      state(
-        'void',
-        style({
-          transform: 'translateY(-100%)',
-          opacity: 0,
-        })
-      ),
-      state(
-        '*',
-        style({
-          transform: 'translateY(0)',
-          opacity: 1,
-        })
-      ),
-      transition('void => *', [animate('300ms ease-out')]),
-      transition('* => void', [animate('300ms ease-in')]),
-    ]),
-    trigger('slideAnimation', [
-      state(
-        'void',
-        style({
-          transform: 'translateX(-100%)',
-          opacity: 0,
-        })
-      ),
-      state(
-        '*',
-        style({
-          transform: 'translateX(0)',
-          opacity: 1,
-        })
-      ),
-      transition('void => *', [animate('300ms ease-out')]),
-      transition('* => void', [animate('300ms ease-in')]),
-    ]),
-  ],
+    selector: 'app-header',
+    imports: [
+        TranslateModule,
+        FormsModule,
+        NzIconModule,
+        NzRateModule,
+        NzSelectModule,
+        NzIconModule,
+        NzToolTipModule,
+        CommonModule,
+        RouterLink,
+        NzDropDownModule,
+        NzIconModule,
+        RouterLinkActive,
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.css',
+    animations: [
+        trigger('headerAnimation', [
+            state('void', style({
+                transform: 'translateY(-100%)',
+                opacity: 0,
+            })),
+            state('*', style({
+                transform: 'translateY(0)',
+                opacity: 1,
+            })),
+            transition('void => *', [animate('300ms ease-out')]),
+            transition('* => void', [animate('300ms ease-in')]),
+        ]),
+        trigger('slideAnimation', [
+            state('void', style({
+                transform: 'translateX(-100%)',
+                opacity: 0,
+            })),
+            state('*', style({
+                transform: 'translateX(0)',
+                opacity: 1,
+            })),
+            transition('void => *', [animate('300ms ease-out')]),
+            transition('* => void', [animate('300ms ease-in')]),
+        ]),
+    ]
 })
 export class HeaderComponent implements OnInit{
   private tokenService = inject(TokenService);

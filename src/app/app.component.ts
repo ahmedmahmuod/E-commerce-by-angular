@@ -19,13 +19,11 @@ const fadeAnimation = trigger('fadeAnimation', [
 ]);
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [HeaderComponent, RouterOutlet, FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  animations: [fadeAnimation],
-
+    selector: 'app-root',
+    imports: [HeaderComponent, RouterOutlet, FooterComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    animations: [fadeAnimation]
 })
 export class AppComponent {
   private authService = inject(AuthService);

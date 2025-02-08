@@ -2,17 +2,16 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-button-loading',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'app-button-loading',
+    imports: [CommonModule],
+    template: `
     <button [ngClass]="background" [type]="type" [disabled]="disabled || loading" class="submit-button">
       <span *ngIf="!loading">{{ text }}</span>
       <span *ngIf="loading" class="spinner"></span>
     </button>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .submit-button {
         padding: 10px 20px;
         font-size: 16px;
@@ -55,7 +54,7 @@ import { Component, Input } from '@angular/core';
         background-color: var(--font-secondary);
       }
     `,
-  ],
+    ]
 })
 export class ButtonComponent {
   @Input({ required: true }) text: string = 'Button';

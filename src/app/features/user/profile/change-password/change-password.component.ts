@@ -12,13 +12,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { LanguageService } from '../../../../core/services/language.service';
 @Component({
-  selector: 'app-change-password',
-  standalone: true,
-  imports: [CommonModule, RouterModule, ToastModule, ButtonModule, ReactiveFormsModule, ButtonComponent, TranslateModule],
-  templateUrl: './change-password.component.html',
-  styleUrl: './change-password.component.css',
-  providers: [MessageService],
-
+    selector: 'app-change-password',
+    imports: [CommonModule, RouterModule, ToastModule, ButtonModule, ReactiveFormsModule, ButtonComponent, TranslateModule],
+    templateUrl: './change-password.component.html',
+    styleUrl: './change-password.component.css',
+    providers: [MessageService]
 })
 export class PasswordChangeComponent {
   private passwordService = inject(PasswordService);

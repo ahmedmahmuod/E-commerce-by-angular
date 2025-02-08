@@ -19,12 +19,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../core/services/language.service';
 
 @Component({
-  selector: 'app-cart',
-  standalone: true,
-  imports: [CommonModule, FormsModule, ViewProductComponent, PageTitleComponent, ButtonModule, ToastModule, RouterLink, SpinnerComponent, TranslateModule],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css',
-  providers: [MessageService]
+    selector: 'app-cart',
+    imports: [CommonModule, FormsModule, ViewProductComponent, PageTitleComponent, ButtonModule, ToastModule, RouterLink, SpinnerComponent, TranslateModule],
+    templateUrl: './cart.component.html',
+    styleUrl: './cart.component.css',
+    providers: [MessageService]
 })
 export class CartComponent implements OnInit, OnDestroy {
   // private variables

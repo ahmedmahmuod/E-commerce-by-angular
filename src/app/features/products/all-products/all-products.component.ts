@@ -17,20 +17,19 @@ import { PageTitleComponent } from "../../../shared/components/page-title/page-t
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-all-products',
-  standalone: true,
-  imports: [
-    CommonModule,
-    NzPageHeaderModule,
-    ProductCardComponent,
-    HomeHeaderPageComponent,
-    SpinnerComponent,
-    ProductFiltersComponent,
-    PageTitleComponent,
-    TranslateModule
-],
-  templateUrl: './all-products.component.html',
-  styleUrls: ['./all-products.component.css'],
+    selector: 'app-all-products',
+    imports: [
+        CommonModule,
+        NzPageHeaderModule,
+        ProductCardComponent,
+        HomeHeaderPageComponent,
+        SpinnerComponent,
+        ProductFiltersComponent,
+        PageTitleComponent,
+        TranslateModule
+    ],
+    templateUrl: './all-products.component.html',
+    styleUrls: ['./all-products.component.css']
 })
 export class AllProductsComponent implements OnInit {
   // Observables for products and loading state

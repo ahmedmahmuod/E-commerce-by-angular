@@ -2,14 +2,13 @@ import { Component, Input } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-global-btn',
-  standalone: true,
-  imports: [ButtonModule],
-  template: ` <div class="flex justify-center">
+    selector: 'app-global-btn',
+    imports: [ButtonModule],
+    template: ` <div class="flex justify-center">
     <p-button class="view-all" [label]="title" icon="pi" />
   </div>`,
-  styles: [
-    `
+    styles: [
+        `
       .view-all {
         padding: 10px;
         text-align: center;
@@ -28,7 +27,7 @@ import { ButtonModule } from 'primeng/button';
         background-color: var(--font-secondary);
       }
     `,
-  ],
+    ]
 })
 export class GlobalBtnComponent {
   @Input({ required: true }) title: string = '';
