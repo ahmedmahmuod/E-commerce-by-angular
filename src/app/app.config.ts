@@ -41,6 +41,7 @@ import { ProductsBrandEffects } from './stores/products/products-brand-store/pro
 import { OrdersEffects } from './stores/user/orders/orders.effects';
 import { UserCartsEffects } from './stores/cart-store/user-carts.effects';
 import { UserWishlistEffects } from './stores/wishlist-store/user-wishlist.effects';
+import { provideClientHydration } from '@angular/platform-browser';
 
 registerLocaleData(en);
 export function HttpLoaderFactory(http: HttpClient) {
@@ -85,6 +86,6 @@ export const appConfig: ApplicationConfig = {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-    }).providers!,
+    }).providers!, provideClientHydration(),
   ],
 };
