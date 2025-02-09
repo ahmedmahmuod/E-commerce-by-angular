@@ -28,7 +28,7 @@
     "@ngx-translate/core": "^16.0.3",
     "@ngx-translate/http-loader": "^16.0.0",
     "@primeng/themes": "^19.0.5",
-    "ng-zorro-antd": "^18.2.1",
+    "ng-zorro-antd": "^19.0.2",
     "ngx-toastr": "^19.0.0",
     "primeicons": "^7.0.0",
     "primeng": "^19.0.6",
