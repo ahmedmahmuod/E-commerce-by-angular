@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^18.2.13",
     "@angular/platform-server": "^18.2.13",
     "@angular/router": "^18.2.13",
+    "@angular/service-worker": "^18.2.13",
     "@angular/ssr": "^18.2.14",
     "@ctrl/tinycolor": "^4.1.0",
     "@ngrx/effects": "^18.1.1",

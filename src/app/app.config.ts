@@ -1,6 +1,6 @@
 import {
   ApplicationConfig,
-  provideZoneChangeDetection,
+  provideZoneChangeDetection, isDevMode,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -43,6 +43,7 @@ import { UserCartsEffects } from './stores/cart-store/user-carts.effects';
 import { UserWishlistEffects } from './stores/wishlist-store/user-wishlist.effects';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideNzIcons } from 'ng-zorro-antd/icon';
+import { provideServiceWorker } from '@angular/service-worker';
 
 registerLocaleData(en);
 export function HttpLoaderFactory(http: HttpClient) {
@@ -91,6 +92,9 @@ export const appConfig: ApplicationConfig = {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-    }).providers!, provideClientHydration()
+    }).providers!, provideClientHydration(), provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          })
   ],
 };

@@ -45,6 +45,14 @@
         "empty-table-header": "off"
       }
     ],
-    "typescript-config/consistent-casing": "off"
+    "typescript-config/consistent-casing": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "-webkit-font-feature-settings"
+        ]
+      }
+    ]
   }
 }
