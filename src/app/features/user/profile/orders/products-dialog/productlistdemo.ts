@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
     providers: [DialogService],
+    standalone: true,
     imports: [TableModule, ButtonModule, TranslateModule, CommonModule],
     template: `
     <div class="product-dialog">

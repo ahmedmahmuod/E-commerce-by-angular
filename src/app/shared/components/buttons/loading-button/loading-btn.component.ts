@@ -4,6 +4,7 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'app-button-loading',
     imports: [CommonModule],
+    standalone: true,
     template: `
     <button [ngClass]="background" [type]="type" [disabled]="disabled || loading" class="submit-button">
       <span *ngIf="!loading">{{ text }}</span>

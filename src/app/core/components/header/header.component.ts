@@ -22,6 +22,7 @@ import { LanguageService } from '../../services/language.service';
 
 @Component({
     selector: 'app-header',
+    standalone: true,
     imports: [
         TranslateModule,
         FormsModule,

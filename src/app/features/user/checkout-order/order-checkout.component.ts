@@ -16,6 +16,7 @@ import { LanguageService } from '../../../core/services/language.service';
     templateUrl: './order-checkout.component.html',
     styleUrls: ['./order-checkout.component.css'],
     imports: [ReactiveFormsModule, CommonModule, SpinnerComponent, ButtonModule, ToastModule, TranslateModule],
+    standalone: true,
     providers: [MessageService]
 })
 export class OrderCheckoutComponent {

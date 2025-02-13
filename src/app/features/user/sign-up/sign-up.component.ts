@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../core/services/language.service';
 @Component({
     selector: 'app-signup',
+    standalone: true,
     imports: [
         CommonModule,
         ReactiveFormsModule,

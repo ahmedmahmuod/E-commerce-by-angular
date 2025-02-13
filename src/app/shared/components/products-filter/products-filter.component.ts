@@ -11,6 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
     selector: 'app-product-filters',
     imports: [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule],
+    standalone: true,
     templateUrl: './products-filter.component.html',
     styleUrls: ['./products-filter.component.css']
 })

@@ -18,6 +18,7 @@ import { LanguageService } from '../../../../core/services/language.service';
 
 @Component({
     selector: 'app-orders',
+    standalone: true,
     imports: [CommonModule, RouterModule, ButtonModule, ToastModule, SpinnerComponent, DynamicDialogModule, TranslateModule],
     templateUrl: './orders.component.html',
     styleUrl: './orders.component.css',

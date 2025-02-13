@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-profile',
+    standalone: true,
     imports: [RouterLink, RouterOutlet, RouterModule, CommonModule, TranslateModule],
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.css']

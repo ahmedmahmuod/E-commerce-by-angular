@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 @Component({
     selector: 'app-global-btn',
     imports: [ButtonModule],
+    standalone: true,
     template: ` <div class="flex justify-center">
     <p-button class="view-all" [label]="title" icon="pi" />
   </div>`,

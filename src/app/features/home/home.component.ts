@@ -23,6 +23,7 @@ register();
 
 @Component({
     selector: 'app-home',
+    standalone: true,
     imports: [
         CommonModule,
         HeroSectionComponent,

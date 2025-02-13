@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-page-title',
+  standalone: true,
   template: `
     <div class="centered-text">
       <h2 class="section-title">{{ title }}</h2>
@@ -49,7 +50,6 @@ import { Component, Input } from '@angular/core';
       }
     `,
   ],
-  standalone: true,
 })
 export class PageTitleComponent {
   @Input({ required: true }) title: string = '';

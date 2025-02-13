@@ -13,6 +13,7 @@ import { Observable, of } from 'rxjs';
 import { LanguageService } from '../../../../core/services/language.service';
 @Component({
     selector: 'app-change-password',
+    standalone: true,
     imports: [CommonModule, RouterModule, ToastModule, ButtonModule, ReactiveFormsModule, ButtonComponent, TranslateModule],
     templateUrl: './change-password.component.html',
     styleUrl: './change-password.component.css',

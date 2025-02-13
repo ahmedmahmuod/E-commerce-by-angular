@@ -18,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-all-products',
+    standalone: true,
     imports: [
         CommonModule,
         NzPageHeaderModule,

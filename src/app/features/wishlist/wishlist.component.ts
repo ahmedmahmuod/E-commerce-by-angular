@@ -22,6 +22,7 @@ import { LanguageService } from '../../core/services/language.service';
 
 @Component({
     selector: 'app-wishlist',
+    standalone: true,
     imports: [CommonModule, PageTitleComponent, AddToCartComponent, SpinnerComponent, ButtonModule, ToastModule, RouterLink, TranslateModule, ViewProductComponent],
     templateUrl: './wishlist.component.html',
     styleUrl: './wishlist.component.css',

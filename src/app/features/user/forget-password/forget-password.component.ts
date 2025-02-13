@@ -16,6 +16,7 @@ import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
     selector: 'app-password-reset',
+    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, FormsModule, ButtonComponent, ToastModule, ButtonModule, TranslateModule],
     templateUrl: './forget-password.component.html',
     styleUrls: ['./forget-password.component.css'],

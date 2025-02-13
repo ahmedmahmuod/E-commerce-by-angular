@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
     selector: 'app-success-payment',
     imports: [TranslateModule],
+    standalone: true,
     templateUrl: './success-payment.component.html',
     styleUrl: './success-payment.component.css'
 })

@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
     selector: 'app-home-header-page',
     imports: [NzPageHeaderModule, RouterLink, CommonModule],
+    standalone: true,
     templateUrl: './home-header-page.component.html',
     styleUrl: './home-header-page.component.css'
 })

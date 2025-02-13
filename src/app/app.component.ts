@@ -21,6 +21,7 @@ const fadeAnimation = trigger('fadeAnimation', [
 @Component({
     selector: 'app-root',
     imports: [HeaderComponent, RouterOutlet, FooterComponent],
+    standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
     animations: [fadeAnimation]

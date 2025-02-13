@@ -18,6 +18,7 @@ import { LanguageService } from '../../../core/services/language.service';
 @Component({
     selector: 'app-product-card',
     imports: [CommonModule, RouterLink, ButtonModule, ToastModule, SpinnerComponent, TranslateModule],
+    standalone: true,
     templateUrl: './product-card.component.html',
     styleUrl: './product-card.component.css',
     providers: [MessageService, CartsService]

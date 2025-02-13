@@ -19,6 +19,7 @@ import { LanguageService } from '../../../core/services/language.service';
 
 @Component({
     selector: 'app-product-details',
+    standalone: true,
     imports: [
         CommonModule,
         ImageSliderComponent,

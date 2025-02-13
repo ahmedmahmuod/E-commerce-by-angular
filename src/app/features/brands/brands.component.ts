@@ -14,6 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-brands',
+    standalone: true,
     imports: [
         CommonModule,
         SpinnerComponent,

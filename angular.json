@@ -42,12 +42,7 @@
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "node_modules/swiper/swiper-bundle.min.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
