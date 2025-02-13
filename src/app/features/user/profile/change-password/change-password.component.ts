@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
@@ -24,6 +24,7 @@ export class PasswordChangeComponent {
   private tokenService = inject(TokenService);
   private messageService = inject(MessageService);
   private langService = inject(LanguageService);
+  private platformId = inject(PLATFORM_ID);
 
   currentLang$!: Observable<string>;
   passwordForm: FormGroup;
@@ -65,24 +66,31 @@ export class PasswordChangeComponent {
   getErrorMessage(controlName: string) {
     const control = this.passwordForm.get(controlName);
     if (control?.hasError('required')) {
-      if (localStorage.getItem('language') === 'en') {
-        return 'This field is required';
-      } else {
-        return 'هذا الحقل مطلوب'
+      if (isPlatformBrowser(this.platformId)) {
+        if (localStorage.getItem('language') === 'en') {
+          return 'This field is required';
+        } else {
+          return 'هذا الحقل مطلوب'
+        }
       }
     }
     if (control?.hasError('minlength')) {
-      if (localStorage.getItem('language') === 'en') {
-        return 'Password must be at least 8 characters long';
-      } else {
-        return 'يجب أن تكون كلمة المرور على الأقل 8 أحرف'
+      if (isPlatformBrowser(this.platformId)) {
+        if (localStorage.getItem('language') === 'en') {
+          return 'Password must be at least 8 characters long';
+        } else {
+          return 'يجب أن تكون كلمة المرور على الأقل 8 أحرف'
+        }
       }
+      
     }
     if (control?.hasError('mismatch')) {
-      if (localStorage.getItem('language') === 'en') {
-        return 'Passwords do not match';
-      } else {
-        return 'لا يوجد تطابق بين كلمات المرور'
+      if (isPlatformBrowser(this.platformId)) {
+        if (localStorage.getItem('language') === 'en') {
+          return 'Passwords do not match';
+        } else {
+          return 'لا يوجد تطابق بين كلمات المرور'
+        }
       }
     }
     return '';

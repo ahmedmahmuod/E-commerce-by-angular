@@ -1,10 +1,10 @@
-import { Component, signal, HostListener, inject, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, signal, HostListener, inject, OnInit, Output, EventEmitter, PLATFORM_ID } from '@angular/core';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { FormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {  trigger, state, style, transition, animate } from '@angular/animations';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
@@ -72,6 +72,7 @@ export class HeaderComponent implements OnInit{
   private store = inject(Store);
   private destroy$ = new Subject<void>();
   private langService = inject(LanguageService);
+  private platformId = inject(PLATFORM_ID);
 
   isMenuOpen: boolean = false;
   isHeaderVisible = true;
@@ -85,12 +86,14 @@ export class HeaderComponent implements OnInit{
   @Output() languageChanged = new EventEmitter<string>();
 
   constructor(private translate: TranslateService) {
-    const savedLang = localStorage.getItem('language');
-    if (savedLang) {
-      this.selectedLanguage.set(savedLang);
-      translate.use(savedLang);
-    } else {
-      translate.use('en');
+    if (isPlatformBrowser(this.platformId)) {
+      const savedLang = localStorage.getItem('language');
+      if (savedLang) {
+        this.selectedLanguage.set(savedLang);
+        translate.use(savedLang);
+      } else {
+        translate.use('en');
+      }
     }
   }
 

@@ -1,4 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -11,9 +12,12 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class SuccessPaymentComponent implements OnInit {
   private router = inject(Router)
+  private platformId = inject(PLATFORM_ID);
 
   ngOnInit(): void {
-    localStorage.removeItem('paymentSuccess');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('paymentSuccess');
+    }
   }
 
   // go to view all orders

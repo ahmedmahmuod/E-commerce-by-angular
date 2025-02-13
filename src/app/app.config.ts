@@ -1,15 +1,15 @@
 import {
   ApplicationConfig,
   provideZoneChangeDetection,
-  importProvidersFrom,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { authInterceptor } from './core/services/user/interceptors/auth.interceptor';
+import { HeartOutline, ShoppingCartOutline, MenuOutline } from '@ant-design/icons-angular/icons';
 
 import { routes } from './app.routes';
 import { registerLocaleData } from '@angular/common';
@@ -42,6 +42,7 @@ import { OrdersEffects } from './stores/user/orders/orders.effects';
 import { UserCartsEffects } from './stores/cart-store/user-carts.effects';
 import { UserWishlistEffects } from './stores/wishlist-store/user-wishlist.effects';
 import { provideClientHydration } from '@angular/platform-browser';
+import { provideNzIcons } from 'ng-zorro-antd/icon';
 
 registerLocaleData(en);
 export function HttpLoaderFactory(http: HttpClient) {
@@ -78,7 +79,11 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
 
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(
+      withInterceptors([authInterceptor]),
+      withFetch()
+    ),
+    provideNzIcons( [HeartOutline, ShoppingCartOutline, MenuOutline]),
 
     ...TranslateModule.forRoot({
       loader: {
@@ -86,6 +91,6 @@ export const appConfig: ApplicationConfig = {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-    }).providers!, provideClientHydration(),
+    }).providers!, provideClientHydration()
   ],
 };

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { UserService } from '../../../../core/services/user/services/user.service';
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
-import { ButtonComponent } from "../../../../shared/components/buttons/loading-button/loading-btn.component";
+import { ButtonComponent } from '../../../../shared/components/buttons/loading-button/loading-btn.component';
 import { AuthService } from '../../../../core/services/user/services/auth.service';
 import { TokenService } from '../../../../core/services/user/services/token.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -28,18 +28,19 @@ export class MyDetailsComponent {
   currentLang$!: Observable<string>;
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
     private fb: FormBuilder,
     private userService: UserService,
     private authService: AuthService,
-    private tokenServie: TokenService,
+    private tokenService: TokenService,
     private messageService: MessageService,
     private langService: LanguageService
   ) {}
 
   ngOnInit() {
     this.langService.currentLanguage$.subscribe((lang) => {
-      this.currentLang$ = of(lang)  
-    })
+      this.currentLang$ = of(lang);  
+    });
 
     this.userForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
@@ -51,27 +52,26 @@ export class MyDetailsComponent {
     this.userService.userData$.subscribe((data) => {
       this.userData$ = of(data ? data.data || null : null);
       if (data && data.data) {
-        this.userForm.patchValue({name: data.data.name, email: data.data.email, phone: data.data.phone});
+        this.userForm.patchValue({ name: data.data.name, email: data.data.email, phone: data.data.phone });
       }
     });
   }
 
-  // On submit update the data of user
   onSubmit() {
-    let lang: string = 'en'; 
-    this.currentLang$.subscribe((value) => lang = value); 
+    let lang: string = 'en';
+    this.currentLang$.subscribe((value) => lang = value);
 
     if (this.userForm.valid) {
       this.isSubmitting = true;
 
       this.userData$.subscribe((userData) => {
         const formValue = this.userForm.value;
-        const userDataToCompare = {name: userData.name, phone: userData.phone};
+        const userDataToCompare = { name: userData.name, phone: userData.phone };
 
         if (formValue.name !== userDataToCompare.name || formValue.phone !== userDataToCompare.phone) {
           this.authService.updateUserData(formValue).subscribe({
             next: () => {              
-              const token = this.tokenServie.getToken();
+              const token = this.tokenService.getToken();
               if (token) {
                 this.authService.verifyToken().subscribe((res) => {
                   this.authService.getUserData(res.decoded.id).subscribe((userData) => {
@@ -81,27 +81,17 @@ export class MyDetailsComponent {
               }
         
               this.isSubmitting = false;
-              if (lang === 'en') {
-                this.messageService.add({severity: 'success', summary: 'Success', detail: 'Your details have been updated succussfully'});
-              } else {
-                this.messageService.add({severity: 'success', summary: 'تم بنجاح', detail: 'تم تعديل تفاصيلك بنجاح'});
-              }
+              this.messageService.add({severity: 'success', summary: lang === 'en' ? 'Success' : 'تم بنجاح', detail: lang === 'en' ? 'Your details have been updated successfully' : 'تم تعديل تفاصيلك بنجاح'});
             },
-            
             error: (error) => {
               console.log(error);
               this.isSubmitting = false;
               this.messageService.add({severity: 'error', summary: 'Error', detail: error.error.errors.msg});
             },
           });
-
         } else {
           this.isSubmitting = false;
-          if (lang === 'en') {
-            this.messageService.add({severity: 'info', summary: 'No Changes Detected!', detail: 'You have not made any changes.!!'});
-          } else {
-            this.messageService.add({severity: 'info', summary: 'لم يتم اكتشاف أي تغييرات', detail: 'لم تقم بأية تغييرات.!!'});
-          }
+          this.messageService.add({severity: 'info', summary: lang === 'en' ? 'No Changes Detected!' : 'لم يتم اكتشاف أي تغييرات', detail: lang === 'en' ? 'You have not made any changes.!!' : 'لم تقم بأية تغييرات.!!'});
         }
       });
     }
@@ -109,44 +99,23 @@ export class MyDetailsComponent {
 
   getErrorMessage(controlName: string): string {
     const control = this.userForm.get(controlName);
-  
+    let lang = 'en';
+    
+    if (isPlatformBrowser(this.platformId)) {
+      lang = localStorage.getItem('language') || 'en';
+    }
+
     if (control?.hasError('required')) {
-      const lang = localStorage.getItem('language');
-      if (lang === 'en') {          
-        return 'This field is required';
-      } else if (lang === 'ar') {
-        return 'هذا الحقل مطلوب';
-      }
+      return lang === 'ar' ? 'هذا الحقل مطلوب' : 'This field is required';
     } else if (control?.hasError('pattern') && controlName === 'phone') {
-      const lang = localStorage.getItem('language');
-      if (lang === 'en') {
-        return 'Please enter a valid Egyptian phone number (11 digits starting with 01)';
-      } else if (lang === 'ar') {
-        return 'يرجى إدخال رقم هاتف مصري صالح (11 رقمًا تبدأ بـ 01)';
-      }
+      return lang === 'ar' ? 'يرجى إدخال رقم هاتف مصري صالح (11 رقمًا تبدأ بـ 01)' : 'Please enter a valid Egyptian phone number (11 digits starting with 01)';
     } else if (control?.hasError('minlength')) {
-      const lang = localStorage.getItem('language');
-      if (lang === 'en') {
-        return `Minimum length is ${control.errors?.['minlength'].requiredLength} characters`;
-      } else if (lang === 'ar') {
-        return `الحد الأدنى للطول هو ${control.errors?.['minlength'].requiredLength} حرف`;
-      }
+      return lang === 'ar' ? `الحد الأدنى للطول هو ${control.errors?.['minlength'].requiredLength} حرف` : `Minimum length is ${control.errors?.['minlength'].requiredLength} characters`;
     } else if (control?.hasError('email')) {
-      const lang = localStorage.getItem('language');
-      if (lang === 'en') {
-        return 'Please enter a valid email address';
-      } else if (lang === 'ar') {
-        return 'يرجى إدخال عنوان بريد إلكتروني صالح';
-      }
+      return lang === 'ar' ? 'يرجى إدخال عنوان بريد إلكتروني صالح' : 'Please enter a valid email address';
     } else if (control?.hasError('mismatch')) {
-      const lang = localStorage.getItem('language');
-      if (lang === 'en') {
-        return 'Passwords do not match';
-      } else if (lang === 'ar') {
-        return 'كلمات المرور غير متطابقة';
-      }
+      return lang === 'ar' ? 'كلمات المرور غير متطابقة' : 'Passwords do not match';
     }
     return '';
   }
-  
 }

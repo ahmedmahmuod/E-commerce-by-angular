@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -7,25 +8,33 @@ import { BehaviorSubject } from 'rxjs';
 export class LanguageService {
   private currentLanguageSubject = new BehaviorSubject<string>(this.getLanguageFromLocalStorage());
   public currentLanguage$ = this.currentLanguageSubject.asObservable();
+  private platformId = inject(PLATFORM_ID);
 
   constructor() {
     // Listen for changes in localStorage
-    window.addEventListener('storage', (event) => {
-      if (event.key === 'language') {
-        const newLanguage = event.newValue || 'en';
-        this.currentLanguageSubject.next(newLanguage);
-      }
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      window.addEventListener('storage', (event) => {
+        if (event.key === 'language') {
+          const newLanguage = event.newValue || 'en';
+          this.currentLanguageSubject.next(newLanguage);
+        }
+      });
+    }
   }
 
   // Method to get the current language from localStorage
   private getLanguageFromLocalStorage(): string {
-    return localStorage.getItem('language') || 'en'; 
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('language') || 'en'; 
+    }
+    return 'en';
   }
 
   // Method to change the language
   public switchLanguage(lang: string): void {
-    localStorage.setItem('language', lang);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('language', lang);
+    }
     this.currentLanguageSubject.next(lang);
   }
 
