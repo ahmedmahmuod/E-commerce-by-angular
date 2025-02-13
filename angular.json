@@ -21,18 +21,22 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/favicon.ico",
+              {
+                "glob": "manifest.webmanifest",
+                "input": "src",
+                "output": "/"
+              },              
               {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
               },
-              "src/favicon.ico",
               {
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
                 "output": "/assets/"
-              },
-              "src/manifest.webmanifest"
+              }
             ],
             "styles": [
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
